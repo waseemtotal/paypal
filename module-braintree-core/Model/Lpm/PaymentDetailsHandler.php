@@ -1,9 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Lpm;
+namespace Magento\Braintree\Model\Lpm;
 
-class PaymentDetailsHandler extends \PayPal\Braintree\Gateway\Response\PaymentDetailsHandler
+/**
+ * Class PaymentDetailsHandler
+ */
+class PaymentDetailsHandler extends \Magento\Braintree\Gateway\Response\PaymentDetailsHandler
 {
     /**
      * List of additional details

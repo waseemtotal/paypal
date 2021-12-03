@@ -3,16 +3,19 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Controller\Paypal;
+namespace Magento\Braintree\Controller\Paypal;
 
 use Exception;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
-use PayPal\Braintree\Model\Paypal\Helper\ShippingMethodUpdater;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Model\Paypal\Helper\ShippingMethodUpdater;
 
+/**
+ * Class SaveShippingMethod
+ */
 class SaveShippingMethod extends AbstractAction
 {
     /**

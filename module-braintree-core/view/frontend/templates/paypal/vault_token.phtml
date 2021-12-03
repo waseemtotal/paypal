@@ -1,7 +1,12 @@
 <?php
-// @codingStandardsIgnoreFile
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
-/** @var \PayPal\Braintree\Block\Customer\PayPal\VaultTokenRenderer $block */
+use Magento\Braintree\Block\Customer\PayPal\VaultTokenRenderer;
+
+/** @var VaultTokenRenderer $block */
 ?>
 <tr>
     <td data-th="<?= $block->escapeHtmlAttr(__('PayPal Account')) ?>" class="col paypal-account">
@@ -22,14 +27,14 @@
             <button type="submit"
                     class="action delete"
                     data-mage-init='{
-                        "Magento_Vault/js/customer_account/deleteWidget":{
-                            "type": "popup",
-                            "modalClass": "my-credit-cards-popup",
-                            "toggleEvent": "click",
-                            "title": "<?= $block->escapeHtmlAttr(__('Delete')) ?>",
-                            "content": "Are you sure you want to delete this PayPal account: <?= $block->escapeHtmlAttr($block->getPayerEmail()) ?>?"
-                        }
-                    }'>
+                                    "Magento_Vault/js/customer_account/deleteWidget":{
+                                        "type": "popup",
+                                        "modalClass": "my-credit-cards-popup",
+                                        "toggleEvent": "click",
+                                        "title": "<?= $block->escapeHtmlAttr(__('Delete')) ?>",
+                                        "content": "Are you sure you want to delete this PayPal account: <?= $block->escapeHtmlAttr($block->getPayerEmail()) ?>?"
+                                    }
+                                }'>
                 <span><?= $block->escapeHtml(__('Delete')) ?></span>
             </button>
         </form>

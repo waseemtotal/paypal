@@ -3,13 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response;
+namespace Magento\Braintree\Gateway\Response;
 
 use Braintree\Transaction;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;
 
+/**
+ * Class TransactionIdHandler
+ * @package Magento\Braintree\Gateway\Response
+ */
 class TransactionIdHandler implements HandlerInterface
 {
     /**

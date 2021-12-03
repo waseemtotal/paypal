@@ -1,9 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Model\Config\Source;
+namespace Magento\Braintree\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
+/**
+ * Class Color
+ * @package Magento\Braintree\Model\Config\Source
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Color implements ArrayInterface
 {
     /**

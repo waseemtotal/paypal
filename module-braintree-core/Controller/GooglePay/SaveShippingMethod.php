@@ -3,16 +3,19 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Controller\GooglePay;
+namespace Magento\Braintree\Controller\GooglePay;
 
 use Exception;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use PayPal\Braintree\Model\GooglePay\Config;
-use PayPal\Braintree\Model\Paypal\Helper\ShippingMethodUpdater;
+use Magento\Braintree\Model\GooglePay\Config;
+use Magento\Braintree\Model\Paypal\Helper\ShippingMethodUpdater;
 
+/**
+ * Class SaveShippingMethod
+ */
 class SaveShippingMethod extends AbstractAction
 {
     /**

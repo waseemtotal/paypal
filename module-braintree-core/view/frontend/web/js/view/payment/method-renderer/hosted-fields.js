@@ -7,8 +7,8 @@
 
 define([
     'jquery',
-    'PayPal_Braintree/js/view/payment/method-renderer/cc-form',
-    'PayPal_Braintree/js/validator',
+    'Magento_Braintree/js/view/payment/method-renderer/cc-form',
+    'Magento_Braintree/js/validator',
     'Magento_Vault/js/view/payment/vault-enabler',
     'Magento_Checkout/js/model/payment/additional-validators',
     'mage/translate'
@@ -18,7 +18,7 @@ define([
     return Component.extend({
 
         defaults: {
-            template: 'PayPal_Braintree/payment/form',
+            template: 'Magento_Braintree/payment/form',
             clientConfig: {
 
                 /**

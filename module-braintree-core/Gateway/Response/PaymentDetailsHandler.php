@@ -3,18 +3,21 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response;
+namespace Magento\Braintree\Gateway\Response;
 
 use Braintree\Transaction;
-use PayPal\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Observer\DataAssignObserver;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Helper\ContextHelper;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 
+/**
+ * Payment Details Handler
+ */
 class PaymentDetailsHandler implements HandlerInterface
 {
     const AVS_POSTAL_RESPONSE_CODE = 'avsPostalCodeResponseCode';

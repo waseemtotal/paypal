@@ -1,13 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Ui\Vault;
+namespace Magento\Braintree\Model\Ui\Vault;
 
-use PayPal\Braintree\Gateway\Config\Vault\Config;
+use Magento\Braintree\Gateway\Config\Vault\Config;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class ConfigProvider
+ */
 class ConfigProvider implements ConfigProviderInterface
 {
     const CODE = 'braintree_cc_vault';

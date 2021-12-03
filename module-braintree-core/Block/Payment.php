@@ -3,14 +3,16 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Block;
+namespace Magento\Braintree\Block;
 
-use PayPal\Braintree\Model\Ui\ConfigProvider;
+use Magento\Braintree\Model\Ui\ConfigProvider;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
 /**
+ * Class Payment
+ *
  * @api
  * @since 100.1.0
  */

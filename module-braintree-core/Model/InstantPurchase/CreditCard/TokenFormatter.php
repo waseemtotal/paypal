@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\InstantPurchase\CreditCard;
+namespace Magento\Braintree\Model\InstantPurchase\CreditCard;
 
 use Magento\InstantPurchase\PaymentMethodIntegration\PaymentTokenFormatterInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
@@ -12,7 +12,7 @@ use Magento\Vault\Api\Data\PaymentTokenInterface;
  * Braintree vaulted credit cards formatter
  *
  * Class TokenFormatter
- * @package PayPal\Braintree\Model\InstantPurchase\CreditCard
+ * @package Magento\Braintree\Model\InstantPurchase\CreditCard
  */
 class TokenFormatter implements PaymentTokenFormatterInterface
 {

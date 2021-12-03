@@ -8,18 +8,18 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add
-                id="PayPal_Braintree::settlement_report"
+                id="Magento_Braintree::settlement_report"
                 title="Braintree Settlement"
-                module="PayPal_Braintree"
+                module="Magento_Braintree"
                 sortOrder="80"
                 parent="Magento_Reports::report_salesroot"
                 action="braintree/report"
-                resource="PayPal_Braintree::settlement_report"/>
+                resource="Magento_Braintree::settlement_report"/>
 
         <add
-                id="PayPal_Braintree::virtual_terminal"
+                id="Magento_Braintree::virtual_terminal"
                 title="Braintree Virtual Terminal"
-                module="PayPal_Braintree"
+                module="Magento_Braintree"
                 sortOrder="100"
                 parent="Magento_Sales::sales_operation"
                 action="braintree/virtual"

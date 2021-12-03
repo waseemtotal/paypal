@@ -3,13 +3,13 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Request\AddressDataBuilder;
+use Magento\Braintree\Gateway\Request\AddressDataBuilder;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Data\OrderAdapterInterface;
-use Magento\Payment\Gateway\Data\AddressAdapterInterface;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Data\AddressAdapterInterface;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 
 class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
@@ -48,7 +48,6 @@ class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
      */
     public function testBuildReadPaymentException()
     {
-        $this->markTestSkipped('Skip this test');
         $this->expectException(\InvalidArgumentException::class);
 
         $buildSubject = [
@@ -132,8 +131,7 @@ class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
                     'first_name' => 'John',
                     'last_name' => 'Smith',
                     'company' => 'Magento',
-                    'street_1' => 'street1',
-                    'street_2' => 'street2',
+                    'street' => ['street1', 'street2', 'street3', 'street4'],
                     'city' => 'Chicago',
                     'region_code' => 'IL',
                     'country_id' => 'US',
@@ -145,7 +143,7 @@ class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
                         AddressDataBuilder::LAST_NAME => 'Smith',
                         AddressDataBuilder::COMPANY => 'Magento',
                         AddressDataBuilder::STREET_ADDRESS => 'street1',
-                        AddressDataBuilder::EXTENDED_ADDRESS => 'street2',
+                        AddressDataBuilder::EXTENDED_ADDRESS => 'street2, street3, street4',
                         AddressDataBuilder::LOCALITY => 'Chicago',
                         AddressDataBuilder::REGION => 'IL',
                         AddressDataBuilder::POSTAL_CODE => '00000',
@@ -157,7 +155,7 @@ class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
                         AddressDataBuilder::LAST_NAME => 'Smith',
                         AddressDataBuilder::COMPANY => 'Magento',
                         AddressDataBuilder::STREET_ADDRESS => 'street1',
-                        AddressDataBuilder::EXTENDED_ADDRESS => 'street2',
+                        AddressDataBuilder::EXTENDED_ADDRESS => 'street2, street3, street4',
                         AddressDataBuilder::LOCALITY => 'Chicago',
                         AddressDataBuilder::REGION => 'IL',
                         AddressDataBuilder::POSTAL_CODE => '00000',
@@ -186,11 +184,8 @@ class AddressDataBuilderTest extends \PHPUnit\Framework\TestCase
             ->method('getCompany')
             ->willReturn($addressData['company']);
         $addressMock->expects(static::exactly(2))
-            ->method('getStreetLine1')
-            ->willReturn($addressData['street_1']);
-        $addressMock->expects(static::exactly(2))
-            ->method('getStreetLine2')
-            ->willReturn($addressData['street_2']);
+            ->method('getStreet')
+            ->willReturn($addressData['street']);
         $addressMock->expects(static::exactly(2))
             ->method('getCity')
             ->willReturn($addressData['city']);

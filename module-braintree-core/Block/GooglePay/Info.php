@@ -1,7 +1,12 @@
 <?php
 
-namespace PayPal\Braintree\Block\GooglePay;
+namespace Magento\Braintree\Block\GooglePay;
 
-class Info extends \PayPal\Braintree\Block\Info
+/**
+ * Class Info
+ * @package Magento\Braintree\Model\GooglePay
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
+class Info extends \Magento\Braintree\Block\Info
 {
 }

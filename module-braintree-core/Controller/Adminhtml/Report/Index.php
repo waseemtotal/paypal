@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Controller\Adminhtml\Report;
+namespace Magento\Braintree\Controller\Adminhtml\Report;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -15,7 +15,7 @@ use Magento\Framework\View\Result\PageFactory;
  */
 class Index extends Action
 {
-    const ADMIN_RESOURCE = 'PayPal_Braintree::settlement_report';
+    const ADMIN_RESOURCE = 'Magento_Braintree::settlement_report';
 
     /**
      * @var PageFactory $resultPageFactory

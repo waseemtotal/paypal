@@ -3,15 +3,18 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Request\ThreeDSecureDataBuilder;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Request\ThreeDSecureDataBuilder;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Data\Order\OrderAdapter;
 use Magento\Payment\Gateway\Data\Order\AddressAdapter;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 
+/**
+ * Class ThreeDSecureDataBuilderTest
+ */
 class ThreeDSecureDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -20,38 +23,38 @@ class ThreeDSecureDataBuilderTest extends \PHPUnit\Framework\TestCase
     private $builder;
 
     /**
-     * @var Config|\PHPUnit\Framework\MockObject\MockObject
+     * @var Config|\PHPUnit_Framework_MockObject_MockObject
      */
     private $configMock;
 
     /**
-     * @var PaymentDataObjectInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var PaymentDataObjectInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $paymentDO;
 
     /**
-     * @var OrderAdapter|\PHPUnit\Framework\MockObject\MockObject
+     * @var OrderAdapter|\PHPUnit_Framework_MockObject_MockObject
      */
     private $order;
 
     /**
-     * @var \Magento\Payment\Gateway\Data\Order\AddressAdapter|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Payment\Gateway\Data\Order\AddressAdapter|\PHPUnit_Framework_MockObject_MockObject
      */
     private $billingAddress;
 
     /**
-     * @var SubjectReader|\PHPUnit\Framework\MockObject\MockObject
+     * @var SubjectReader|\PHPUnit_Framework_MockObject_MockObject
      */
     private $subjectReaderMock;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->initOrderMock();
 
         $this->paymentDO = $this->getMockBuilder(PaymentDataObjectInterface::class)
             ->disableOriginalConstructor()
             ->setMethods(['getOrder', 'getPayment'])
-            ->getMockForAbstractClass();
+            ->getMock();
         $this->paymentDO->expects(static::once())
             ->method('getOrder')
             ->willReturn($this->order);
@@ -73,12 +76,11 @@ class ThreeDSecureDataBuilderTest extends \PHPUnit\Framework\TestCase
      * @param string $countryId
      * @param array $countries
      * @param array $expected
-     * @covers \PayPal\Braintree\Gateway\Request\ThreeDSecureDataBuilder::build
+     * @covers \Magento\Braintree\Gateway\Request\ThreeDSecureDataBuilder::build
      * @dataProvider buildDataProvider
      */
     public function testBuild($verify, $thresholdAmount, $countryId, array $countries, array $expected)
     {
-        $this->markTestSkipped('Skip this test');
         $buildSubject = [
             'payment' => $this->paymentDO,
             'amount' => 25

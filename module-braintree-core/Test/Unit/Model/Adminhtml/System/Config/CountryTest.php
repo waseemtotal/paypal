@@ -3,22 +3,26 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Model\Adminhtml\System\Config;
+namespace Magento\Braintree\Test\Unit\Model\Adminhtml\System\Config;
 
-use PayPal\Braintree\Model\Adminhtml\System\Config\Country;
+use Magento\Braintree\Model\Adminhtml\System\Config\Country;
 use Magento\Directory\Model\ResourceModel\Country\Collection;
 use Magento\Framework\Phrase;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
+/**
+ * Class CountryTest
+ *
+ */
 class CountryTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \PayPal\Braintree\Model\Adminhtml\System\Config\Country
+     * @var \Magento\Braintree\Model\Adminhtml\System\Config\Country
      */
     protected $model;
 
     /**
-     * @var \Magento\Directory\Model\ResourceModel\Country\Collection|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Directory\Model\ResourceModel\Country\Collection|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $countryCollectionMock;
 
@@ -27,7 +31,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
      */
     protected $objectManager;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->countryCollectionMock = $this->getMockBuilder(Collection::class)
             ->disableOriginalConstructor()
@@ -43,7 +47,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Model\Adminhtml\System\Config\Country::toOptionArray
+     * @covers \Magento\Braintree\Model\Adminhtml\System\Config\Country::toOptionArray
      */
     public function testToOptionArrayMultiSelect()
     {
@@ -63,7 +67,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Model\Adminhtml\System\Config\Country::toOptionArray
+     * @covers \Magento\Braintree\Model\Adminhtml\System\Config\Country::toOptionArray
      */
     public function testToOptionArray()
     {
@@ -86,7 +90,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Model\Adminhtml\System\Config\Country::isCountryRestricted
+     * @covers \Magento\Braintree\Model\Adminhtml\System\Config\Country::isCountryRestricted
      * @param string $countryId
      * @dataProvider countryDataProvider
      */

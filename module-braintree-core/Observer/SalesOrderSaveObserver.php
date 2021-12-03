@@ -1,14 +1,19 @@
 <?php
 
-namespace PayPal\Braintree\Observer;
+namespace Magento\Braintree\Observer;
 
-use PayPal\Braintree\Api\Data\TransactionDetailDataInterface;
+use Magento\Braintree\Api\Data\TransactionDetailDataInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use PayPal\Braintree\Gateway\Response\PaymentDetailsHandler;
-use PayPal\Braintree\Api\Data\TransactionDetailDataInterfaceFactory;
+use Magento\Braintree\Gateway\Response\PaymentDetailsHandler;
+use Magento\Braintree\Api\Data\TransactionDetailDataInterfaceFactory;
 use Magento\Sales\Model\Order;
 
+/**
+ * Class SalesOrderPlaceObserver
+ * @package Magento\Braintree\Observer
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class SalesOrderSaveObserver implements ObserverInterface
 {
     /**

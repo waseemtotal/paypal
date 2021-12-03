@@ -3,10 +3,13 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Ui\Component\Report\Filters\Type;
+namespace Magento\Braintree\Ui\Component\Report\Filters\Type;
 
 use Magento\Ui\Component\Filters\Type\Date;
 
+/**
+ * Class DateRange
+ */
 class DateRange extends Date
 {
     /**

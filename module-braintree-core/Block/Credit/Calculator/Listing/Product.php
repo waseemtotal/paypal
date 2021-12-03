@@ -1,19 +1,24 @@
 <?php
 
-namespace PayPal\Braintree\Block\Credit\Calculator\Listing;
+namespace Magento\Braintree\Block\Credit\Calculator\Listing;
 
-use PayPal\Braintree\Api\CreditPriceRepositoryInterface;
-use PayPal\Braintree\Api\Data\CreditPriceDataInterface;
+use Magento\Braintree\Api\CreditPriceRepositoryInterface;
+use Magento\Braintree\Api\Data\CreditPriceDataInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\View\Element\Template;
-use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
+use Magento\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
 
+/**
+ * Class Product
+ * @package Magento\Braintree\Block\Credit\Calculator\Listing
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Product extends Template
 {
     /**
      * @var string
      */
-    protected $_template = 'PayPal_Braintree::credit/product/listing.phtml'; // @codingStandardsIgnoreLine
+    protected $_template = 'Magento_Braintree::credit/product/listing.phtml'; // @codingStandardsIgnoreLine
 
     /**
      * @var CreditPriceRepositoryInterface

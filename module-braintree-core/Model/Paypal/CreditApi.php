@@ -1,15 +1,19 @@
 <?php
 
-namespace PayPal\Braintree\Model\Paypal;
+namespace Magento\Braintree\Model\Paypal;
 
 use Magento\Framework\HTTP\Adapter\Curl;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Cache\Type\Config as Cache;
-use PayPal\Braintree\Gateway\Config\PayPalCredit\Config;
+use Magento\Braintree\Gateway\Config\PayPalCredit\Config;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\AuthenticationException;
 use Zend_Http_Client;
 
+/**
+ * Class CreditApi
+ * @package Magento\Braintree\Model\Paypal
+ */
 class CreditApi
 {
     /**

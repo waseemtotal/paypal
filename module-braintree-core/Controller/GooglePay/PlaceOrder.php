@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Controller\GooglePay;
+namespace Magento\Braintree\Controller\GooglePay;
 
 use Exception;
 use Magento\Checkout\Model\Session;
@@ -11,9 +11,12 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
-use PayPal\Braintree\Model\GooglePay\Config;
-use PayPal\Braintree\Model\Paypal\Helper\OrderPlace;
+use Magento\Braintree\Model\GooglePay\Config;
+use Magento\Braintree\Model\Paypal\Helper\OrderPlace;
 
+/**
+ * Class PlaceOrder
+ */
 class PlaceOrder extends AbstractAction
 {
     /**

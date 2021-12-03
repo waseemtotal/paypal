@@ -1,11 +1,16 @@
 <?php
 
-namespace PayPal\Braintree\Model;
+namespace Magento\Braintree\Model;
 
-use PayPal\Braintree\Api\Data\CreditPriceDataInterface;
+use Magento\Braintree\Api\Data\CreditPriceDataInterface;
 use Magento\Framework\Model\AbstractModel;
-use PayPal\Braintree\Model\ResourceModel\CreditPrice as CreditPriceResource;
+use Magento\Braintree\Model\ResourceModel\CreditPrice as CreditPriceResource;
 
+/**
+ * Class CreditPrice
+ * @package Magento\Braintree\Model
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class CreditPrice extends AbstractModel implements CreditPriceDataInterface
 {
     /**

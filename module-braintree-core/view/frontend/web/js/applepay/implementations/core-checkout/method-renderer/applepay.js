@@ -1,10 +1,11 @@
 /**
  * Braintree Apple Pay payment method integration.
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 define([
     'Magento_Checkout/js/view/payment/default',
     'Magento_Checkout/js/model/quote',
-    'PayPal_Braintree/js/applepay/button'
+    'Magento_Braintree/js/applepay/button'
 ], function (
     Component,
     quote,
@@ -14,7 +15,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'PayPal_Braintree/applepay/core-checkout',
+            template: 'Magento_Braintree/applepay/core-checkout',
             paymentMethodNonce: null,
             grandTotalAmount: 0,
             deviceSupported: button.deviceSupported()

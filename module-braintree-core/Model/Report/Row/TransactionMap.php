@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Report\Row;
+namespace Magento\Braintree\Model\Report\Row;
 
 use Braintree\Transaction;
 use DateTime;
@@ -13,6 +13,10 @@ use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\Search\DocumentInterface;
 use stdClass;
 
+/**
+ * Class TransactionMap
+ * @package Magento\Braintree\Model\Report\Row
+ */
 class TransactionMap implements DocumentInterface
 {
     const TRANSACTION_FIELD_MAP_DELIMITER = '_';

@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Adapter;
+namespace Magento\Braintree\Model\Adapter;
 
 use Braintree\MultipleValueNode;
 use Braintree\RangeNode;
@@ -11,7 +11,9 @@ use Braintree\TextNode;
 use Braintree\Transaction;
 use Braintree\TransactionSearch;
 
-/** @codeCoverageIgnore
+/**
+ * Class Braintree Search Adapter
+ * @codeCoverageIgnore
  */
 class BraintreeSearchAdapter
 {

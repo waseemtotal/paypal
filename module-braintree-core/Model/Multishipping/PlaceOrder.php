@@ -5,12 +5,12 @@
  */
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Multishipping;
+namespace Magento\Braintree\Model\Multishipping;
 
-use PayPal\Braintree\Gateway\Command\GetPaymentNonceCommand;
-use PayPal\Braintree\Model\Ui\ConfigProvider;
-use PayPal\Braintree\Observer\DataAssignObserver;
-use PayPal\Braintree\Model\Ui\PayPal\ConfigProvider as PaypalConfigProvider;
+use Magento\Braintree\Gateway\Command\GetPaymentNonceCommand;
+use Magento\Braintree\Model\Ui\ConfigProvider;
+use Magento\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Model\Ui\PayPal\ConfigProvider as PaypalConfigProvider;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\PlaceOrderInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderPaymentExtensionInterface;

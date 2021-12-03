@@ -28,12 +28,7 @@
             <!-- ko template: getTemplate() --><!-- /ko -->
             <!--/ko-->
         </div>
-        <form id="co-transparent-form-braintree"
-              class="form"
-              data-bind=""
-              method="post"
-              action="#"
-              novalidate="novalidate">
+        <form id="co-transparent-form-braintree" class="form" data-bind="" method="post" action="#" novalidate="novalidate">
             <fieldset data-bind="attr: {class: 'fieldset payment items ccard ' + getCode(), id: 'payment_form_' + getCode()}">
                 <legend class="legend">
                     <span><!-- ko i18n: 'Credit Card Information'--><!-- /ko --></span>
@@ -50,6 +45,7 @@
                         <!-- ko if: selectedCardType() -->
                             <img data-bind="attr: {'src': getIcons(selectedCardType()).url}" class="braintree-credit-card-selected">
                         <!--/ko-->
+
 
                         <div data-bind="attr: {id: getCode() + '_cc_number'}" class="hosted-control"></div>
                         <div class="hosted-error"><!-- ko i18n: 'Please, enter valid Credit Card Number'--><!-- /ko --></div>

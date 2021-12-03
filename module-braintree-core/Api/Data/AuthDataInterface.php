@@ -1,11 +1,12 @@
 <?php
 
-namespace PayPal\Braintree\Api\Data;
+namespace Magento\Braintree\Api\Data;
 
 /**
  * Interface AuthDataInterface
  * @api
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 interface AuthDataInterface
 {
     /**

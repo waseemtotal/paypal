@@ -3,15 +3,17 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Data\Order;
+namespace Magento\Braintree\Gateway\Data\Order;
 
-use Magento\Payment\Gateway\Data\AddressAdapterInterface;
-use Magento\Payment\Gateway\Data\Order\AddressAdapter;
-use Magento\Payment\Gateway\Data\Order\AddressAdapterFactory;
+use Magento\Braintree\Gateway\Data\AddressAdapterInterface;
 use Magento\Payment\Gateway\Data\OrderAdapterInterface;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Sales\Model\Order;
 
+/**
+ * Class OrderAdapter
+ * @package Magento\Braintree\Gateway\Data\Order
+ */
 class OrderAdapter implements OrderAdapterInterface
 {
     /**
@@ -20,28 +22,29 @@ class OrderAdapter implements OrderAdapterInterface
     private $order;
 
     /**
-     * @var AddressAdapter
-     */
-    private $addressAdapterFactory;
-
-    /**
      * @var CartRepositoryInterface
      */
     private $quoteRepository;
 
     /**
+     * @var AddressAdapterFactory
+     */
+    private $addressAdapterFactory;
+
+    /**
+     * OrderAdapter constructor.
      * @param Order $order
-     * @param AddressAdapterFactory $addressAdapterFactory
      * @param CartRepositoryInterface $quoteRepository
+     * @param AddressAdapterFactory $addressAdapterFactory
      */
     public function __construct(
         Order $order,
-        AddressAdapterFactory $addressAdapterFactory,
-        CartRepositoryInterface $quoteRepository
+        CartRepositoryInterface $quoteRepository,
+        AddressAdapterFactory $addressAdapterFactory
     ) {
         $this->order = $order;
-        $this->addressAdapterFactory = $addressAdapterFactory;
         $this->quoteRepository = $quoteRepository;
+        $this->addressAdapterFactory = $addressAdapterFactory;
     }
 
     /**
@@ -58,8 +61,9 @@ class OrderAdapter implements OrderAdapterInterface
      * Check whether order is multi shipping
      *
      * @return bool
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function isMultishipping()
+    public function isMultiShipping()
     {
         $quoteId = $this->order->getQuoteId();
         if (!$quoteId) {

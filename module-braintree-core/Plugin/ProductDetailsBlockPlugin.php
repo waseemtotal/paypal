@@ -1,24 +1,29 @@
 <?php
 
-namespace PayPal\Braintree\Plugin;
+namespace Magento\Braintree\Plugin;
 
 use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Model\Product;
 
+/**
+ * Class ProductDetailsBlockPlugin
+ * @package Magento\Braintree\Plugin
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class ProductDetailsBlockPlugin
 {
     /**
-     * @var \PayPal\Braintree\Block\Credit\Calculator\Listing\Product
+     * @var \Magento\Braintree\Block\Credit\Calculator\Listing\Product
      */
     protected $listingBlock;
 
     /**
      * ProductDetailsBlockPlugin constructor
      *
-     * @param \PayPal\Braintree\Block\Credit\Calculator\Listing\Product $listingBlock
+     * @param \Magento\Braintree\Block\Credit\Calculator\Listing\Product $listingBlock
      */
     public function __construct(
-        \PayPal\Braintree\Block\Credit\Calculator\Listing\Product $listingBlock
+        \Magento\Braintree\Block\Credit\Calculator\Listing\Product $listingBlock
     ) {
         $this->listingBlock = $listingBlock;
     }

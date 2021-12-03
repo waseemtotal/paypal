@@ -1,9 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Block\Adminhtml\Virtual;
+namespace Magento\Braintree\Block\Adminhtml\Virtual;
 
 use Magento\Backend\Block\Widget\Form\Container;
 
+/**
+ * Class Form
+ * @package Magento\Braintree\Block\Adminhtml\Virtual
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Form extends Container
 {
     /**
@@ -11,7 +16,7 @@ class Form extends Container
      */
     protected function _construct()
     {
-        $this->_blockGroup = 'PayPal_Braintree';
+        $this->_blockGroup = 'Magento_Braintree';
         $this->_controller = 'adminhtml_virtual';
         parent::_construct();
 

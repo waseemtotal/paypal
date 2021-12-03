@@ -10,10 +10,10 @@ define(
         'jquery',
         'Magento_Payment/js/view/payment/cc-form',
         'Magento_Checkout/js/model/quote',
-        'PayPal_Braintree/js/view/payment/adapter',
+        'Magento_Braintree/js/view/payment/adapter',
         'mage/translate',
-        'PayPal_Braintree/js/validator',
-        'PayPal_Braintree/js/view/payment/validator-handler',
+        'Magento_Braintree/js/validator',
+        'Magento_Braintree/js/view/payment/validator-handler',
         'Magento_Checkout/js/model/full-screen-loader'
     ],
     function (
@@ -298,7 +298,8 @@ define(
                 var data = {
                     'method': this.getCode(),
                     'additional_data': {
-                        'payment_method_nonce': this.paymentMethodNonce
+                        'payment_method_nonce': this.paymentMethodNonce,
+                        'g-recaptcha-response' : $("#token-grecaptcha-braintree").val()
                     }
                 };
 

@@ -3,13 +3,13 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
-use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
-use PayPal\Braintree\Gateway\Request\VaultDataBuilder;
-use PayPal\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
+use Magento\Braintree\Gateway\Request\VaultDataBuilder;
+use Magento\Braintree\Observer\DataAssignObserver;
 use Magento\Payment\Gateway\Data\OrderAdapterInterface;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Sales\Model\Order\Payment;
@@ -18,6 +18,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Zend\Log\Filter\Mock;
 
+/**
+ * Class VaultDataBuilderTest
+ * @package Magento\Braintree\Test\Unit\Gateway\Request
+ */
 class VaultDataBuilderTest extends TestCase
 {
     /**
@@ -45,7 +49,7 @@ class VaultDataBuilderTest extends TestCase
      */
     private $paymentMock;
 
-    protected function setUp(): void
+    public function setUp()
     {
         $this->paymentDO = $this->createMock(PaymentDataObjectInterface::class);
 
@@ -66,7 +70,6 @@ class VaultDataBuilderTest extends TestCase
 
     public function testBuild()
     {
-        $this->markTestSkipped('Skip this test');
         $additionalData = [
             VaultConfigProvider::IS_ACTIVE_CODE => true
         ];

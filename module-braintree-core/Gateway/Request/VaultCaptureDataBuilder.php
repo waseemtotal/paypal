@@ -3,12 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Request;
+namespace Magento\Braintree\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Payment\Helper\Formatter;
 
+/**
+ * Class VaultCaptureDataBuilder
+ */
 class VaultCaptureDataBuilder implements BuilderInterface
 {
     use Formatter;

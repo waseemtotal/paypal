@@ -1,13 +1,18 @@
 <?php
 
-namespace PayPal\Braintree\Model\GooglePay;
+namespace Magento\Braintree\Model\GooglePay;
 
-use PayPal\Braintree\Api\Data\AuthDataInterfaceFactory;
+use Magento\Braintree\Api\Data\AuthDataInterfaceFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class Auth
+ * @package Magento\Braintree\Model\GooglePay
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Auth
 {
     /**

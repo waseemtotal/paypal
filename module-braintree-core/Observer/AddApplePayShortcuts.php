@@ -1,13 +1,18 @@
 <?php
-namespace PayPal\Braintree\Observer;
+namespace Magento\Braintree\Observer;
 
-use PayPal\Braintree\Block\ApplePay\Shortcut\Button;
+use Magento\Braintree\Block\ApplePay\Shortcut\Button;
 use Magento\Catalog\Block\ShortcutButtons;
 use Magento\Checkout\Block\QuoteShortcutButtons;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
 
+/**
+ * Class AddApplePayShortcuts
+ * @package Magento\Braintree\Observer
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class AddApplePayShortcuts implements ObserverInterface
 {
     /**

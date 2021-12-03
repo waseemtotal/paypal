@@ -3,12 +3,15 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Paypal\Helper;
+namespace Magento\Braintree\Model\Paypal\Helper;
 
 use InvalidArgumentException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 
+/**
+ * Class ShippingMethodUpdater
+ */
 class ShippingMethodUpdater extends AbstractHelper
 {
     /**

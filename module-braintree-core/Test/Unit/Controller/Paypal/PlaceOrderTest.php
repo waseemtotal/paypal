@@ -3,11 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Controller\Paypal;
+namespace Magento\Braintree\Test\Unit\Controller\Paypal;
 
-use PayPal\Braintree\Controller\Paypal\PlaceOrder;
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
-use PayPal\Braintree\Model\Paypal\Helper\OrderPlace;
+use Magento\Braintree\Controller\Paypal\PlaceOrder;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Model\Paypal\Helper\OrderPlace;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\RequestInterface;
@@ -17,39 +17,41 @@ use Magento\Framework\Message\ManagerInterface;
 use Magento\Quote\Model\Quote;
 
 /**
- * @see \PayPal\Braintree\Controller\Paypal\PlaceOrder
+ * Class PlaceOrderTest
+ *
+ * @see \Magento\Braintree\Controller\Paypal\PlaceOrder
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class PlaceOrderTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var OrderPlace|\PHPUnit\Framework\MockObject\MockObject
+     * @var OrderPlace|\PHPUnit_Framework_MockObject_MockObject
      */
     private $orderPlaceMock;
 
     /**
-     * @var Config|\PHPUnit\Framework\MockObject\MockObject
+     * @var Config|\PHPUnit_Framework_MockObject_MockObject
      */
     private $configMock;
 
     /**
-     * @var Session|\PHPUnit\Framework\MockObject\MockObject
+     * @var Session|\PHPUnit_Framework_MockObject_MockObject
      */
     private $checkoutSessionMock;
 
     /**
-     * @var RequestInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $requestMock;
 
     /**
-     * @var ResultFactory|\PHPUnit\Framework\MockObject\MockObject
+     * @var ResultFactory|\PHPUnit_Framework_MockObject_MockObject
      */
     private $resultFactoryMock;
 
     /**
-     * @var ManagerInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var ManagerInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $messageManagerMock;
 
@@ -59,13 +61,13 @@ class PlaceOrderTest extends \PHPUnit\Framework\TestCase
     private $placeOrder;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject
      */
     private $loggerMock;
 
-    protected function setUp(): void
+    protected function setUp()
     {
-        /** @var Context|\PHPUnit\Framework\MockObject\MockObject $contextMock */
+        /** @var Context|\PHPUnit_Framework_MockObject_MockObject $contextMock */
         $contextMock = $this->getMockBuilder(Context::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -191,7 +193,7 @@ class PlaceOrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return ResultInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @return ResultInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getResultMock()
     {
@@ -201,7 +203,7 @@ class PlaceOrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return Quote|\PHPUnit\Framework\MockObject\MockObject
+     * @return Quote|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getQuoteMock()
     {

@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Report\ConditionAppliers;
+namespace Magento\Braintree\Model\Report\ConditionAppliers;
 
 /**
  * Braintree filter condition applier interface

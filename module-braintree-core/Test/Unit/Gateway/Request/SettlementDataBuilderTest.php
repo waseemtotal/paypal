@@ -3,9 +3,9 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Request\SettlementDataBuilder;
+use Magento\Braintree\Gateway\Request\SettlementDataBuilder;
 
 class SettlementDataBuilderTest extends \PHPUnit\Framework\TestCase
 {

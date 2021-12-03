@@ -1,10 +1,15 @@
 <?php
 
-namespace PayPal\Braintree\Plugin;
+namespace Magento\Braintree\Plugin;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\ResourceModel\Order\Grid\Collection;
 
+/**
+ * Class SalesOrderGridPlugin
+ * @package Magento\Braintree\Plugin
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class SalesOrderGridPlugin
 {
     /**

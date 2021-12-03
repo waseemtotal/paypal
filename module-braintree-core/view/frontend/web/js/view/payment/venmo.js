@@ -12,7 +12,7 @@ define(
         rendererList.push(
             {
                 type: 'braintree_venmo',
-                component: 'PayPal_Braintree/js/view/payment/method-renderer/venmo'
+                component: 'Magento_Braintree/js/view/payment/method-renderer/venmo'
             }
         );
 

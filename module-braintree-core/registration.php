@@ -5,6 +5,6 @@
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'PayPal_Braintree',
+    'Magento_Braintree',
     __DIR__
 );

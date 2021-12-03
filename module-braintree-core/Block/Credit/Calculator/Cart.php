@@ -1,10 +1,15 @@
 <?php
 
-namespace PayPal\Braintree\Block\Credit\Calculator;
+namespace Magento\Braintree\Block\Credit\Calculator;
 
 use Magento\Framework\View\Element\Template;
-use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
+use Magento\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
 
+/**
+ * Class Cart
+ * @package Magento\Braintree\Block\Credit\Calculator
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Cart extends Template
 {
     /**

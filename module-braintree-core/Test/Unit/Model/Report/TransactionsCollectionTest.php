@@ -3,52 +3,54 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Model\Report;
+namespace Magento\Braintree\Test\Unit\Model\Report;
 
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
-use PayPal\Braintree\Model\Report\FilterMapper;
-use PayPal\Braintree\Model\Report\TransactionsCollection;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Model\Report\FilterMapper;
+use Magento\Braintree\Model\Report\TransactionsCollection;
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
 
 /**
- * Test for class \PayPal\Braintree\Model\Report\TransactionsCollection
+ * Class TransactionsCollectionTest
+ *
+ * Test for class \Magento\Braintree\Model\Report\TransactionsCollection
  */
 class TransactionsCollectionTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var BraintreeAdapter|\PHPUnit\Framework\MockObject\MockObject
+     * @var BraintreeAdapter|\PHPUnit_Framework_MockObject_MockObject
      */
     private $braintreeAdapterMock;
 
     /**
-     * @var EntityFactoryInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var EntityFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $entityFactoryMock;
 
     /**
-     * @var FilterMapper|\PHPUnit\Framework\MockObject\MockObject
+     * @var FilterMapper|\PHPUnit_Framework_MockObject_MockObject
      */
     private $filterMapperMock;
 
     /**
-     * @var DocumentInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var DocumentInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $transactionMapMock;
 
     /**
      * Setup
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->transactionMapMock = $this->getMockBuilder(DocumentInterface::class)
             ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+            ->getMock();
 
         $this->entityFactoryMock = $this->getMockBuilder(EntityFactoryInterface::class)
             ->setMethods(['create'])
             ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+            ->getMock();
 
         $this->filterMapperMock = $this->getMockBuilder(FilterMapper::class)
             ->setMethods(['getFilter'])
@@ -116,7 +118,7 @@ class TransactionsCollectionTest extends \PHPUnit\Framework\TestCase
 
         $collection->addFieldToFilter('orderId', ['like' => '0']);
         $items = $collection->getItems();
-        $this->assertCount(0, $items);
+        $this->assertEquals(0, count($items));
     }
 
     /**

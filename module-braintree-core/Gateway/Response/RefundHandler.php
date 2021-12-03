@@ -3,10 +3,14 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response;
+namespace Magento\Braintree\Gateway\Response;
 
 use Magento\Sales\Model\Order\Payment;
 
+/**
+ * Class RefundHandler
+ * @package Magento\Braintree\Gateway\Response
+ */
 class RefundHandler extends VoidHandler
 {
     /**

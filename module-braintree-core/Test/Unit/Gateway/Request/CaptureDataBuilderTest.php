@@ -3,36 +3,39 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Request\CaptureDataBuilder;
+use Magento\Braintree\Gateway\Request\CaptureDataBuilder;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Sales\Model\Order\Payment;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 
+/**
+ * Class CaptureDataBuilderTest
+ */
 class CaptureDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \PayPal\Braintree\Gateway\Request\CaptureDataBuilder
+     * @var \Magento\Braintree\Gateway\Request\CaptureDataBuilder
      */
     private $builder;
 
     /**
-     * @var Payment|\PHPUnit\Framework\MockObject\MockObject
+     * @var Payment|\PHPUnit_Framework_MockObject_MockObject
      */
     private $payment;
 
     /**
-     * @var \Magento\Sales\Model\Order\Payment|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Sales\Model\Order\Payment|\PHPUnit_Framework_MockObject_MockObject
      */
     private $paymentDO;
 
     /**
-     * @var SubjectReader|\PHPUnit\Framework\MockObject\MockObject
+     * @var SubjectReader|\PHPUnit_Framework_MockObject_MockObject
      */
     private $subjectReaderMock;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->paymentDO = $this->createMock(PaymentDataObjectInterface::class);
         $this->payment = $this->getMockBuilder(Payment::class)
@@ -46,14 +49,12 @@ class CaptureDataBuilderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Request\CaptureDataBuilder::build
+     * @covers \Magento\Braintree\Gateway\Request\CaptureDataBuilder::build
+     * @expectedException \Magento\Framework\Exception\LocalizedException
+     * @expectedExceptionMessage No authorization transaction to proceed capture.
      */
     public function testBuildWithException()
     {
-        $this->markTestSkipped('Skip this test');
-        $this->expectException(\Magento\Framework\Exception\LocalizedException::class);
-        $this->expectExceptionMessage('No authorization transaction to proceed capture.');
-
         $amount = 10.00;
         $buildSubject = [
             'payment' => $this->paymentDO,
@@ -77,7 +78,7 @@ class CaptureDataBuilderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Request\CaptureDataBuilder::build
+     * @covers \Magento\Braintree\Gateway\Request\CaptureDataBuilder::build
      */
     public function testBuild()
     {

@@ -12,7 +12,7 @@ define(
         rendererList.push(
             {
                 type: 'braintree_ach_direct_debit',
-                component: 'PayPal_Braintree/js/view/payment/method-renderer/ach'
+                component: 'Magento_Braintree/js/view/payment/method-renderer/ach'
             }
         );
 

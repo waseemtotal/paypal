@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Config\Source;
+namespace Magento\Braintree\Model\Config\Source;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
@@ -9,6 +9,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
+ * Class KountEnsUrl
+ *
  * Displays Kount ENS endpoint URL in config.
  */
 class KountEnsUrl extends Field

@@ -1,14 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Controller\Paypal;
+namespace Magento\Braintree\Controller\Paypal;
 
 use Exception;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
-use PayPal\Braintree\Model\Paypal\Helper\QuoteUpdater;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Model\Paypal\Helper\QuoteUpdater;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -19,7 +19,10 @@ use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
-/** Used by the product page to create a quote for a single product
+/**
+ * Class OneClick
+ * Used by the product page to create a quote for a single product
+ * @package Magento\Braintree\Controller\Paypal
  */
 class OneClick extends Review
 {

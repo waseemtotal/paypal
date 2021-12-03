@@ -3,41 +3,43 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Model\Report;
+namespace Magento\Braintree\Test\Unit\Model\Report;
 
 use Braintree\RangeNode;
 use Braintree\TextNode;
-use PayPal\Braintree\Model\Adapter\BraintreeSearchAdapter;
-use PayPal\Braintree\Model\Report\ConditionAppliers\ApplierInterface;
-use PayPal\Braintree\Model\Report\ConditionAppliers\AppliersPool;
-use PayPal\Braintree\Model\Report\FilterMapper;
+use Magento\Braintree\Model\Adapter\BraintreeSearchAdapter;
+use Magento\Braintree\Model\Report\ConditionAppliers\ApplierInterface;
+use Magento\Braintree\Model\Report\ConditionAppliers\AppliersPool;
+use Magento\Braintree\Model\Report\FilterMapper;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit_Framework_MockObject_MockObject;
 
 /**
- * Test for class \PayPal\Braintree\Model\Report\FilterMapper
+ * Class FilterMapperTest
+ *
+ * Test for class \Magento\Braintree\Model\Report\FilterMapper
  */
 class FilterMapperTest extends TestCase
 {
     /**
-     * @var BraintreeSearchAdapter|PHPUnit\Framework\MockObject\MockObject
+     * @var BraintreeSearchAdapter|PHPUnit_Framework_MockObject_MockObject
      */
     private $braintreeSearchAdapterMock;
 
     /**
-     * @var AppliersPool|PHPUnit\Framework\MockObject\MockObject
+     * @var AppliersPool|PHPUnit_Framework_MockObject_MockObject
      */
     private $appliersPoolMock;
 
     /**
-     * @var ApplierInterface|PHPUnit\Framework\MockObject\MockObject
+     * @var ApplierInterface|PHPUnit_Framework_MockObject_MockObject
      */
     private $applierMock;
 
     /**
      * Setup
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         $methods = [
             'id',
@@ -66,7 +68,7 @@ class FilterMapperTest extends TestCase
         $this->applierMock = $this->getMockBuilder(ApplierInterface::class)
             ->setMethods(['apply'])
             ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+            ->getMock();
     }
 
     /**
@@ -109,6 +111,6 @@ class FilterMapperTest extends TestCase
 
         $mapper = new FilterMapper($this->appliersPoolMock, $this->braintreeSearchAdapterMock);
         $result = $mapper->getFilter('orderId', []);
-        $this->assertNull($result);
+        $this->assertEquals(null, $result);
     }
 }

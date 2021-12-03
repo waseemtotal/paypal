@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Ui;
+namespace Magento\Braintree\Model\Ui;
 
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterface;
@@ -11,6 +11,9 @@ use Magento\Vault\Model\Ui\TokenUiComponentProviderInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterfaceFactory;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class TokenUiComponentProvider
+ */
 class TokenUiComponentProvider implements TokenUiComponentProviderInterface
 {
     /**
@@ -51,7 +54,7 @@ class TokenUiComponentProvider implements TokenUiComponentProviderInterface
                     TokenUiComponentProviderInterface::COMPONENT_DETAILS => $jsonDetails,
                     TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH => $paymentToken->getPublicHash()
                 ],
-                'name' => 'PayPal_Braintree/js/view/payment/method-renderer/vault'
+                'name' => 'Magento_Braintree/js/view/payment/method-renderer/vault'
             ]
         );
 

@@ -3,11 +3,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-declare(strict_types=1);
-
-namespace PayPal\Braintree\Model;
+namespace  Magento\Braintree\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
+use Magento\Braintree\Gateway\Config\Config;
 
 /**
  * Adds reCaptcha configuration to checkout.
@@ -15,22 +14,17 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 class CheckoutConfigProvider implements ConfigProviderInterface
 {
     /**
-     * @var \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface
+     * @var Config
      */
-    private $isCaptchaEnabled;
+    private $config;
 
     /**
-     * @var \Magento\Framework\Module\Manager
-     */
-    private $moduleManager;
-
-    /**
-     * @param \Magento\Framework\Module\Manager $moduleManager
+     * @param Config $config
      */
     public function __construct(
-        \Magento\Framework\Module\Manager $moduleManager
+        Config $config
     ) {
-        $this->moduleManager = $moduleManager;
+        $this->config = $config;
     }
 
     /**
@@ -38,19 +32,8 @@ class CheckoutConfigProvider implements ConfigProviderInterface
      */
     public function getConfig()
     {
-        if ($this->moduleManager->isEnabled('Magento_ReCaptchaUi')) {
-            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            $this->isCaptchaEnabled = $objectManager->create(
-                'Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface'
-            );
-
-            return [
-                'recaptcha_braintree' => $this->isCaptchaEnabled->isCaptchaEnabledFor('braintree')
-            ];
-        }
-
         return [
-            'recaptcha_braintree' => false
+            'msp_recaptcha_braintree' => $this->config->getCaptchaSettings(),
         ];
     }
 }

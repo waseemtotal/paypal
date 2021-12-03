@@ -3,10 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Request;
+namespace Magento\Braintree\Gateway\Request;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
+/**
+ * Class SettlementDataBuilder
+ */
 class SettlementDataBuilder implements BuilderInterface
 {
     const SUBMIT_FOR_SETTLEMENT = 'submitForSettlement';

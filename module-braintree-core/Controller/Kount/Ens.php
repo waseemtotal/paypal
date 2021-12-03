@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Controller\Kount;
+namespace Magento\Braintree\Controller\Kount;
 
 use Exception;
-use PayPal\Braintree\Model\Kount\EnsConfig;
+use Magento\Braintree\Model\Kount\EnsConfig;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
@@ -15,6 +15,8 @@ use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\Xml\Security;
 
 /**
+ * Class Ens
+ *
  * Acts as the entry point for the Kount ENS.
  */
 class Ens extends Action

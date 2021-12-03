@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Console;
+namespace Magento\Braintree\Console;
 
 use Braintree\Exception\NotFound;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\ResourceConnection\ConnectionFactory;
 use Magento\Framework\Console\Cli;
@@ -24,6 +24,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
 /**
+ * Class VaultMigrate
+ *
  * This class aims to migrate Magento 1 stored cards to Magento 2
  */
 class VaultMigrate extends Command
@@ -45,7 +47,7 @@ class VaultMigrate extends Command
         'master-card' => 'MC',
         'visa' => 'VI',
         'maestro' => 'MI',
-        'diners-club' => 'DN',
+        'diners-club' => 'DN'
     ];
 
     /**

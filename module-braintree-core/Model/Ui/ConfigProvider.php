@@ -3,20 +3,24 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\Ui;
+namespace Magento\Braintree\Model\Ui;
 
 use Braintree\Result\Error;
 use Braintree\Result\Successful;
-use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
+use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
 use Magento\Checkout\Model\ConfigProviderInterface;
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Config\PayPal\Config as PayPalConfig;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Config\PayPal\Config as PayPalConfig;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Model\CcConfig;
 use Magento\Framework\View\Asset\Source;
 
+/**
+ * Class ConfigProvider
+ * @package Magento\Braintree\Model\Ui
+ */
 class ConfigProvider implements ConfigProviderInterface
 {
     const CODE = 'braintree';
@@ -160,7 +164,7 @@ class ConfigProvider implements ConfigProviderInterface
 
         foreach (array_keys($types) as $code) {
             if (!array_key_exists($code, $this->icons)) {
-                $asset = $this->ccConfig->createAsset('PayPal_Braintree::images/cc/' . strtoupper($code) . '.png');
+                $asset = $this->ccConfig->createAsset('Magento_Braintree::images/cc/' . strtoupper($code) . '.png');
                 if ($asset) {
                     $placeholder = $this->assetSource->findSource($asset);
                     if ($placeholder) {

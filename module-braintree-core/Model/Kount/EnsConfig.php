@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Kount;
+namespace Magento\Braintree\Model\Kount;
 
 use Braintree\Transaction;
 use Exception;
-use PayPal\Braintree\Api\EnsManagementInterface;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Api\EnsManagementInterface;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DB\TransactionFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -23,6 +23,8 @@ use Magento\Store\Model\StoreManagerInterface;
 use SimpleXMLElement;
 
 /**
+ * Class EnsConfig
+ *
  * Contains methods for dealing with Kount ENS Notifications.
  */
 class EnsConfig implements EnsManagementInterface

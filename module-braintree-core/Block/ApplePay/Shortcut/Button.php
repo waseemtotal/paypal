@@ -1,9 +1,9 @@
 <?php
 
-namespace PayPal\Braintree\Block\ApplePay\Shortcut;
+namespace Magento\Braintree\Block\ApplePay\Shortcut;
 
-use PayPal\Braintree\Block\ApplePay\AbstractButton;
-use PayPal\Braintree\Model\ApplePay\Auth;
+use Magento\Braintree\Block\ApplePay\AbstractButton;
+use Magento\Braintree\Model\ApplePay\Auth;
 use Magento\Checkout\Model\Session;
 use Magento\Catalog\Block\ShortcutInterface;
 use Magento\Checkout\Model\DefaultConfigProvider;
@@ -13,6 +13,11 @@ use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class Button
+ * @package Magento\Braintree\Model\ApplePay\Shortcut
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Button extends AbstractButton implements ShortcutInterface
 {
     const ALIAS_ELEMENT_INDEX = 'alias';

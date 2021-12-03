@@ -1,12 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Gateway\Request;
+namespace Magento\Braintree\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
-use PayPal\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Observer\DataAssignObserver;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
+/**
+ * Class DeviceDataBuilder
+ */
 class DeviceDataBuilder implements BuilderInterface
 {
     /**

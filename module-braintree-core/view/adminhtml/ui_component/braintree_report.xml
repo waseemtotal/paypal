@@ -12,7 +12,7 @@
             <item name="deps" xsi:type="string">braintree_report.braintree_report_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">braintree_report_columns</item>
-        <item name="acl" xsi:type="string">PayPal_Braintree::settlement_report</item>
+        <item name="acl" xsi:type="string">Magento_Braintree::settlement_report</item>
     </argument>
     <dataSource name="braintree_report_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
@@ -28,7 +28,7 @@
         </argument>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
-                <item name="component" xsi:type="string">PayPal_Braintree/js/grid/provider</item>
+                <item name="component" xsi:type="string">Magento_Braintree/js/grid/provider</item>
             </item>
         </argument>
     </dataSource>
@@ -80,7 +80,7 @@
             </argument>
             <filterSelect name="status">
                 <argument name="optionsProvider" xsi:type="configurableObject">
-                    <argument name="class" xsi:type="string">PayPal\Braintree\Ui\Component\Report\Listing\Column\Status</argument>
+                    <argument name="class" xsi:type="string">Magento\Braintree\Ui\Component\Report\Listing\Column\Status</argument>
                 </argument>
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -96,7 +96,7 @@
             </filterSelect>
             <filterSelect name="type">
                 <argument name="optionsProvider" xsi:type="configurableObject">
-                    <argument name="class" xsi:type="string">PayPal\Braintree\Ui\Component\Report\Listing\Column\TransactionType</argument>
+                    <argument name="class" xsi:type="string">Magento\Braintree\Ui\Component\Report\Listing\Column\TransactionType</argument>
                 </argument>
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -112,7 +112,7 @@
             </filterSelect>
             <filterSelect name="paymentInstrumentType">
                 <argument name="optionsProvider" xsi:type="configurableObject">
-                    <argument name="class" xsi:type="string">PayPal\Braintree\Ui\Component\Report\Listing\Column\PaymentType</argument>
+                    <argument name="class" xsi:type="string">Magento\Braintree\Ui\Component\Report\Listing\Column\PaymentType</argument>
                 </argument>
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -134,7 +134,7 @@
                     </item>
                 </argument>
             </filterInput>
-            <filterRange name="createdAt" class="PayPal\Braintree\Ui\Component\Report\Filters\Type\DateRange">
+            <filterRange name="createdAt" class="Magento\Braintree\Ui\Component\Report\Filters\Type\DateRange">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="provider" xsi:type="string">${ $.parentName }</item>

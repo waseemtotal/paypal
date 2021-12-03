@@ -1,9 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Block\Adminhtml\Virtual;
+namespace Magento\Braintree\Block\Adminhtml\Virtual;
 
-use PayPal\Braintree\Block\Payment;
+use Magento\Braintree\Block\Payment;
 
+/**
+ * Class Script
+ * @package Magento\Braintree\Block\Adminhtml\Virtual
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Script extends Payment
 {
     /**

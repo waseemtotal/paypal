@@ -3,8 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Http\Client;
+namespace Magento\Braintree\Gateway\Http\Client;
 
+/**
+ * Class TransactionSale
+ */
 class TransactionSale extends AbstractTransaction
 {
     /**

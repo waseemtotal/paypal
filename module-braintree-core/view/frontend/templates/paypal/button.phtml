@@ -1,6 +1,6 @@
 <?php
 // @codingStandardsIgnoreFile
-use PayPal\Braintree\Block\Paypal\Button;
+use Magento\Braintree\Block\Paypal\Button;
 
 /** @var Button $block */
 try {
@@ -20,11 +20,16 @@ try {
 <?php if ($block->getAmount() > 0): ?>
     <script>
         require([
-            'PayPal_Braintree/js/paypal/button',
+            'Magento_Braintree/js/paypal/button',
             'jquery'
         ], function (button, $) {
             $(function () {
-                button.init('<?= $block->getClientToken() ?>', '<?= $block->escapeHtmlAttr($block->getCurrency()) ?>');
+                button.init(
+                    '<?= $block->getClientToken() ?>',
+                    '<?= $block->escapeHtmlAttr($block->getCurrency()) ?>',
+                    '<?= $block->escapeHtmlAttr($block->getEnvironment()) ?>',
+                    '<?= $block->escapeHtmlAttr($block->getMerchantCountry()) ?>'
+                );
             })
         })
     </script>
@@ -42,9 +47,9 @@ try {
              data-shape="<?= $block->getButtonShape() ?>"
              data-size="<?= $block->getButtonSize() ?>"
              data-color="<?= $block->getButtonColor() ?>"
+             data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
              class="action-braintree-paypal-logo"></div>
     </div>
-
     <?php if ($block->isCreditActive()): ?>
         <div class="paypal checkout paypal-logo braintree-paypal-logo <?= $block->escapeHtmlAttr($block->getContainerId()) ?>-container">
             <div data-currency="<?= $block->escapeHtmlAttr($block->getCurrency()) ?>"
@@ -59,6 +64,7 @@ try {
                  data-shape="<?= $block->getButtonShape() ?>"
                  data-size="<?= $block->getButtonSize() ?>"
                  data-color="darkblue"
+                 data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
                  class="action-braintree-paypal-logo"></div>
         </div>
     <?php endif; ?>
@@ -77,9 +83,11 @@ try {
                      data-shape="<?= $block->getButtonShape() ?>"
                      data-size="<?= $block->getButtonSize() ?>"
                      data-color="white"
+                     data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
                      class="action-braintree-paypal-logo"></div>
             </div>
         <?php endif; ?>
+    <?php endif; ?>
         <?php if ($block->isPayLaterMessageActive('cart') && !$block->isPayPalVaultActive()): ?>
             <div class="action-braintree-paypal-message"
                  id="<?= $block->escapeHtmlAttr($paypalPaylaterId) ?>-message"
@@ -87,5 +95,4 @@ try {
                  data-pp-type="cart"
             ></div>
         <?php endif; ?>
-    <?php endif; ?>
 <?php endif; ?>

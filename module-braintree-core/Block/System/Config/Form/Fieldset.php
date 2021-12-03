@@ -1,15 +1,20 @@
 <?php
 
-namespace PayPal\Braintree\Block\System\Config\Form;
+namespace Magento\Braintree\Block\System\Config\Form;
 
 use Magento\Backend\Block\Context;
 use Magento\Backend\Model\Auth\Session;
-use PayPal\Braintree\Gateway\Config\PayPalCredit\Config;
+use Magento\Braintree\Gateway\Config\PayPalCredit\Config;
 use Magento\Config\Model\Config as backendConfig;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\View\Helper\Js;
 use Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment;
 
+/**
+ * Class Fieldset
+ *
+ * @package Magento\Braintree\Block\System\Config\Form
+ */
 class Fieldset extends Payment
 {
     /**

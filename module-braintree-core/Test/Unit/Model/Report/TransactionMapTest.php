@@ -3,12 +3,12 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Model\Report;
+namespace Magento\Braintree\Test\Unit\Model\Report;
 
 use Braintree\Transaction;
 use Braintree\Transaction\PayPalDetails;
 use DateTime;
-use PayPal\Braintree\Model\Report\Row\TransactionMap;
+use Magento\Braintree\Model\Report\Row\TransactionMap;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Phrase;
@@ -16,34 +16,36 @@ use Magento\Framework\Phrase\RendererInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
- * Test for class \PayPal\Braintree\Model\Report\\Row\TransactionMap
+ * Class TransactionMapTest
+ *
+ * Test for class \Magento\Braintree\Model\Report\\Row\TransactionMap
  */
 class TransactionMapTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var Transaction|\PHPUnit\Framework\MockObject\MockObject
+     * @var Transaction|\PHPUnit_Framework_MockObject_MockObject
      */
     private $transactionStub;
 
     /**
-     * @var AttributeValueFactory|\PHPUnit\Framework\MockObject\MockObject
+     * @var AttributeValueFactory|\PHPUnit_Framework_MockObject_MockObject
      */
     private $attributeValueFactoryMock;
 
     /**
-     * @var RendererInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var RendererInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $defaultRenderer;
 
     /**
-     * @var RendererInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var RendererInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $rendererMock;
 
     /**
      * Setup
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->attributeValueFactoryMock = $this->getMockBuilder(AttributeValueFactory::class)
             ->setMethods(['create'])
@@ -149,7 +151,7 @@ class TransactionMapTest extends \PHPUnit\Framework\TestCase
     /**
      * @return void
      */
-    protected function tearDown(): void
+    protected function tearDown()
     {
         Phrase::setRenderer($this->defaultRenderer);
     }

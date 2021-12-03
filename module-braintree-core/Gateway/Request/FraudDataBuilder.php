@@ -1,17 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Gateway\Request;
+namespace Magento\Braintree\Gateway\Request;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Helper\Formatter;
 
 /**
+ * Class FraudDataBuilder
+ *
  * Add logical checks to enable/disable fraud checks.
  */
 class FraudDataBuilder implements BuilderInterface

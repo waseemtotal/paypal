@@ -3,15 +3,18 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Http\Client;
+namespace Magento\Braintree\Test\Unit\Gateway\Http\Client;
 
 use Braintree\Result\Successful;
-use PayPal\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Class TransactionSubmitForSettlementTest
+ */
 class TransactionSubmitForSettlementTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -20,16 +23,16 @@ class TransactionSubmitForSettlementTest extends \PHPUnit\Framework\TestCase
     private $client;
 
     /**
-     * @var Logger|\PHPUnit\Framework\MockObject\MockObject
+     * @var Logger|\PHPUnit_Framework_MockObject_MockObject
      */
     private $logger;
 
     /**
-     * @var BraintreeAdapter|\PHPUnit\Framework\MockObject\MockObject
+     * @var BraintreeAdapter|\PHPUnit_Framework_MockObject_MockObject
      */
     private $adapter;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $criticalLoggerMock = $this->getMockForAbstractClass(LoggerInterface::class);
         $this->logger = $this->getMockBuilder(Logger::class)
@@ -49,26 +52,24 @@ class TransactionSubmitForSettlementTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement::placeRequest
+     * @covers \Magento\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement::placeRequest
+     * @expectedException \Magento\Payment\Gateway\Http\ClientException
+     * @expectedExceptionMessage Transaction has been declined
      */
     public function testPlaceRequestWithException()
     {
-        $this->markTestSkipped('Skip this test');
-        $this->expectException(\Magento\Payment\Gateway\Http\ClientException::class);
-        $this->expectExceptionMessage('Transaction has been declined');
-
         $exception = new \Exception('Transaction has been declined');
         $this->adapter->expects(static::once())
             ->method('submitForSettlement')
             ->willThrowException($exception);
 
-        /** @var TransferInterface|\PHPUnit\Framework\MockObject\MockObject $transferObjectMock */
+        /** @var TransferInterface|\PHPUnit_Framework_MockObject_MockObject $transferObjectMock */
         $transferObjectMock = $this->getTransferObjectMock();
         $this->client->placeRequest($transferObjectMock);
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement::process
+     * @covers \Magento\Braintree\Gateway\Http\Client\TransactionSubmitForSettlement::process
      */
     public function testPlaceRequest()
     {
@@ -77,15 +78,15 @@ class TransactionSubmitForSettlementTest extends \PHPUnit\Framework\TestCase
             ->method('submitForSettlement')
             ->willReturn($data);
 
-        /** @var TransferInterface|\PHPUnit\Framework\MockObject\MockObject $transferObjectMock */
+        /** @var TransferInterface|\PHPUnit_Framework_MockObject_MockObject $transferObjectMock */
         $transferObjectMock = $this->getTransferObjectMock();
         $response = $this->client->placeRequest($transferObjectMock);
-        static::assertIsObject($response['object']);
+        static::assertTrue(is_object($response['object']));
         static::assertEquals(['object' => $data], $response);
     }
 
     /**
-     * @return TransferInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @return TransferInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getTransferObjectMock()
     {

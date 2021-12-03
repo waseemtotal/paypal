@@ -3,39 +3,42 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Response;
+namespace Magento\Braintree\Test\Unit\Gateway\Response;
 
 use Braintree\Result\Successful;
 use Braintree\Transaction;
-use PayPal\Braintree\Gateway\Response\CardDetailsHandler;
+use Magento\Braintree\Gateway\Response\CardDetailsHandler;
 use Magento\Payment\Gateway\Data\PaymentDataObject;
 use Magento\Sales\Model\Order\Payment;
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 
+/**
+ * Class CardDetailsHandlerTest
+ */
 class CardDetailsHandlerTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \PayPal\Braintree\Gateway\Response\CardDetailsHandler
+     * @var \Magento\Braintree\Gateway\Response\CardDetailsHandler
      */
     private $cardHandler;
 
     /**
-     * @var \Magento\Sales\Model\Order\Payment|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Sales\Model\Order\Payment|\PHPUnit_Framework_MockObject_MockObject
      */
     private $payment;
 
     /**
-     * @var \PayPal\Braintree\Gateway\Config\Config|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Braintree\Gateway\Config\Config|\PHPUnit_Framework_MockObject_MockObject
      */
     private $config;
 
     /**
-     * @var SubjectReader|\PHPUnit\Framework\MockObject\MockObject
+     * @var SubjectReader|\PHPUnit_Framework_MockObject_MockObject
      */
     private $subjectReaderMock;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->initConfigMock();
         $this->subjectReaderMock = $this->getMockBuilder(SubjectReader::class)
@@ -46,7 +49,7 @@ class CardDetailsHandlerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Response\CardDetailsHandler::handle
+     * @covers \Magento\Braintree\Gateway\Response\CardDetailsHandler::handle
      */
     public function testHandle()
     {
@@ -103,7 +106,7 @@ class CardDetailsHandlerTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Create mock for payment data object and order payment
-     * @return \PHPUnit\Framework\MockObject\MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject
      */
     private function getPaymentDataObjectMock()
     {

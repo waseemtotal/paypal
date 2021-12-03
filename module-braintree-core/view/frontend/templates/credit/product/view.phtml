@@ -1,5 +1,5 @@
 <?php
-/** @var $block \PayPal\Braintree\Block\Credit\Calculator\Product\View */
+/** @var $block \Magento\Braintree\Block\Credit\Calculator\Product\View */
 
 $scopeId = sprintf('ppcreditsummary-product-%d%d', $block->getProduct()->getId(), random_int(PHP_INT_MIN, PHP_INT_MAX));
 $priceData = $block->getPriceData();
@@ -14,8 +14,8 @@ if (!$priceData) {
             "Magento_Ui/js/core/app":{
                 "components": {
                     "<?= $block->escapeHtml($scopeId) ?>": {
-                        "component": "PayPal_Braintree/js/paypal/credit/calculator",
-                        "template": "PayPal_Braintree/credit/calculator",
+                        "component": "Magento_Braintree/js/paypal/credit/calculator",
+                        "template": "Magento_Braintree/credit/calculator",
                         "displaySummary": false,
                         "displayInterestDetails": true,
                         "merchantName": "<?= $block->escapeJs($block->getMerchantName()) ?>",

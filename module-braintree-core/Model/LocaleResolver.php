@@ -3,11 +3,15 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model;
+namespace Magento\Braintree\Model;
 
 use Magento\Framework\Locale\ResolverInterface;
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
 
+/**
+ * Class LocaleResolver
+ * @package Magento\Braintree\Model
+ */
 class LocaleResolver implements ResolverInterface
 {
     /**

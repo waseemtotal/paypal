@@ -3,15 +3,18 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request\PayPal;
+namespace Magento\Braintree\Test\Unit\Gateway\Request\PayPal;
 
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
-use PayPal\Braintree\Gateway\Request\PayPal\VaultDataBuilder;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Request\PayPal\VaultDataBuilder;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Vault\Model\Ui\VaultConfigProvider;
-use PHPUnit\Framework\MockObject\MockObject as MockObject;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
+/**
+ * Class VaultDataBuilderTest
+ */
 class VaultDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -34,7 +37,7 @@ class VaultDataBuilderTest extends \PHPUnit\Framework\TestCase
      */
     private $builder;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->paymentDataObject = $this->createMock(PaymentDataObjectInterface::class);
 
@@ -49,7 +52,7 @@ class VaultDataBuilderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Request\PayPal\VaultDataBuilder::build
+     * @covers \Magento\Braintree\Gateway\Request\PayPal\VaultDataBuilder::build
      * @param array $additionalInfo
      * @param array $expected
      * @dataProvider buildDataProvider

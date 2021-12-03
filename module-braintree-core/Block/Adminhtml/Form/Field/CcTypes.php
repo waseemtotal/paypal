@@ -3,12 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Block\Adminhtml\Form\Field;
+namespace Magento\Braintree\Block\Adminhtml\Form\Field;
 
-use PayPal\Braintree\Helper\CcType;
+use Magento\Braintree\Helper\CcType;
 use Magento\Framework\View\Element\Context;
 use Magento\Framework\View\Element\Html\Select;
 
+/**
+ * Class CcTypes
+ */
 class CcTypes extends Select
 {
     /**

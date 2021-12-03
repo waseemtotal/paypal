@@ -1,6 +1,7 @@
 /**
  * Braintree Google Pay button
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 define(
     [
         'uiComponent',

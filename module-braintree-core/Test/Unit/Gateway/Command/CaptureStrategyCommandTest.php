@@ -3,13 +3,13 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Command;
+namespace Magento\Braintree\Test\Unit\Gateway\Command;
 
 use Braintree\IsNode;
 use Braintree\MultipleValueNode;
 use Braintree\TextNode;
-use PayPal\Braintree\Gateway\Command\CaptureStrategyCommand;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Command\CaptureStrategyCommand;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\Search\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -21,10 +21,12 @@ use Magento\Sales\Api\TransactionRepositoryInterface;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\Transaction;
 use Magento\Sales\Model\ResourceModel\Order\Payment\Transaction\CollectionFactory;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
-use PayPal\Braintree\Model\Adapter\BraintreeSearchAdapter;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Model\Adapter\BraintreeSearchAdapter;
 
 /**
+ * Class CaptureStrategyCommandTest
+ *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
@@ -35,42 +37,42 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
     private $strategyCommand;
 
     /**
-     * @var CommandPoolInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var CommandPoolInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $commandPool;
 
     /**
-     * @var TransactionRepositoryInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var TransactionRepositoryInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $transactionRepository;
 
     /**
-     * @var FilterBuilder|\PHPUnit\Framework\MockObject\MockObject
+     * @var FilterBuilder|\PHPUnit_Framework_MockObject_MockObject
      */
     private $filterBuilder;
 
     /**
-     * @var SearchCriteriaBuilder|\PHPUnit\Framework\MockObject\MockObject
+     * @var SearchCriteriaBuilder|\PHPUnit_Framework_MockObject_MockObject
      */
     private $searchCriteriaBuilder;
 
     /**
-     * @var Payment|\PHPUnit\Framework\MockObject\MockObject
+     * @var Payment|\PHPUnit_Framework_MockObject_MockObject
      */
     private $payment;
 
     /**
-     * @var GatewayCommand|\PHPUnit\Framework\MockObject\MockObject
+     * @var GatewayCommand|\PHPUnit_Framework_MockObject_MockObject
      */
     private $command;
 
     /**
-     * @var SubjectReader|\PHPUnit\Framework\MockObject\MockObject
+     * @var SubjectReader|\PHPUnit_Framework_MockObject_MockObject
      */
     private $subjectReaderMock;
 
     /**
-     * @var BraintreeAdapter|\PHPUnit\Framework\MockObject\MockObject
+     * @var BraintreeAdapter|\PHPUnit_Framework_MockObject_MockObject
      */
     private $braintreeAdapter;
 
@@ -79,12 +81,12 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
      */
     private $braintreeSearchAdapter;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->commandPool = $this->getMockBuilder(CommandPoolInterface::class)
             ->disableOriginalConstructor()
             ->setMethods(['get', '__wakeup'])
-            ->getMockForAbstractClass();
+            ->getMock();
 
         $this->subjectReaderMock = $this->getMockBuilder(SubjectReader::class)
             ->disableOriginalConstructor()
@@ -112,13 +114,12 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Command\CaptureStrategyCommand::execute
+     * @covers \Magento\Braintree\Gateway\Command\CaptureStrategyCommand::execute
      */
     public function testSaleExecute()
     {
         $paymentData = $this->getPaymentDataObjectMock();
         $subject['payment'] = $paymentData;
-        $subject['amount'] = 100;
 
         $this->subjectReaderMock->expects(self::once())
             ->method('readPayment')
@@ -148,13 +149,12 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Command\CaptureStrategyCommand::execute
+     * @covers \Magento\Braintree\Gateway\Command\CaptureStrategyCommand::execute
      */
     public function testCaptureExecute()
     {
         $paymentData = $this->getPaymentDataObjectMock();
         $subject['payment'] = $paymentData;
-        $subject['amount'] = 100;
         $lastTransId = 'txnds';
 
         $this->subjectReaderMock->expects(self::once())
@@ -195,7 +195,7 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @param string $lastTransactionId
-     * @return \Braintree\ResourceCollection|\PHPUnit\Framework\MockObject\MockObject
+     * @return \Braintree\ResourceCollection|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getNotExpiredExpectedCollection($lastTransactionId)
     {
@@ -234,13 +234,12 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Command\CaptureStrategyCommand::execute
+     * @covers \Magento\Braintree\Gateway\Command\CaptureStrategyCommand::execute
      */
     public function testExpiredAuthorizationPerformVaultCaptureExecute()
     {
         $paymentData = $this->getPaymentDataObjectMock();
         $subject['payment'] = $paymentData;
-        $subject['amount'] = 100;
         $lastTransId = 'txnds';
 
         $this->subjectReaderMock->expects(self::once())
@@ -281,13 +280,12 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Command\CaptureStrategyCommand::execute
+     * @covers \Magento\Braintree\Gateway\Command\CaptureStrategyCommand::execute
      */
     public function testVaultCaptureExecute()
     {
         $paymentData = $this->getPaymentDataObjectMock();
         $subject['payment'] = $paymentData;
-        $subject['amount'] = 100;
 
         $this->subjectReaderMock->expects(self::once())
             ->method('readPayment')
@@ -314,7 +312,7 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Create mock for payment data object and order payment
-     * @return \PHPUnit\Framework\MockObject\MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject
      */
     private function getPaymentDataObjectMock()
     {
@@ -405,6 +403,6 @@ class CaptureStrategyCommandTest extends \PHPUnit\Framework\TestCase
         $this->transactionRepository = $this->getMockBuilder(TransactionRepositoryInterface::class)
             ->disableOriginalConstructor()
             ->setMethods(['getList', 'getTotalCount', 'delete', 'get', 'save', 'create', '__wakeup'])
-            ->getMockForAbstractClass();
+            ->getMock();
     }
 }

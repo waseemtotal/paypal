@@ -1,12 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Adminhtml\Source;
+namespace Magento\Braintree\Model\Adminhtml\Source;
 
-use PayPal\Braintree\Model\Lpm\Config;
+use Magento\Braintree\Model\Lpm\Config;
 use Magento\Framework\Data\OptionSourceInterface;
 
 /**
+ * Class LpmMethods
+ *
  * Provide options for backend config.
  */
 class LpmMethods implements OptionSourceInterface

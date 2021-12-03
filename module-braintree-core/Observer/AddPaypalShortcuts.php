@@ -3,15 +3,18 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Observer;
+namespace Magento\Braintree\Observer;
 
-use PayPal\Braintree\Block\Paypal\Button;
+use Magento\Braintree\Block\Paypal\Button;
 use Magento\Catalog\Block\ShortcutButtons;
 use Magento\Checkout\Block\QuoteShortcutButtons;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
 
+/**
+ * Class AddPaypalShortcuts
+ */
 class AddPaypalShortcuts implements ObserverInterface
 {
     /**

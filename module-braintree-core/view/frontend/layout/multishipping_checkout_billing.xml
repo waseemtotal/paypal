@@ -11,8 +11,8 @@
         <referenceBlock name="checkout_billing">
             <arguments>
                 <argument name="form_templates" xsi:type="array">
-                    <item name="braintree" xsi:type="string">PayPal_Braintree::multishipping/form.phtml</item>
-                    <item name="braintree_paypal" xsi:type="string">PayPal_Braintree::multishipping/form_paypal.phtml</item>
+                    <item name="braintree" xsi:type="string">Magento_Braintree::multishipping/form.phtml</item>
+                    <item name="braintree_paypal" xsi:type="string">Magento_Braintree::multishipping/form_paypal.phtml</item>
                 </argument>
             </arguments>
         </referenceBlock>

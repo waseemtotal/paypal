@@ -1,6 +1,6 @@
 <?php
 
-namespace PayPal\Braintree\Model\Adminhtml\Source;
+namespace Magento\Braintree\Model\Adminhtml\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 

@@ -3,14 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Request;
+namespace Magento\Braintree\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Observer\DataAssignObserver;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Payment\Helper\Formatter;
 
+/**
+ * Payment Data Builder
+ */
 class PaymentDataBuilder implements BuilderInterface
 {
     use Formatter;
@@ -40,7 +43,7 @@ class PaymentDataBuilder implements BuilderInterface
     const MERCHANT_ACCOUNT_ID = 'merchantAccountId';
 
     /**
-     * Order ID Key
+     * Order ID
      */
     const ORDER_ID = 'orderId';
 

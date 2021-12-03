@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Model\InstantPurchase\PayPal;
+namespace Magento\Braintree\Model\InstantPurchase\PayPal;
 
 use Magento\InstantPurchase\PaymentMethodIntegration\PaymentTokenFormatterInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
@@ -12,7 +12,7 @@ use Magento\Vault\Api\Data\PaymentTokenInterface;
  * Braintree PayPal token formatter
  *
  * Class TokenFormatter
- * @package PayPal\Braintree\Model\InstantPurchase\PayPal
+ * @package Magento\Braintree\Model\InstantPurchase\PayPal
  */
 class TokenFormatter implements PaymentTokenFormatterInterface
 {

@@ -1,6 +1,7 @@
 /**
  * Braintree Apple Pay button
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 define(
     [
         'uiComponent',
@@ -19,8 +20,6 @@ define(
         $t
     ) {
         'use strict';
-
-        var that;
 
         return {
             init: function (element, context) {
@@ -160,7 +159,7 @@ define(
              * @return boolean
              */
             deviceSupported: function () {
-                if (location.protocol != 'https:') {
+                if (location.protocol !== 'https:') {
                     console.warn("Braintree Apple Pay requires your checkout be served over HTTPS");
                     return false;
                 }

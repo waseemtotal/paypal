@@ -3,15 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response;
+namespace Magento\Braintree\Gateway\Response;
 
 use Braintree\Transaction;
 use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Exception;
-use PayPal\Braintree\Gateway\Config\Config;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Config\Config;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -25,6 +25,7 @@ use Magento\Vault\Api\Data\PaymentTokenInterfaceFactory;
 use RuntimeException;
 
 /**
+ * Vault Details Handler
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class VaultDetailsHandler implements HandlerInterface
@@ -108,7 +109,7 @@ class VaultDetailsHandler implements HandlerInterface
     {
         // Check token existing in gateway response
         $token = $transaction->creditCardDetails->token;
-        if (empty($token) || empty($transaction->creditCardDetails->expirationYear)) {
+        if (empty($token)) {
             return null;
         }
 

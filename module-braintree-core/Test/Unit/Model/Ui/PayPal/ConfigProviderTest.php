@@ -3,16 +3,18 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Model\Ui\PayPal;
+namespace Magento\Braintree\Test\Unit\Model\Ui\PayPal;
 
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
-use PayPal\Braintree\Model\Ui\PayPal\ConfigProvider;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Model\Ui\PayPal\ConfigProvider;
 use Magento\Framework\Locale\ResolverInterface;
-use PHPUnit\Framework\MockObject\MockObject as MockObject;
-use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as CreditConfig;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use Magento\Braintree\Gateway\Config\PayPalCredit\Config as CreditConfig;
 
 /**
- * Test for class \PayPal\Braintree\Model\Ui\PayPal\ConfigProvider
+ * Class ConfigProviderTest
+ *
+ * Test for class \Magento\Braintree\Model\Ui\PayPal\ConfigProvider
  */
 class ConfigProviderTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +38,7 @@ class ConfigProviderTest extends \PHPUnit\Framework\TestCase
      */
     private $creditConfig;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->config = $this->getMockBuilder(Config::class)
             ->disableOriginalConstructor()
@@ -47,6 +49,12 @@ class ConfigProviderTest extends \PHPUnit\Framework\TestCase
             ->getMock();
 
         $this->localeResolver = $this->getMockForAbstractClass(ResolverInterface::class);
+
+        $this->configProvider = new ConfigProvider(
+            $this->config,
+            $this->creditConfig,
+            $this->localeResolver
+        );
     }
 
     /**
@@ -57,12 +65,6 @@ class ConfigProviderTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetConfig($expected)
     {
-        $this->markTestSkipped('Skip this test');
-        $this->configProvider = new ConfigProvider(
-            $this->config,
-            $this->creditConfig,
-            $this->localeResolver
-        );
         $this->config->method('isActive')
             ->willReturn(true);
 

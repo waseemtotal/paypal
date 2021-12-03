@@ -1,9 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Model\Config\Source;
+namespace Magento\Braintree\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
+/**
+ * Class Size
+ * @package Magento\Braintree\Model\Config\Source
+ * @author Muj <muj@gene.co.uk>
+ */
 class Size implements ArrayInterface
 {
     /**

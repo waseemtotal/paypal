@@ -1,18 +1,19 @@
 <?php
 
-namespace PayPal\Braintree\Api;
+namespace Magento\Braintree\Api;
 
-use PayPal\Braintree\Api\Data\AuthDataInterface;
+use Magento\Braintree\Api\Data\AuthDataInterface;
 
 /**
  * Interface AuthInterface
  * @api
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 interface AuthInterface
 {
     /**
      * Returns details required to be able to submit a payment with apple pay.
-     * @return \PayPal\Braintree\Api\Data\AuthDataInterface
+     * @return \Magento\Braintree\Api\Data\AuthDataInterface
      */
     public function get(): AuthDataInterface;
 }

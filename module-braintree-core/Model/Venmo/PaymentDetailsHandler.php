@@ -1,9 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Model\Venmo;
+namespace Magento\Braintree\Model\Venmo;
 
-class PaymentDetailsHandler extends \PayPal\Braintree\Gateway\Response\PaymentDetailsHandler
+/**
+ * Class PaymentDetailsHandler
+ * @package Magento\Braintree\Model\Venmo
+ * @author Paul Canning <paul.canning@gene.co.uk>
+ */
+class PaymentDetailsHandler extends \Magento\Braintree\Gateway\Response\PaymentDetailsHandler
 {
     /**
      * List of additional details

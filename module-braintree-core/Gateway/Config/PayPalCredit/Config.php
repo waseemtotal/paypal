@@ -1,12 +1,16 @@
 <?php
 
-namespace PayPal\Braintree\Gateway\Config\PayPalCredit;
+namespace Magento\Braintree\Gateway\Config\PayPalCredit;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Payment\Gateway\ConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 use \Magento\Paypal\Model\Config as PPConfig;
 
+/**
+ * Class Config
+ * @package Magento\Braintree\Gateway\Config\PayPalCredit
+ */
 class Config implements ConfigInterface
 {
     const KEY_ACTIVE = 'active';
@@ -216,5 +220,38 @@ class Config implements ConfigInterface
     public function getMerchantCountry()
     {
         return $this->getConfigValue('paypal/general/merchant_country');
+    }
+
+    /**
+     * Get Display option from stored config
+     *
+     * @param string $section
+     * @return mixed
+     */
+    public function getBmlDisplay($section)
+    {
+        return $this->getConfigValue('payment/' . PPConfig::METHOD_WPP_BML . '/' . $section . '_display');
+    }
+
+    /**
+     * Get Position option from stored config
+     *
+     * @param string $section
+     * @return mixed
+     */
+    public function getBmlPosition($section)
+    {
+        return $this->getConfigValue('payment/' . PPConfig::METHOD_WPP_BML . '/' . $section . '_position');
+    }
+
+    /**
+     * Get Size option from stored config
+     *
+     * @param string $section
+     * @return mixed
+     */
+    public function getBmlSize($section)
+    {
+        return $this->getConfigValue('payment/' . PPConfig::METHOD_WPP_BML . '/' . $section . '_size');
     }
 }

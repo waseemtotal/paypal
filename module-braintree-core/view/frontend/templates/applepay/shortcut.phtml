@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-/** @var \PayPal\Braintree\Block\ApplePay\Shortcut\Button $block */
+/** @var \Magento\Braintree\Block\ApplePay\Shortcut\Button $block */
 try {
     $id = sprintf('%s%s', $block->getContainerId(), random_int(PHP_INT_MIN, PHP_INT_MAX));
 } catch (Exception $e) {
@@ -16,7 +16,7 @@ try {
 }
 
 $config = [
-    'PayPal_Braintree/js/applepay/implementations/shortcut' => [
+    'Magento_Braintree/js/applepay/implementations/shortcut' => [
         'id' => $id,
         'clientToken' => $block->getClientToken(),
         'quoteId' => $block->getQuoteId(),

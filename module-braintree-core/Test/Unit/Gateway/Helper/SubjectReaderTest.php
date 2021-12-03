@@ -3,12 +3,15 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Helper;
+namespace Magento\Braintree\Test\Unit\Gateway\Helper;
 
 use Braintree\Transaction;
 use InvalidArgumentException;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 
+/**
+ * Class SubjectReaderTest
+ */
 class SubjectReaderTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -16,25 +19,23 @@ class SubjectReaderTest extends \PHPUnit\Framework\TestCase
      */
     private $subjectReader;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->subjectReader = new SubjectReader();
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readCustomerId
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readCustomerId
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage The "customerId" field does not exists
      */
     public function testReadCustomerIdWithException()
     {
-        $this->markTestSkipped('Skip this test');
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The "customerId" field does not exists');
-
         $this->subjectReader->readCustomerId([]);
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readCustomerId
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readCustomerId
      */
     public function testReadCustomerId()
     {
@@ -43,19 +44,17 @@ class SubjectReaderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readPublicHash
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readPublicHash
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage The "public_hash" field does not exists
      */
     public function testReadPublicHashWithException()
     {
-        $this->markTestSkipped('Skip this test');
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The "public_hash" field does not exists');
-
         $this->subjectReader->readPublicHash([]);
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readPublicHash
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readPublicHash
      */
     public function testReadPublicHash()
     {
@@ -64,14 +63,12 @@ class SubjectReaderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readPayPal
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readPayPal
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Transaction has't paypal attribute
      */
     public function testReadPayPalWithException()
     {
-        $this->markTestSkipped('Skip this test');
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Transaction has\'t paypal attribute');
-
         $transaction = Transaction::factory([
             'id' => 'u38rf8kg6vn'
         ]);
@@ -79,7 +76,7 @@ class SubjectReaderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \PayPal\Braintree\Gateway\Helper\SubjectReader::readPayPal
+     * @covers \Magento\Braintree\Gateway\Helper\SubjectReader::readPayPal
      */
     public function testReadPayPal()
     {

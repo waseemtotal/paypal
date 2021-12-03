@@ -3,13 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Http;
+namespace Magento\Braintree\Gateway\Http;
 
 use Magento\Payment\Gateway\Http\TransferBuilder;
 use Magento\Payment\Gateway\Http\TransferFactoryInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Gateway\ConfigInterface;
 
+/**
+ * Class TransferFactory
+ * @package Magento\Braintree\Gateway\Http
+ */
 class TransferFactory implements TransferFactoryInterface
 {
     /**

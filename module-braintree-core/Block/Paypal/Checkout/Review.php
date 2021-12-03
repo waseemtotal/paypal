@@ -3,11 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Block\Paypal\Checkout;
+namespace Magento\Braintree\Block\Paypal\Checkout;
 
 use Magento\Paypal\Block\Express;
 
 /**
+ * Class Review
+ *
  * @api
  * @since 100.1.0
  */

@@ -3,13 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response\PayPal;
+namespace Magento\Braintree\Gateway\Response\PayPal;
 
 use Braintree\Transaction;
 use DateInterval;
 use DateTimeZone;
 use Exception;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\Intl\DateTimeFactory;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Payment\Model\InfoInterface;
@@ -18,6 +18,9 @@ use Magento\Sales\Api\Data\OrderPaymentExtensionInterfaceFactory;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterfaceFactory;
 
+/**
+ * Vault Details Handler
+ */
 class VaultDetailsHandler implements HandlerInterface
 {
     /**
@@ -92,7 +95,6 @@ class VaultDetailsHandler implements HandlerInterface
         } else {
             $token = $transaction->paypalDetails->token;
         }
-
         if (empty($token)) {
             return null;
         }

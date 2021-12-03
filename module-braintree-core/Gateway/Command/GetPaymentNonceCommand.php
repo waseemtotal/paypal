@@ -4,16 +4,19 @@
  * See COPYING.txt for license details.
  */
 
-namespace PayPal\Braintree\Gateway\Command;
+namespace Magento\Braintree\Gateway\Command;
 
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
-use PayPal\Braintree\Gateway\Validator\PaymentNonceResponseValidator;
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Validator\PaymentNonceResponseValidator;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Payment\Gateway\Command\Result\ArrayResultFactory;
 use Magento\Payment\Gateway\CommandInterface;
 use Magento\Vault\Api\PaymentTokenManagementInterface;
 use Magento\Framework\Exception\LocalizedException;
 
+/**
+ * Class GetPaymentNonceCommand
+ */
 class GetPaymentNonceCommand implements CommandInterface
 {
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PayPal\Braintree\Controller\Payment;
+namespace Magento\Braintree\Controller\Payment;
 
-use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
@@ -12,6 +12,9 @@ use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Vault\Api\PaymentTokenManagementInterface;
 
+/**
+ * Class UpdatePaymentMethod
+ */
 class UpdatePaymentMethod extends Action
 {
     /**

@@ -6,7 +6,7 @@ define(
         rendererList.push(
             {
                 type: 'braintree_applepay',
-                component: 'PayPal_Braintree/js/applepay/implementations/core-checkout/method-renderer/applepay'
+                component: 'Magento_Braintree/js/applepay/implementations/core-checkout/method-renderer/applepay'
             }
         );
 

@@ -3,17 +3,23 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Gateway\Response;
+namespace Magento\Braintree\Gateway\Response;
 
 use Braintree\Transaction;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Helper\ContextHelper;
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;
 
+/**
+ * Class RiskDataHandler
+ */
 class RiskDataHandler implements HandlerInterface
 {
+    /**
+     * Risk data id
+     */
     const RISK_DATA_ID = 'riskDataId';
 
     /**

@@ -1,20 +1,20 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-namespace PayPal\Braintree\Model\GooglePay\Helper;
+
+namespace Magento\Braintree\Model\GooglePay\Helper;
 
 use InvalidArgumentException;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Api\CartRepositoryInterface;
-use PayPal\Braintree\Model\GooglePay\Ui\ConfigProvider;
+use Magento\Braintree\Model\GooglePay\Ui\ConfigProvider;
 use Magento\Framework\Exception\LocalizedException;
-use PayPal\Braintree\Observer\DataAssignObserver;
-use PayPal\Braintree\Model\Paypal\Helper\AbstractHelper;
+use Magento\Braintree\Observer\DataAssignObserver;
+use Magento\Braintree\Model\Paypal\Helper\AbstractHelper;
 use Magento\Framework\Event\ManagerInterface;
 
+/**
+ * Class QuoteUpdater
+ */
 class QuoteUpdater extends AbstractHelper
 {
     /**
@@ -54,7 +54,7 @@ class QuoteUpdater extends AbstractHelper
     public function execute($nonce, array $details, Quote $quote)
     {
         if (empty($nonce) || empty($details)) {
-            throw new InvalidArgumentException('The "nonce" and "details" fields does not exists');
+            throw new InvalidArgumentException('The "nonce" and "details" fields do not exist');
         }
 
         $payment = $quote->getPayment();
@@ -119,7 +119,6 @@ class QuoteUpdater extends AbstractHelper
 
     /**
      * Update shipping address
-     * (PayPal doesn't provide detailed shipping info: prefix, suffix)
      *
      * @param Quote $quote
      * @param array $details
@@ -131,7 +130,6 @@ class QuoteUpdater extends AbstractHelper
         $shippingAddress->setCollectShippingRates(true);
         $this->updateAddressData($shippingAddress, $details['shippingAddress']);
 
-        // PayPal's address supposes not saving against customer account
         $shippingAddress->setSaveInAddressBook(false);
         $shippingAddress->setSameAsBilling(false);
         $shippingAddress->unsCustomerAddressId();
@@ -177,7 +175,8 @@ class QuoteUpdater extends AbstractHelper
         $address->setCountryId($addressData['countryCodeAlpha2']);
         $address->setPostcode($addressData['postalCode']);
 
-        // PayPal's address supposes not saving against customer account
+        $address->setTelephone($addressData['telephone']);
+
         $address->setSaveInAddressBook(false);
         $address->setSameAsBilling(false);
         $address->setCustomerAddressId(null);

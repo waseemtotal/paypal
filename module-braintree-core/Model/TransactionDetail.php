@@ -1,11 +1,16 @@
 <?php
 
-namespace PayPal\Braintree\Model;
+namespace Magento\Braintree\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use PayPal\Braintree\Api\Data\TransactionDetailDataInterface;
-use PayPal\Braintree\Model\ResourceModel\TransactionDetail as TransactionDetailResource;
+use Magento\Braintree\Api\Data\TransactionDetailDataInterface;
+use Magento\Braintree\Model\ResourceModel\TransactionDetail as TransactionDetailResource;
 
+/**
+ * Class Order
+ * @package Magento\Braintree\Model
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class TransactionDetail extends AbstractModel implements TransactionDetailDataInterface
 {
     /**

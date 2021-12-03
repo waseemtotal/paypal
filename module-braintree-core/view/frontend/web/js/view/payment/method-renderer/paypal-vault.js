@@ -15,7 +15,7 @@ define([
 
     return VaultComponent.extend({
         defaults: {
-            template: 'PayPal_Braintree/payment/paypal/vault',
+            template: 'Magento_Braintree/payment/paypal/vault',
             additionalData: {}
         },
 

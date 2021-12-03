@@ -3,11 +3,14 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Ui\Component\Report\Listing\Column;
+namespace Magento\Braintree\Ui\Component\Report\Listing\Column;
 
 use Braintree\PaymentInstrumentType;
 use Magento\Framework\Data\OptionSourceInterface;
 
+/**
+ * Class PaymentType
+ */
 class PaymentType implements OptionSourceInterface
 {
     /**
@@ -44,6 +47,7 @@ class PaymentType implements OptionSourceInterface
         // @codingStandardsIgnoreStart
         return [
             PaymentInstrumentType::PAYPAL_ACCOUNT => __(PaymentInstrumentType::PAYPAL_ACCOUNT),
+            PaymentInstrumentType::EUROPE_BANK_ACCOUNT => __(PaymentInstrumentType::EUROPE_BANK_ACCOUNT),
             PaymentInstrumentType::CREDIT_CARD => __(PaymentInstrumentType::CREDIT_CARD),
             PaymentInstrumentType::APPLE_PAY_CARD => __(PaymentInstrumentType::APPLE_PAY_CARD),
             PaymentInstrumentType::ANDROID_PAY_CARD => __(PaymentInstrumentType::ANDROID_PAY_CARD)

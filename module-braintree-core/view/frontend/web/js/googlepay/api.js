@@ -1,12 +1,13 @@
 /**
  * Braintree Google Pay button api
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 define([
     'uiComponent',
     'mage/translate',
     'mage/storage',
     'jquery',
-    'PayPal_Braintree/js/form-builder'
+    'Magento_Braintree/js/form-builder'
 ], function (Component, $t, storage, jQuery, formBuilder) {
     'use strict';
 

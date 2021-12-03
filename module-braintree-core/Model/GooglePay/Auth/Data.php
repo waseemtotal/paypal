@@ -1,9 +1,14 @@
 <?php
 
-namespace PayPal\Braintree\Model\GooglePay\Auth;
+namespace Magento\Braintree\Model\GooglePay\Auth;
 
-use PayPal\Braintree\Api\Data\AuthDataInterface;
+use Magento\Braintree\Api\Data\AuthDataInterface;
 
+/**
+ * Class Auth
+ * @package Magento\Braintree\Model\GooglePay\Auth
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 class Data implements AuthDataInterface
 {
     /**

@@ -3,18 +3,21 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Controller\Paypal;
+namespace Magento\Braintree\Controller\Paypal;
 
 use Exception;
+use Magento\Braintree\Gateway\Config\PayPal\Config;
+use Magento\Braintree\Model\Paypal\Helper\QuoteUpdater;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
-use PayPal\Braintree\Gateway\Config\PayPal\Config;
-use PayPal\Braintree\Model\Paypal\Helper\QuoteUpdater;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\Page;
 
+/**
+ * Class Review
+ */
 class Review extends AbstractAction
 {
     /**
@@ -57,7 +60,7 @@ class Review extends AbstractAction
         $quote = $this->checkoutSession->getQuote();
 
         try {
-            if (empty($requestData) || $requestData === null) {
+            if (is_array($requestData) === false) {
                 throw new LocalizedException(__('Malformed request data. This may be caused by special characters. Please try again'));
             }
             $this->validateQuote($quote);
@@ -75,7 +78,7 @@ class Review extends AbstractAction
             /** @var Page $resultPage */
             $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
-            /** @var \PayPal\Braintree\Block\Paypal\Checkout\Review $reviewBlock */
+            /** @var \Magento\Braintree\Block\Paypal\Checkout\Review $reviewBlock */
             $reviewBlock = $resultPage->getLayout()->getBlock('braintree.paypal.review');
 
             $reviewBlock->setQuote($quote);

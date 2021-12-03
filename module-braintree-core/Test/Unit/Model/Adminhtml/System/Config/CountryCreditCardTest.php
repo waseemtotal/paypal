@@ -4,17 +4,21 @@
  * See COPYING.txt for license details.
  */
 
-namespace PayPal\Braintree\Test\Unit\Model\Adminhtml\System\Config;
+namespace Magento\Braintree\Test\Unit\Model\Adminhtml\System\Config;
 
-use PayPal\Braintree\Model\Adminhtml\System\Config\CountryCreditCard;
+use Magento\Braintree\Model\Adminhtml\System\Config\CountryCreditCard;
 use Magento\Framework\Math\Random;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
+/**
+ * Class CountryCreditCardTest
+ *
+ */
 class CountryCreditCardTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \PayPal\Braintree\Model\Adminhtml\System\Config\CountryCreditCard
+     * @var \Magento\Braintree\Model\Adminhtml\System\Config\CountryCreditCard
      */
     protected $model;
 
@@ -24,21 +28,21 @@ class CountryCreditCardTest extends \PHPUnit\Framework\TestCase
     protected $objectManager;
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $resourceMock;
 
     /**
-     * @var \Magento\Framework\Math\Random|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Framework\Math\Random|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $mathRandomMock;
 
     /**
-     * @var \Magento\Framework\Serialize\Serializer\Json|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Magento\Framework\Serialize\Serializer\Json|\PHPUnit_Framework_MockObject_MockObject
      */
     private $serializerMock;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->resourceMock = $this->getMockForAbstractClass(AbstractResource::class);
         $this->mathRandomMock = $this->getMockBuilder(Random::class)

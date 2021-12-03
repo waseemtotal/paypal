@@ -1,11 +1,12 @@
 /**
  * Braintree Apple Pay mini cart payment method integration.
- **/
+ * @author Aidan Threadgold <aidan@gene.co.uk>
+ */
 define(
     [
         'uiComponent',
-        'PayPal_Braintree/js/applepay/button',
-        'PayPal_Braintree/js/applepay/api',
+        'Magento_Braintree/js/applepay/button',
+        'Magento_Braintree/js/applepay/api',
         'mage/translate',
         'domReady!'
     ],

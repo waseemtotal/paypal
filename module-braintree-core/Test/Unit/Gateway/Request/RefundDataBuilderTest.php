@@ -3,11 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace PayPal\Braintree\Test\Unit\Gateway\Request;
+namespace Magento\Braintree\Test\Unit\Gateway\Request;
 
-use PayPal\Braintree\Gateway\Helper\SubjectReader;
-use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
-use PayPal\Braintree\Gateway\Request\RefundDataBuilder;
+use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
+use Magento\Braintree\Gateway\Request\RefundDataBuilder;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Model\Order\Payment;
@@ -17,7 +17,7 @@ use Psr\Log\LoggerInterface;
 class RefundDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var SubjectReader | \PHPUnit\Framework\MockObject\MockObject
+     * @var SubjectReader | \PHPUnit_Framework_MockObject_MockObject
      */
     private $subjectReader;
 
@@ -31,7 +31,7 @@ class RefundDataBuilderTest extends \PHPUnit\Framework\TestCase
      */
     private $dataBuilder;
 
-    protected function setUp(): void
+    public function setUp()
     {
         $this->subjectReader = $this->getMockBuilder(
             SubjectReader::class
