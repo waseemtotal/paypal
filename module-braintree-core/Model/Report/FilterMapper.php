@@ -3,14 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Report;
+namespace PayPal\Braintree\Model\Report;
 
-use Magento\Braintree\Model\Adapter\BraintreeSearchAdapter;
-use Magento\Braintree\Model\Report\ConditionAppliers\AppliersPool;
+use PayPal\Braintree\Model\Adapter\BraintreeSearchAdapter;
+use PayPal\Braintree\Model\Report\ConditionAppliers\AppliersPool;
 
-/**
- * Class FilterMapper
- */
 class FilterMapper
 {
     /**

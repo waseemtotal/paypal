@@ -10,7 +10,7 @@ define([
     'Magento_Ui/js/modal/alert',
     'Magento_Ui/js/lib/view/utils/dom-observer',
     'mage/translate',
-    'Magento_Braintree/js/validator',
+    'PayPal_Braintree/js/validator',
     'braintree',
     'braintreeHostedFields'
 ], function ($, Class, alert, domObserver, $t, validator, client, hostedFields) {
@@ -82,10 +82,6 @@ define([
         onActiveChange: function (isActive) {
             if (!isActive) {
                 this.$selector.off('submitOrder.braintree');
-                this.$selector.on('submitOrder', function () {
-                    $('#payment_form_braintree').find('[type="submit"]').trigger('click');
-                    $('#edit_form').trigger('realOrder');
-                });
 
                 return;
             }

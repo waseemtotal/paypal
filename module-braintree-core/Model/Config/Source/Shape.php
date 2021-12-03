@@ -1,14 +1,9 @@
 <?php
 
-namespace Magento\Braintree\Model\Config\Source;
+namespace PayPal\Braintree\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
-/**
- * Class Shape
- * @package Magento\Braintree\Model\Config\Source
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Shape implements ArrayInterface
 {
     /**

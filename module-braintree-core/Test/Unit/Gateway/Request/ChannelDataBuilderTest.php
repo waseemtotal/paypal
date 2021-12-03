@@ -3,13 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Gateway\Request;
+namespace PayPal\Braintree\Test\Unit\Gateway\Request;
 
-use Magento\Braintree\Gateway\Request\ChannelDataBuilder;
+use PayPal\Braintree\Gateway\Request\ChannelDataBuilder;
 
 /**
- * Class PaymentDataBuilderTest
- *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class ChannelDataBuilderTest extends \PHPUnit\Framework\TestCase
@@ -22,14 +20,14 @@ class ChannelDataBuilderTest extends \PHPUnit\Framework\TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->builder = new ChannelDataBuilder();
     }
 
     /**
      * @param array $expected
-     * @covers \Magento\Braintree\Gateway\Request\ChannelDataBuilder::build
+     * @covers \PayPal\Braintree\Gateway\Request\ChannelDataBuilder::build
      * @dataProvider buildDataProvider
      */
     public function testBuild(array $expected)

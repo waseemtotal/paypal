@@ -3,14 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Ui\Component\Report\Listing\Column;
+namespace PayPal\Braintree\Ui\Component\Report\Listing\Column;
 
 use Braintree\Transaction;
 use Magento\Framework\Data\OptionSourceInterface;
 
-/**
- * Class Status
- */
 class Status implements OptionSourceInterface
 {
     /**

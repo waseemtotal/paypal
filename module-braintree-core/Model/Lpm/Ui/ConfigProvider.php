@@ -1,16 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Model\Lpm\Ui;
+namespace PayPal\Braintree\Model\Lpm\Ui;
 
-use Magento\Braintree\Model\Lpm\Config;
+use PayPal\Braintree\Model\Lpm\Config;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-/**
- * Class ConfigProvider
- */
 class ConfigProvider implements ConfigProviderInterface
 {
     const METHOD_CODE = 'braintree_local_payment';
@@ -36,16 +33,12 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig(): array
     {
-        if (!$this->config->isActive()) {
-            return [];
-        }
-
         return [
             'payment' => [
                 self::METHOD_CODE => [
                     'allowedMethods' => $this->config->getAllowedMethods(),
                     'clientToken' => $this->config->getClientToken(),
-                    'merchantAccountId' => $this->config->getMerchantAccountId(),
+                    'merchantId' => $this->config->getMerchantAccountId(),
                     'paymentIcons' => $this->config->getPaymentIcons(),
                     'title' => $this->config->getTitle()
                 ]

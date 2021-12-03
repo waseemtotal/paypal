@@ -1,12 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Model\CustomFields;
+namespace PayPal\Braintree\Model\CustomFields;
 
 /**
  * Interface CustomFieldInterface
- * @package Magento\Braintree\Model\CustomFields
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+ **/
 interface CustomFieldInterface
 {
     /**
@@ -20,7 +18,7 @@ interface CustomFieldInterface
      * Value for the field
      *
      * @param array $buildSubject When used with SubjectReader this will return information about the order
-     * @see \Magento\Braintree\Gateway\Helper\SubjectReader
+     * @see \PayPal\Braintree\Gateway\Helper\SubjectReader
      * @return mixed
      */
     public function getValue($buildSubject);

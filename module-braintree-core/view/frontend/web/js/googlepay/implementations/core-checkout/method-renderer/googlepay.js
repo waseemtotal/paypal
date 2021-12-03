@@ -1,11 +1,10 @@
 /**
  * Braintree Google Pay payment method integration.
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+ **/
 define([
     'Magento_Checkout/js/view/payment/default',
     'Magento_Checkout/js/model/quote',
-    'Magento_Braintree/js/googlepay/button'
+    'PayPal_Braintree/js/googlepay/button'
 ], function (
     Component,
     quote,
@@ -15,7 +14,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Magento_Braintree/googlepay/core-checkout',
+            template: 'PayPal_Braintree/googlepay/core-checkout',
             paymentMethodNonce: null,
             deviceSupported: button.deviceSupported(),
             grandTotalAmount: 0

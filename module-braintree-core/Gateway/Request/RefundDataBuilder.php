@@ -3,20 +3,16 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use InvalidArgumentException;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Payment\Helper\Formatter;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Model\Order\Payment;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class RefundDataBuilder
- * @package Magento\Braintree\Gateway\Request
- */
 class RefundDataBuilder implements BuilderInterface
 {
     use Formatter;

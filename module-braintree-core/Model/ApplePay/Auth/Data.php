@@ -1,14 +1,9 @@
 <?php
 
-namespace Magento\Braintree\Model\ApplePay\Auth;
+namespace PayPal\Braintree\Model\ApplePay\Auth;
 
-use Magento\Braintree\Api\Data\AuthDataInterface;
+use PayPal\Braintree\Api\Data\AuthDataInterface;
 
-/**
- * Class Auth
- * @package Magento\Braintree\Model\ApplePay\Auth
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Data implements AuthDataInterface
 {
     /**

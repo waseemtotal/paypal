@@ -3,25 +3,22 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Helper;
+namespace PayPal\Braintree\Test\Unit\Helper;
 
-use Magento\Braintree\Helper\Country;
+use PayPal\Braintree\Helper\Country;
 use Magento\Directory\Model\ResourceModel\Country\CollectionFactory;
 use Magento\Directory\Model\ResourceModel\Country\Collection;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
-/**
- * Class CountryTest
- */
 class CountryTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\Directory\Model\ResourceModel\Country\Collection|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\Directory\Model\ResourceModel\Country\Collection|\PHPUnit\Framework\MockObject\MockObject
      */
     private $collection;
 
     /**
-     * @var \Magento\Braintree\Helper\Country
+     * @var \PayPal\Braintree\Helper\Country
      */
     private $helper;
 
@@ -30,7 +27,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
      */
     private $objectManager;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
 
@@ -42,7 +39,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Helper\Country::getCountries
+     * @covers \PayPal\Braintree\Helper\Country::getCountries
      */
     public function testGetCountries()
     {

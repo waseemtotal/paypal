@@ -1,6 +1,6 @@
 <?php
 // @codingStandardsIgnoreFile
-use Magento\Braintree\Block\Paypal\ProductPage;
+use PayPal\Braintree\Block\Paypal\ProductPage;
 
 /** @var ProductPage $block */
 try {
@@ -22,16 +22,11 @@ try {
 <?php if ($block->getAmount() > 0): ?>
     <script>
         require([
-            'Magento_Braintree/js/paypal/button',
+            'PayPal_Braintree/js/paypal/button',
             'jquery'
         ], function (button, $) {
             $(function () {
-                button.init(
-                    '<?= $block->getClientToken() ?>',
-                    '<?= $block->escapeHtmlAttr($block->getCurrency()) ?>',
-                    '<?= $block->escapeHtmlAttr($block->getEnvironment()) ?>',
-                    '<?= $block->escapeHtmlAttr($block->getMerchantCountry()) ?>'
-                );
+                button.init('<?= $block->getClientToken() ?>', '<?= $block->escapeHtmlAttr($block->getCurrency()) ?>');
             })
         })
     </script>
@@ -50,9 +45,9 @@ try {
              data-size="<?= $block->getButtonSize() ?>"
              data-color="<?= $block->getButtonColor() ?>"
              data-location="<?= $block->getLocation() ?>"
-             data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
              class="action-braintree-paypal-logo"></div>
     </div>
+
     <?php if ($block->isCreditActive()): ?>
         <div class="paypal checkout paypal-logo braintree-paypal-logo <?= $block->escapeHtmlAttr($block->getContainerId()) ?>-container">
             <div data-currency="<?= $block->escapeHtmlAttr($block->getCurrency()) ?>"
@@ -68,7 +63,6 @@ try {
                  data-size="<?= $block->getButtonSize() ?>"
                  data-color="darkblue"
                  data-location="<?= $block->getLocation() ?>"
-                 data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
                  class="action-braintree-paypal-logo"></div>
         </div>
     <?php endif; ?>
@@ -88,17 +82,15 @@ try {
                      data-size="<?= $block->getButtonSize() ?>"
                      data-color="white"
                      data-location="<?= $block->getLocation() ?>"
-                     data-requiredbillingaddress="<?= $block->isRequiredBillingAddress() ?>"
                      class="action-braintree-paypal-logo"></div>
             </div>
         <?php endif; ?>
-    <?php endif; ?>
-    <?php if ($block->isPayLaterMessageActive('productpage') && !$block->isPayPalVaultActive()): ?>
-        <div class="action-braintree-paypal-message"
-             id="<?= $block->escapeHtmlAttr($paypalPaylaterId) ?>-message"
-             data-pp-amount="<?= $block->escapeHtmlAttr($block->getAmount()) ?>"
-             data-currency-symbol="<?= $block->getCurrencySymbol(); ?>"
-             data-pp-type="product"
-        ></div>
+        <?php if ($block->isPayLaterMessageActive('productpage') && !$block->isPayPalVaultActive()): ?>
+            <div class="action-braintree-paypal-message"
+                 id="<?= $block->escapeHtmlAttr($paypalPaylaterId) ?>-message"
+                 data-pp-amount="<?= $block->escapeHtmlAttr($block->getAmount()) ?>"
+                 data-pp-type="product"
+            ></div>
+        <?php endif; ?>
     <?php endif; ?>
 <?php endif; ?>

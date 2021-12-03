@@ -1,12 +1,7 @@
 <?php
 
-namespace Magento\Braintree\Block\ApplePay;
+namespace PayPal\Braintree\Block\ApplePay;
 
-/**
- * Class Info
- * @package Magento\Braintree\Model\ApplePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
-class Info extends \Magento\Braintree\Block\Info
+class Info extends \PayPal\Braintree\Block\Info
 {
 }

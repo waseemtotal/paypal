@@ -1,12 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Api\Data;
+namespace PayPal\Braintree\Api\Data;
 
 /**
  * Interface CreditPriceDataInterface
- * @package Magento\Braintree\Api\Data
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+ **/
 interface CreditPriceDataInterface
 {
     const ID = 'id';

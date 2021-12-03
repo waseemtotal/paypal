@@ -3,12 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Block;
+namespace PayPal\Braintree\Block;
 
 use Magento\Backend\Model\Session\Quote;
-use Magento\Braintree\Gateway\Config\Config as GatewayConfig;
-use Magento\Braintree\Model\Adminhtml\Source\CcType;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Gateway\Config\Config as GatewayConfig;
+use PayPal\Braintree\Model\Adminhtml\Source\CcType;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
@@ -20,9 +20,6 @@ use Magento\Payment\Model\Config;
 use Magento\Payment\Model\MethodInterface;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class Form
- */
 class Form extends Cc
 {
 

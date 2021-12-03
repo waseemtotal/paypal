@@ -3,16 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Config;
+namespace PayPal\Braintree\Gateway\Config;
 
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 use Magento\Sales\Model\Order\Payment;
 
-/**
- * Class CanVoidHandler
- * @package Magento\Braintree\Gateway\Config
- */
 class CanVoidHandler implements ValueHandlerInterface
 {
     /**

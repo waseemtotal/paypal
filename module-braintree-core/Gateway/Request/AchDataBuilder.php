@@ -1,20 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Braintree\Customer;
 use Braintree\CustomerSearch;
 use Braintree\PaymentMethod;
 use Braintree\Result\UsBankAccountVerification;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
-use Magento\Braintree\Observer\DataAssignObserver;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Observer\DataAssignObserver;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
-/**
- * Class AchDataBuilder
- */
 class AchDataBuilder implements BuilderInterface
 {
     const OPTIONS = 'options';

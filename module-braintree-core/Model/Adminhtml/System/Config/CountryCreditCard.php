@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Adminhtml\System\Config;
+namespace PayPal\Braintree\Model\Adminhtml\System\Config;
 
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -17,9 +17,6 @@ use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
 
-/**
- * Class CountryCreditCard
- */
 class CountryCreditCard extends Value
 {
     /**

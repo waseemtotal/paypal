@@ -8,9 +8,9 @@ define([
     'ko',
     'jquery',
     'Magento_Vault/js/view/payment/method-renderer/vault',
-    'Magento_Braintree/js/view/payment/adapter',
+    'PayPal_Braintree/js/view/payment/adapter',
     'Magento_Ui/js/model/messageList',
-    'Magento_Braintree/js/view/payment/validator-handler',
+    'PayPal_Braintree/js/view/payment/validator-handler',
     'Magento_Checkout/js/model/payment/additional-validators',
     'Magento_Checkout/js/model/full-screen-loader',
     'braintree',
@@ -41,7 +41,7 @@ define([
             modules: {
                 hostedFields: '${ $.parentName }.braintree'
             },
-            template: 'Magento_Braintree/payment/cc/vault',
+            template: 'PayPal_Braintree/payment/cc/vault',
             updatePaymentUrl: url.build('braintree/payment/updatepaymentmethod'),
             vaultedCVV: ko.observable(""),
             validatorManager: validatorManager,

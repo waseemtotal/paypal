@@ -7,7 +7,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: "Magento_Braintree/credit/calculator",
+            template: "PayPal_Braintree/credit/calculator",
             displaySummary: true, // "From X per month"
             displayInterestDetails: false, // Display the more in-depth summary of interest rates
             instalmentsFrom: 0,

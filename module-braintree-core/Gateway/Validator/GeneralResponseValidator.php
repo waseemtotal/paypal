@@ -3,19 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Validator;
+namespace PayPal\Braintree\Gateway\Validator;
 
 use Braintree\Result\Error;
 use Braintree\Result\Successful;
 use Magento\Payment\Gateway\Validator\AbstractValidator;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 
-/**
- * Class GeneralResponseValidator
- * @package Magento\Braintree\Gateway\Validator
- */
 class GeneralResponseValidator extends AbstractValidator
 {
     /**

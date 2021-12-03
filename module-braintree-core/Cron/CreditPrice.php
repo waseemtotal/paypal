@@ -1,22 +1,18 @@
 <?php
 
-namespace Magento\Braintree\Cron;
+namespace PayPal\Braintree\Cron;
 
-use Magento\Braintree\Api\Data\CreditPriceDataInterface;
-use Magento\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
+use PayPal\Braintree\Api\Data\CreditPriceDataInterface;
+use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class CreditPrice
- * @package Magento\Braintree\Cron
- */
 class CreditPrice
 {
     /**
-     * @var \Magento\Braintree\Api\CreditPriceRepositoryInterface
+     * @var \PayPal\Braintree\Api\CreditPriceRepositoryInterface
      */
     private $creditPriceRepository;
 
@@ -31,7 +27,7 @@ class CreditPrice
     private $productCollection;
 
     /**
-     * @var \Magento\Braintree\Api\Data\CreditPriceDataInterfaceFactory
+     * @var \PayPal\Braintree\Api\Data\CreditPriceDataInterfaceFactory
      */
     private $creditPriceFactory;
 
@@ -41,7 +37,7 @@ class CreditPrice
     private $logger;
 
     /**
-     * @var \Magento\Braintree\Model\Paypal\CreditApi
+     * @var \PayPal\Braintree\Model\Paypal\CreditApi
      */
     private $creditApi;
 
@@ -52,19 +48,19 @@ class CreditPrice
 
     /**
      * CreditPrice constructor.
-     * @param \Magento\Braintree\Api\CreditPriceRepositoryInterface $creditPriceRepository
-     * @param \Magento\Braintree\Api\Data\CreditPriceDataInterfaceFactory $creditPriceDataInterfaceFactory
+     * @param \PayPal\Braintree\Api\CreditPriceRepositoryInterface $creditPriceRepository
+     * @param \PayPal\Braintree\Api\Data\CreditPriceDataInterfaceFactory $creditPriceDataInterfaceFactory
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Braintree\Model\Paypal\CreditApi $creditApi
+     * @param \PayPal\Braintree\Model\Paypal\CreditApi $creditApi
      * @param ProductCollectionFactory $productCollection
      * @param LoggerInterface $logger
      * @param PayPalCreditConfig $config
      */
     public function __construct(
-        \Magento\Braintree\Api\CreditPriceRepositoryInterface $creditPriceRepository,
-        \Magento\Braintree\Api\Data\CreditPriceDataInterfaceFactory $creditPriceDataInterfaceFactory,
+        \PayPal\Braintree\Api\CreditPriceRepositoryInterface $creditPriceRepository,
+        \PayPal\Braintree\Api\Data\CreditPriceDataInterfaceFactory $creditPriceDataInterfaceFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Braintree\Model\Paypal\CreditApi $creditApi,
+        \PayPal\Braintree\Model\Paypal\CreditApi $creditApi,
         ProductCollectionFactory $productCollection,
         LoggerInterface $logger,
         PayPalCreditConfig $config
@@ -111,7 +107,7 @@ class CreditPrice
                     $priceOptions = $this->creditApi->getPriceOptions($product->getFinalPrice());
                     foreach ($priceOptions as $priceOption) {
                         // Populate model
-                        /** @var $model \Magento\Braintree\Api\Data\CreditPriceDataInterface */
+                        /** @var $model \PayPal\Braintree\Api\Data\CreditPriceDataInterface */
                         $model = $this->creditPriceFactory->create();
                         $model->setProductId($product->getId());
                         $model->setTerm($priceOption['term']);
@@ -124,7 +120,7 @@ class CreditPrice
                     }
                 } catch (AuthenticationException $e) {
                     $connection->rollBack();
-                    throw new \Exception($e->getMessage());
+                    throw $e;
                 } catch (LocalizedException $e) {
                     $this->logger->critical($e->getMessage());
                 } catch (\Exception $e) {

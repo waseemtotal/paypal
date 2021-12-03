@@ -3,15 +3,12 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Gateway\Request;
+namespace PayPal\Braintree\Test\Unit\Gateway\Request;
 
-use Magento\Braintree\Gateway\Config\Config;
-use Magento\Braintree\Gateway\Request\DescriptorDataBuilder;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PayPal\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Request\DescriptorDataBuilder;
+use PHPUnit\Framework\MockObject\MockObject as MockObject;
 
-/**
- * Class DescriptorDataBuilderTest
- */
 class DescriptorDataBuilderTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -24,7 +21,7 @@ class DescriptorDataBuilderTest extends \PHPUnit\Framework\TestCase
      */
     private $builder;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->config = $this->getMockBuilder(Config::class)
             ->disableOriginalConstructor()
@@ -35,7 +32,7 @@ class DescriptorDataBuilderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Gateway\Request\DescriptorDataBuilder::build
+     * @covers \PayPal\Braintree\Gateway\Request\DescriptorDataBuilder::build
      * @param array $descriptors
      * @param array $expected
      * @dataProvider buildDataProvider

@@ -1,15 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use Magento\Braintree\Model\CustomFields\Pool;
+use PayPal\Braintree\Model\CustomFields\Pool;
 
-/**
- * Class CustomFieldsDataBuilder
- * @package Magento\Braintree\Gateway\Request
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class CustomFieldsDataBuilder implements BuilderInterface
 {
     const CUSTOM_FIELDS = 'customFields';

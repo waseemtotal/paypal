@@ -1,8 +1,8 @@
 <?php
 
-namespace Magento\Braintree\Block\ApplePay;
+namespace PayPal\Braintree\Block\ApplePay;
 
-use Magento\Braintree\Model\ApplePay\Auth;
+use PayPal\Braintree\Model\ApplePay\Auth;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -10,11 +10,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 
-/**
- * Class AbstractButton
- * @package Magento\Braintree\Model\ApplePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+/***/
 abstract class AbstractButton extends Template
 {
     /**

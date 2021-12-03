@@ -3,19 +3,16 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Response;
+namespace PayPal\Braintree\Gateway\Response;
 
-use Magento\Braintree\Gateway\Config\Config;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 
-/**
- * Class CardDetailsHandler
- */
 class CardDetailsHandler implements HandlerInterface
 {
     const CARD_TYPE = 'cardType';
@@ -66,15 +63,24 @@ class CardDetailsHandler implements HandlerInterface
         $payment = $paymentDO->getPayment();
         ContextHelper::assertOrderPayment($payment);
 
-        $creditCard = $transaction->creditCard;
-        $payment->setCcLast4($creditCard[self::CARD_LAST4]);
-        $payment->setCcExpMonth($creditCard[self::CARD_EXP_MONTH]);
-        $payment->setCcExpYear($creditCard[self::CARD_EXP_YEAR]);
-        $payment->setCcType($this->getCreditCardType($creditCard[self::CARD_TYPE]));
-
-        // set card details to additional info
-        $payment->setAdditionalInformation(self::CARD_NUMBER, 'xxxx-' . $creditCard[self::CARD_LAST4]);
-        $payment->setAdditionalInformation(OrderPaymentInterface::CC_TYPE, $creditCard[self::CARD_TYPE]);
+        // Web Payments API - Google Pay
+        if (!empty($transaction->androidPayCard['sourceCardLast4'])) {
+            $creditCard = $transaction->androidPayCard;
+            $payment->setCcLast4($creditCard['sourceCardLast4']);
+            $payment->setCcExpMonth($creditCard[self::CARD_EXP_MONTH]);
+            $payment->setCcExpYear($creditCard[self::CARD_EXP_YEAR]);
+            $payment->setCcType($this->getCreditCardType($creditCard['sourceCardType']));
+            $payment->setAdditionalInformation(OrderPaymentInterface::CC_TYPE, $creditCard['sourceCardType']);
+            $payment->setAdditionalInformation(self::CARD_NUMBER, 'xxxx-' . $creditCard['sourceCardLast4']);
+        } else {
+            $creditCard = $transaction->creditCard;
+            $payment->setCcLast4($creditCard[self::CARD_LAST4]);
+            $payment->setCcExpMonth($creditCard[self::CARD_EXP_MONTH]);
+            $payment->setCcExpYear($creditCard[self::CARD_EXP_YEAR]);
+            $payment->setCcType($this->getCreditCardType($creditCard[self::CARD_TYPE]));
+            $payment->setAdditionalInformation(OrderPaymentInterface::CC_TYPE, $creditCard[self::CARD_TYPE]);
+            $payment->setAdditionalInformation(self::CARD_NUMBER, 'xxxx-' . $creditCard[self::CARD_LAST4]);
+        }
     }
 
     /**

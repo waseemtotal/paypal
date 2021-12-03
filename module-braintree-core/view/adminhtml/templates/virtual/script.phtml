@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-use Magento\Braintree\Block\Payment;
+use PayPal\Braintree\Block\Payment;
 
 /** @var Payment $block */
 
@@ -14,7 +14,7 @@ $code = $block->escapeHtml($block->getCode());
     //<![CDATA[
     require(
         [
-            'Magento_Braintree/js/virtual',
+            'PayPal_Braintree/js/virtual',
             'jquery',
             'domReady!'
         ], function(Braintree, $) {

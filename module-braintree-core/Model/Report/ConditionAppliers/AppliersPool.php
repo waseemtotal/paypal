@@ -3,13 +3,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Report\ConditionAppliers;
+namespace PayPal\Braintree\Model\Report\ConditionAppliers;
 
 use InvalidArgumentException;
 
-/**
- * Class AppliersPool
- */
 class AppliersPool
 {
     /**

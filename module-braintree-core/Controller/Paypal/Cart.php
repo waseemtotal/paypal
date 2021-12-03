@@ -3,18 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Controller\Paypal;
+namespace PayPal\Braintree\Controller\Paypal;
 
-use Magento\Braintree\Model\Paypal\CreditApi;
+use PayPal\Braintree\Model\Paypal\CreditApi;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Webapi\Exception;
 
-/**
- * Class GetNonce
- */
 class Cart extends Action
 {
     /**

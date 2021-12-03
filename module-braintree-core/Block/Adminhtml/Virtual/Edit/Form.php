@@ -1,15 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Block\Adminhtml\Virtual\Edit;
+namespace PayPal\Braintree\Block\Adminhtml\Virtual\Edit;
 
 use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * Class Form
- * @package Magento\Braintree\Block\Adminhtml\Virtual\Edit
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Form extends Generic
 {
     /**

@@ -1,19 +1,14 @@
 <?php
-namespace Magento\Braintree\Model\GooglePay\Ui;
+namespace PayPal\Braintree\Model\GooglePay\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
-use Magento\Braintree\Model\GooglePay\Config;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
+use PayPal\Braintree\Model\GooglePay\Config;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Asset\Repository;
 
-/**
- * Class ConfigProvider
- * @package Magento\Braintree\Model\GooglePay\Ui
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class ConfigProvider implements ConfigProviderInterface
 {
     const METHOD_CODE = 'braintree_googlepay';
@@ -34,7 +29,7 @@ class ConfigProvider implements ConfigProviderInterface
     private $assetRepo;
 
     /**
-     * @var \Magento\Braintree\Gateway\Config\Config
+     * @var \PayPal\Braintree\Gateway\Config\Config
      */
     private $braintreeConfig;
 
@@ -48,13 +43,13 @@ class ConfigProvider implements ConfigProviderInterface
      * @param Config $config
      * @param BraintreeAdapter $adapter
      * @param Repository $assetRepo
-     * @param \Magento\Braintree\Gateway\Config\Config $braintreeConfig
+     * @param \PayPal\Braintree\Gateway\Config\Config $braintreeConfig
      */
     public function __construct(
         Config $config,
         BraintreeAdapter $adapter,
         Repository $assetRepo,
-        \Magento\Braintree\Gateway\Config\Config $braintreeConfig
+        \PayPal\Braintree\Gateway\Config\Config $braintreeConfig
     ) {
         $this->config = $config;
         $this->adapter = $adapter;
@@ -67,10 +62,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig(): array
     {
-        if (!$this->config->isActive()) {
-            return [];
-        }
-
         return [
             'payment' => [
                 'braintree_googlepay' => [
@@ -152,7 +143,7 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getPaymentMarkSrc()
     {
-        $fileId = 'Magento_Braintree::images/GooglePay_AcceptanceMark_WhiteShape_WithStroke_RGB_62x38pt@4x.png';
+        $fileId = 'PayPal_Braintree::images/GooglePay_AcceptanceMark_WhiteShape_WithStroke_RGB_62x38pt@4x.png';
         return $this->assetRepo->getUrl($fileId);
     }
 }

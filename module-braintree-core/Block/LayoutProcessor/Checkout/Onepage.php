@@ -3,10 +3,12 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Block\LayoutProcessor\Checkout;
+declare(strict_types=1);
+
+namespace PayPal\Braintree\Block\LayoutProcessor\Checkout;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
-use MSP\ReCaptcha\Model\LayoutSettings;
+use Magento\Framework\Exception\InputException;
 
 /**
  * Provides reCaptcha component configuration.
@@ -14,31 +16,63 @@ use MSP\ReCaptcha\Model\LayoutSettings;
 class Onepage implements LayoutProcessorInterface
 {
     /**
-     * @var LayoutSettings
+     * @var \Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface
      */
-    private $layoutSettings;
+    private $captchaUiConfigResolver;
 
     /**
-     * Onepage constructor.
-     * @param LayoutSettings $layoutSettings
+     * @var \Magento\ReCaptchaUi\Model\UiConfigResolverInterface
+     */
+    private $isCaptchaEnabled;
+
+    /**
+     * @var \Magento\Framework\Module\Manager
+     */
+    private $moduleManager;
+
+    /**
+     * @param \Magento\Framework\Module\Manager $moduleManager
      */
     public function __construct(
-        LayoutSettings $layoutSettings
+        \Magento\Framework\Module\Manager $moduleManager
     ) {
-        $this->layoutSettings = $layoutSettings;
+        $this->moduleManager = $moduleManager;
     }
 
     /**
-     * Process js Layout of block
+     * {@inheritdoc}
      *
      * @param array $jsLayout
      * @return array
+     * @throws InputException
      */
     public function process($jsLayout)
     {
-        $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
-        ['payment']['children']['payments-list']['children']['braintree-recaptcha']['children']
-        ['msp_recaptcha_braintree']['settings'] = $this->layoutSettings->getCaptchaSettings();
+        if ($this->moduleManager->isEnabled('Magento_ReCaptchaUi')) {
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $this->isCaptchaEnabled = $objectManager->create(
+                'Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface'
+            );
+            $this->captchaUiConfigResolver = $objectManager->create(
+                'Magento\ReCaptchaUi\Model\UiConfigResolverInterface'
+            );
+        } else {
+            return $jsLayout;
+        }
+
+        $key = 'braintree';
+
+        if ($this->isCaptchaEnabled->isCaptchaEnabledFor($key)) {
+            $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+            ['payment']['children']['payments-list']['children']['braintree-recaptcha']['children']
+            ['recaptcha_braintree']['settings'] = $this->captchaUiConfigResolver->get($key);
+        } else {
+            if (isset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+                ['payment']['children']['payments-list']['children']['braintree-recaptcha']['children']['recaptcha_braintree'])) {
+                unset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
+                    ['payment']['children']['payments-list']['children']['braintree-recaptcha']['children']['recaptcha_braintree']);
+            }
+        }
 
         return $jsLayout;
     }

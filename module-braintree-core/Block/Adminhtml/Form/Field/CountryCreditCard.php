@@ -3,15 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Block\Adminhtml\Form\Field;
+namespace PayPal\Braintree\Block\Adminhtml\Form\Field;
 
 use Magento\Framework\DataObject;
 use Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * Class CountryCreditCard
- */
 class CountryCreditCard extends AbstractFieldArray
 {
     /**

@@ -3,11 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Report;
+namespace PayPal\Braintree\Model\Report;
 
 use Braintree\ResourceCollection;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
-use Magento\Braintree\Model\Report\Row\TransactionMap;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Model\Report\Row\TransactionMap;
 use Magento\Framework\Api\Search\AggregationInterface;
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
@@ -15,14 +15,8 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
 
-/**
- * Class TransactionsCollection
- */
 class TransactionsCollection extends Collection implements SearchResultInterface
 {
-    /**
-     * Transaction maximum count
-     */
     const TRANSACTION_MAXIMUM_COUNT = 100;
 
     /**

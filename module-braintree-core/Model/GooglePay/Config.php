@@ -1,17 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Model\GooglePay;
+namespace PayPal\Braintree\Model\GooglePay;
 
-use Magento\Braintree\Model\Adminhtml\Source\GooglePayBtnColor;
+use PayPal\Braintree\Model\Adminhtml\Source\GooglePayBtnColor;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-/**
- * Class Config
- * @package Magento\Braintree\Model\GooglePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
     const KEY_ACTIVE = 'active';
@@ -19,20 +14,20 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_BTN_COLOR = 'btn_color';
 
     /**
-     * @var \Magento\Braintree\Gateway\Config\Config
+     * @var \PayPal\Braintree\Gateway\Config\Config
      */
     protected $braintreeConfig;
 
     /**
      * Config constructor.
      * @param ScopeConfigInterface $scopeConfig
-     * @param \Magento\Braintree\Gateway\Config\Config $braintreeConfig
+     * @param \PayPal\Braintree\Gateway\Config\Config $braintreeConfig
      * @param null $methodCode
      * @param string $pathPattern
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        \Magento\Braintree\Gateway\Config\Config $braintreeConfig,
+        \PayPal\Braintree\Gateway\Config\Config $braintreeConfig,
         $methodCode = null,
         $pathPattern = \Magento\Payment\Gateway\Config\Config::DEFAULT_PATH_PATTERN
     ) {

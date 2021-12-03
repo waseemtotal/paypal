@@ -1,20 +1,15 @@
 <?php
 
-namespace Magento\Braintree\Controller\Adminhtml\Configuration;
+namespace PayPal\Braintree\Controller\Adminhtml\Configuration;
 
 use Braintree\Configuration;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Config\Config;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Braintree\Model\Adminhtml\Source\Environment;
+use PayPal\Braintree\Model\Adminhtml\Source\Environment;
 
-/**
- * Class Validate
- * @package Magento\Braintree\Controller\Adminhtml\Payment
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Validate extends Action
 {
     const ADMIN_RESOURCE = 'Magento_Config::config';
@@ -48,6 +43,7 @@ class Validate extends Action
         $environment = $this->getRequest()->getParam('environment');
 
         if (false !== strpos($publicKey, '*')) {
+
             if ($environment === Environment::ENVIRONMENT_SANDBOX) {
                 $publicKey = $this->config->getValue(Config::KEY_SANDBOX_PUBLIC_KEY, $storeId);
             } else {
@@ -66,7 +62,7 @@ class Validate extends Action
         $response = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         try {
-            Configuration::environment($environment);
+            Configuration::environment($this->getRequest()->getParam('environment'));
             Configuration::merchantId($this->getRequest()->getParam('merchant_id'));
             Configuration::publicKey($publicKey);
             Configuration::privateKey($privateKey);

@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Adapter;
+namespace PayPal\Braintree\Model\Adapter;
 
 use Braintree\ClientToken;
 use Braintree\Configuration;
@@ -17,16 +17,13 @@ use Braintree\Result\Error;
 use Braintree\Result\Successful;
 use Braintree\Transaction;
 use Exception;
-use Magento\Braintree\Gateway\Config\Config;
-use Magento\Braintree\Model\Adminhtml\Source\Environment;
-use Magento\Braintree\Model\StoreConfigResolver;
+use PayPal\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Model\Adminhtml\Source\Environment;
+use PayPal\Braintree\Model\StoreConfigResolver;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class BraintreeAdapter
- */
 class BraintreeAdapter
 {
     /**

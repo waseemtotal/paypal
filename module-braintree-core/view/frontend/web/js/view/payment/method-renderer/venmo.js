@@ -4,10 +4,9 @@ define(
         'braintree',
         'braintreeDataCollector',
         'braintreeVenmo',
-        'Magento_Braintree/js/form-builder',
+        'PayPal_Braintree/js/form-builder',
         'Magento_Ui/js/model/messageList',
         'Magento_Checkout/js/model/full-screen-loader',
-        'Magento_Checkout/js/model/payment/additional-validators',
         'mage/translate'
     ],
     function (
@@ -18,7 +17,6 @@ define(
         formBuilder,
         messageList,
         fullScreenLoader,
-        additionalValidators,
         $t
     ) {
         'use strict';
@@ -27,16 +25,12 @@ define(
             defaults: {
                 deviceData: null,
                 paymentMethodNonce: null,
-                template: 'Magento_Braintree/payment/venmo',
+                template: 'PayPal_Braintree/payment/venmo',
                 venmoInstance: null
             },
 
             clickVenmoBtn: function () {
                 var self = this;
-
-                if (!additionalValidators.validate()) {
-                    return false;
-                }
 
                 if (!this.venmoInstance) {
                     this.setErrorMsg($t('Venmo not initialized, please try reloading.'));
@@ -125,16 +119,14 @@ define(
                         // callback from collectDeviceData
                         venmo.create({
                             client: clientInstance,
-                            allowDesktop: true,
                             allowNewBrowserTab: false
                         }, function (venmoErr, venmoInstance) {
-                            if (venmoErr) {
-                                self.setErrorMsg($t('Error initializing Venmo: %1').replace('%1', venmoErr));
+                            if (!venmoInstance.isBrowserSupported()) {
                                 return;
                             }
 
-                            if (!venmoInstance.isBrowserSupported()) {
-                                console.log('Browser does not support Venmo');
+                            if (venmoErr) {
+                                self.setErrorMsg($t('Error initializing Venmo: %1').replace('%1', venmoErr));
                                 return;
                             }
 
@@ -148,6 +140,10 @@ define(
 
             isAllowed: function () {
                 return window.checkoutConfig.payment[this.getCode()].isAllowed;
+            },
+
+            isBrowserSupported: function () {
+                return venmo.isBrowserSupported();
             },
 
             setErrorMsg: function (message) {

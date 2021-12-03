@@ -3,10 +3,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Gateway\Config;
+namespace PayPal\Braintree\Test\Unit\Gateway\Config;
 
-use Magento\Braintree\Gateway\Config\CanVoidHandler;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Config\CanVoidHandler;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Sales\Model\Order\Payment;
@@ -28,11 +28,17 @@ class CanVoidHandlerTest extends \PHPUnit\Framework\TestCase
             ->method('readPayment')
             ->willReturn($paymentDO);
 
-        $paymentMock = $this->createMock(InfoInterface::class);
+        $paymentMock = $this->getMockBuilder(Payment::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $paymentDO->expects(static::once())
             ->method('getPayment')
             ->willReturn($paymentMock);
+
+        $paymentMock->expects(static::any())
+            ->method('getAmountPaid')
+            ->willReturn(1.00);
 
         $voidHandler = new CanVoidHandler($subjectReader);
 
@@ -62,7 +68,7 @@ class CanVoidHandlerTest extends \PHPUnit\Framework\TestCase
             ->method('getPayment')
             ->willReturn($paymentMock);
 
-        $paymentMock->expects(static::once())
+        $paymentMock->expects(static::any())
             ->method('getAmountPaid')
             ->willReturn(1.00);
 

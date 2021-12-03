@@ -3,18 +3,14 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Ui\PayPal;
+namespace PayPal\Braintree\Model\Ui\PayPal;
 
-use Magento\Braintree\Gateway\Config\PayPal\Config;
-use Magento\Braintree\Gateway\Config\PayPalCredit\Config as CreditConfig;
-use Magento\Braintree\Gateway\Config\PayPalPayLater\Config as PayLaterConfig;
+use PayPal\Braintree\Gateway\Config\PayPal\Config;
+use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as CreditConfig;
+use PayPal\Braintree\Gateway\Config\PayPalPayLater\Config as PayLaterConfig;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Locale\ResolverInterface;
 
-/**
- * Class ConfigProvider
- * @package Magento\Braintree\Model\Ui\PayPal
- */
 class ConfigProvider implements ConfigProviderInterface
 {
     const PAYPAL_CODE = 'braintree_paypal';
@@ -68,10 +64,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig(): array
     {
-        $locale = $this->resolver->getLocale();
-        if (in_array($locale, ['nb_NO', 'nn_NO'])) {
-            $locale = 'no_NO';
-        }
         return [
             'payment' => [
                 self::PAYPAL_CODE => [
@@ -79,8 +71,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'title' => $this->config->getTitle(),
                     'isAllowShippingAddressOverride' => $this->config->isAllowToEditShippingAddress(),
                     'merchantName' => $this->config->getMerchantName(),
-                    'merchantCountry' => $this->config->getMerchantCountry(),
-                    'locale' => $locale,
+                    'locale' => $this->resolver->getLocale(),
                     'paymentAcceptanceMarkSrc' =>
                         'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png',
                     'vaultCode' => self::PAYPAL_VAULT_CODE,
@@ -89,8 +80,7 @@ class ConfigProvider implements ConfigProviderInterface
                         'shape' => $this->config->getButtonShape(Config::BUTTON_AREA_CHECKOUT),
                         'size' => $this->config->getButtonSize(Config::BUTTON_AREA_CHECKOUT),
                         'color' => $this->config->getButtonColor(Config::BUTTON_AREA_CHECKOUT)
-                    ],
-                    'isRequiredBillingAddress' => $this->config->isRequiredBillingAddress()
+                    ]
                 ],
 
                 self::PAYPAL_CREDIT_CODE => [
@@ -98,8 +88,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'title' => __('PayPal Credit'),
                     'isAllowShippingAddressOverride' => $this->config->isAllowToEditShippingAddress(),
                     'merchantName' => $this->config->getMerchantName(),
-                    'merchantCountry' => $this->config->getMerchantCountry(),
-                    'locale' => $locale,
+                    'locale' => $this->resolver->getLocale(),
                     'paymentAcceptanceMarkSrc' =>
                         'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppc-acceptance-medium.png',
                     'paymentIcon' => $this->config->getPayPalIcon(),
@@ -107,8 +96,7 @@ class ConfigProvider implements ConfigProviderInterface
                         'shape' => $this->config->getButtonShape(Config::BUTTON_AREA_CHECKOUT),
                         'size' => $this->config->getButtonSize(Config::BUTTON_AREA_CHECKOUT),
                         'color' => $this->config->getButtonColor(Config::BUTTON_AREA_CHECKOUT)
-                    ],
-                    'isRequiredBillingAddress' => $this->config->isRequiredBillingAddress()
+                    ]
                 ],
 
                 self::PAYPAL_PAYLATER_CODE => [
@@ -116,8 +104,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'title' => __('PayPal PayLater'),
                     'isAllowShippingAddressOverride' => $this->config->isAllowToEditShippingAddress(),
                     'merchantName' => $this->config->getMerchantName(),
-                    'merchantCountry' => $this->config->getMerchantCountry(),
-                    'locale' => $locale,
+                    'locale' => $this->resolver->getLocale(),
                     'paymentAcceptanceMarkSrc' =>
                         'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppc-acceptance-medium.png',
                     'paymentIcon' => $this->config->getPayPalIcon(),
@@ -126,9 +113,9 @@ class ConfigProvider implements ConfigProviderInterface
                         'shape' => $this->config->getButtonShape(Config::BUTTON_AREA_CHECKOUT),
                         'size' => $this->config->getButtonSize(Config::BUTTON_AREA_CHECKOUT),
                         'color' => $this->config->getButtonColor(Config::BUTTON_AREA_CHECKOUT)
-                    ],
-                    'isRequiredBillingAddress' => $this->config->isRequiredBillingAddress()
+                    ]
                 ]
+
             ]
         ];
     }

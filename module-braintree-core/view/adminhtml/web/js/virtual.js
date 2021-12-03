@@ -10,7 +10,7 @@ define([
     'Magento_Ui/js/modal/alert',
     'Magento_Ui/js/lib/view/utils/dom-observer',
     'mage/translate',
-    'Magento_Braintree/js/validator',
+    'PayPal_Braintree/js/validator',
     'braintree',
     'braintreeHostedFields'
 ], function ($, Class, alert, domObserver, $t, validator, client, hostedFields) {
@@ -61,6 +61,9 @@ define([
                     authorization: self.clientToken
                 }, function (clientErr, clientInstance) {
                     if (clientErr) {
+                        alert({
+                            content: $t('Please configure your Braintree Payments account in order to use the virtual terminal.')
+                        });
                         console.error('Error!', clientErr);
                         return self.error(response.clientErr);
                     }

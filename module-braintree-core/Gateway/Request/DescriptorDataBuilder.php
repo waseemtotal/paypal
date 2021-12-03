@@ -3,14 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use Magento\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Config\Config;
 
-/**
- * Class DescriptorDataBuilder
- */
 class DescriptorDataBuilder implements BuilderInterface
 {
     /**

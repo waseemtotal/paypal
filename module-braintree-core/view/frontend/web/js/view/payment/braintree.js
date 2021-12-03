@@ -17,13 +17,14 @@ define(
 
         let config = window.checkoutConfig.payment,
             braintreeType = 'braintree',
-            payPalType = 'braintree_paypal';
+            payPalType = 'braintree_paypal',
+            braintreeAchDirectDebit = 'braintree_ach_direct_debit';
 
         if (config[braintreeType].isActive) {
             rendererList.push(
                 {
                     type: braintreeType,
-                    component: 'Magento_Braintree/js/view/payment/method-renderer/hosted-fields'
+                    component: 'PayPal_Braintree/js/view/payment/method-renderer/hosted-fields'
                 }
             );
         }
@@ -32,7 +33,7 @@ define(
             rendererList.push(
                 {
                     type: payPalType,
-                    component: 'Magento_Braintree/js/view/payment/method-renderer/paypal'
+                    component: 'PayPal_Braintree/js/view/payment/method-renderer/paypal'
                 }
             );
         }
@@ -40,15 +41,23 @@ define(
         rendererList.push(
             {
                 type: 'braintree_venmo',
-                component: 'Magento_Braintree/js/view/payment/method-renderer/venmo'
-            },
-            {
-                type: 'braintree_ach_direct_debit',
-                component: 'Magento_Braintree/js/view/payment/method-renderer/ach'
-            },
+                component: 'PayPal_Braintree/js/view/payment/method-renderer/venmo'
+            }
+        );
+
+        if (config[braintreeAchDirectDebit].isActive) {
+            rendererList.push(
+                {
+                    type: braintreeAchDirectDebit,
+                    component: 'PayPal_Braintree/js/view/payment/method-renderer/ach'
+                }
+            );
+        }
+
+        rendererList.push(
             {
                 type: 'braintree_local_payment',
-                component: 'Magento_Braintree/js/view/payment/method-renderer/lpm'
+                component: 'PayPal_Braintree/js/view/payment/method-renderer/lpm'
             }
         );
 

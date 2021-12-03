@@ -1,22 +1,17 @@
 <?php
 
-namespace Magento\Braintree\Controller\Adminhtml\Virtual;
+namespace PayPal\Braintree\Controller\Adminhtml\Virtual;
 
 use Braintree\Result\Error;
 use Braintree\Result\Successful;
 use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
-use Magento\Braintree\Gateway\Request\ChannelDataBuilder;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Gateway\Request\ChannelDataBuilder;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * Class Save
- * @package Magento\Braintree\Controller\Adminhtml\Virtual
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Save extends Action
 {
     const ADMIN_RESOURCE = 'Magento_Sales::create';

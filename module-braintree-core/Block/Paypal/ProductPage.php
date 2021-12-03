@@ -1,12 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Block\Paypal;
+namespace PayPal\Braintree\Block\Paypal;
 
-use Magento\Braintree\Gateway\Config\Config as BraintreeConfig;
-use Magento\Braintree\Gateway\Config\PayPal\Config;
-use Magento\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
-use Magento\Braintree\Gateway\Config\PayPalPayLater\Config as PayPalPayLaterConfig;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Gateway\Config\Config as BraintreeConfig;
+use PayPal\Braintree\Gateway\Config\PayPal\Config;
+use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
+use PayPal\Braintree\Gateway\Config\PayPalPayLater\Config as PayPalPayLaterConfig;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Checkout\Model\Session;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
@@ -16,23 +16,13 @@ use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\Payment\Model\MethodInterface;
-use Magento\Directory\Model\Currency;
 
-/**
- * Class ProductPage
- * @package Magento\Braintree\Block\Paypal
- */
 class ProductPage extends Button
 {
     /**
      * @var Registry
      */
     protected $registry;
-
-    /**
-     * @var Currency
-     */
-    protected $currency;
 
     /**
      * ProductPage constructor.
@@ -46,7 +36,6 @@ class ProductPage extends Button
      * @param ConfigProvider $configProvider
      * @param MethodInterface $payment
      * @param Registry $registry
-     * @param Currency $currency
      * @param array $data
      */
     public function __construct(
@@ -60,7 +49,6 @@ class ProductPage extends Button
         ConfigProvider $configProvider,
         MethodInterface $payment,
         Registry $registry,
-        Currency $currency,
         array $data = []
     ) {
         parent::__construct(
@@ -77,7 +65,6 @@ class ProductPage extends Button
         );
 
         $this->registry = $registry;
-        $this->currency = $currency;
     }
 
     /**
@@ -102,15 +89,6 @@ class ProductPage extends Button
     }
 
     /**
-     * @return string
-     * @throws NoSuchEntityException
-     */
-    public function getCurrencySymbol(): string
-    {
-        return $this->currency->load($this->getCurrency())->getCurrencySymbol();
-    }
-
-    /**
      * @return float
      */
     public function getAmount(): float
@@ -119,14 +97,15 @@ class ProductPage extends Button
         $product = $this->registry->registry('product');
         if ($product) {
             if ($product->getTypeId() === Configurable::TYPE_CODE) {
-                return $product->getFinalPrice();
+                $price = $product->getPriceInfo()->getPrice('regular_price')->getAmount();
+                return $price->getBaseAmount();
             }
             if ($product->getTypeId() === Grouped::TYPE_CODE) {
                 $groupedProducts = $product->getTypeInstance()->getAssociatedProducts($product);
                 return $groupedProducts[0]->getPrice();
             }
 
-            return $product->getPriceInfo()->getPrice('final_price')->getAmount()->getValue();
+            return $product->getFinalPrice();
         }
 
         return 100; // TODO There must be a better return value than this?

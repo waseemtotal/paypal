@@ -1,17 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
-/**
- * Class TransactionSourceDataBuilder
- * @package Magento\Braintree\Gateway\Request
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class TransactionSourceDataBuilder implements BuilderInterface
 {
     const TRANSACTION_SOURCE = 'transactionSource';

@@ -1,6 +1,6 @@
 <?php
 
-namespace Magento\Braintree\Gateway\Config\PayPalPayLater;
+namespace PayPal\Braintree\Gateway\Config\PayPalPayLater;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Payment\Gateway\ConfigInterface;
@@ -133,12 +133,12 @@ class Config implements ConfigInterface
         $paypalPayLaterMessageActive = $this->getConfigValue("payment/braintree_paypal/message_" . $type . "_enable");
 
         // If PayPal or PayPal Pay Later is disabled in the admin
-        if (!$paypalActive || !$paypalPayLaterMessageActive || $this->IsPayPalVaultActive()) {
-
+        if (!$paypalActive || !$paypalPayLaterActive || !$paypalPayLaterMessageActive || $this->IsPayPalVaultActive()) {
             return false;
         }
 
-        if (!in_array($this->getMerchantCountry(), ['GB','FR','US','DE', 'AU'])) {
+        // Only allowed on US
+        if (!$this->isUS()) {
             return false;
         }
 
@@ -198,6 +198,4 @@ class Config implements ConfigInterface
     {
         return $this->getConfigValue('payment/braintree_paypal_vault/active');
     }
-
-
 }

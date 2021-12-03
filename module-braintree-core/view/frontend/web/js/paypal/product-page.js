@@ -1,5 +1,5 @@
 define(
-    ['Magento_Braintree/js/paypal/button', 'jquery'],
+    ['PayPal_Braintree/js/paypal/button', 'jquery'],
     function (button, $) {
         'use strict';
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Test\Console;
+namespace PayPal\Braintree\Test\Console;
 
-use Magento\Braintree\Console\VaultMigrate;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use Magento\Store\Model\StoreManagerInterface;
+use PayPal\Braintree\Console\VaultMigrate;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\ResourceConnection\ConnectionFactory;
 use Magento\Framework\Encryption\EncryptorInterface;
@@ -16,9 +17,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Tester\CommandTester;
 
-/**
- * Class VaultMigrateTest
- */
 class VaultMigrateTest extends TestCase
 {
     /**
@@ -50,11 +48,15 @@ class VaultMigrateTest extends TestCase
      */
     private $jsonMock;
     /**
+     * @var MockObject|StoreManagerInterface
+     */
+    private $storeManagerMock;
+    /**
      * @var MockObject|VaultMigrate
      */
     private $command;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->connectionFactoryMock = $this->createMock(ConnectionFactory::class);
         $this->braintreeAdapterMock = $this->createMock(BraintreeAdapter::class);
@@ -63,6 +65,7 @@ class VaultMigrateTest extends TestCase
         $this->paymentTokenRepositoryMock = $this->createMock(PaymentTokenRepositoryInterface::class);
         $this->encryptorMock = $this->createMock(EncryptorInterface::class);
         $this->jsonMock = $this->createMock(SerializerInterface::class);
+        $this->storeManagerMock = $this->createMock(StoreManagerInterface::class);
 
         $this->command = new VaultMigrate(
             $this->connectionFactoryMock,
@@ -71,7 +74,8 @@ class VaultMigrateTest extends TestCase
             $this->paymentTokenFactoryMock,
             $this->paymentTokenRepositoryMock,
             $this->encryptorMock,
-            $this->jsonMock
+            $this->jsonMock,
+            $this->storeManagerMock
         );
     }
 

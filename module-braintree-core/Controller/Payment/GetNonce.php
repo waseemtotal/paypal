@@ -3,9 +3,9 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Controller\Payment;
+namespace PayPal\Braintree\Controller\Payment;
 
-use Magento\Braintree\Gateway\Command\GetPaymentNonceCommand;
+use PayPal\Braintree\Gateway\Command\GetPaymentNonceCommand;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
@@ -14,10 +14,6 @@ use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Webapi\Exception;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class GetNonce
- * @package Magento\Braintree\Controller\Payment
- */
 class GetNonce extends Action
 {
     /**

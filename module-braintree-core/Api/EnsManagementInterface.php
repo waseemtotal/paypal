@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Api;
+namespace PayPal\Braintree\Api;
 
 use Magento\Sales\Api\Data\OrderInterface;
 use SimpleXMLElement;

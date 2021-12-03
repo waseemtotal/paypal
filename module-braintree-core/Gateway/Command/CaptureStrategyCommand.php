@@ -3,11 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Command;
+namespace PayPal\Braintree\Gateway\Command;
 
 use Braintree\Transaction;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
-use Magento\Braintree\Model\Adapter\BraintreeSearchAdapter;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Model\Adapter\BraintreeSearchAdapter;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\NotFoundException;
@@ -15,15 +15,13 @@ use Magento\Payment\Gateway\Command\CommandPoolInterface;
 use Magento\Payment\Gateway\CommandInterface;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Helper\ContextHelper;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\TransactionRepositoryInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
-use Magento\Braintree\Model\Ui\PayPal\ConfigProvider as PaypalConfigProvider;
+use PayPal\Braintree\Model\Ui\PayPal\ConfigProvider as PaypalConfigProvider;
 
-/**
- * Class CaptureStrategyCommand
- * @SuppressWarnings(PHPMD)
+/** @SuppressWarnings(PHPMD)
  */
 class CaptureStrategyCommand implements CommandInterface
 {

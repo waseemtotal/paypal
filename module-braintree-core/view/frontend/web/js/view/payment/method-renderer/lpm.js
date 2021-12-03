@@ -5,7 +5,7 @@ define(
         'jquery',
         'braintree',
         'braintreeLpm',
-        'Magento_Braintree/js/form-builder',
+        'PayPal_Braintree/js/form-builder',
         'Magento_Ui/js/model/messageList',
         'Magento_Checkout/js/action/select-billing-address',
         'Magento_Checkout/js/model/full-screen-loader',
@@ -36,7 +36,7 @@ define(
                 code: 'braintree_local_payment',
                 paymentMethodsAvailable: ko.observable(false),
                 paymentMethodNonce: null,
-                template: 'Magento_Braintree/payment/lpm'
+                template: 'PayPal_Braintree/payment/lpm'
             },
 
             clickPaymentBtn: function (method) {
@@ -55,8 +55,7 @@ define(
                         }
 
                         lpm.create({
-                            client: clientInstance,
-                            merchantAccountId: self.getMerchantAccountId()
+                            client: clientInstance
                         }, function (lpmError, lpmInstance) {
                             if (lpmError) {
                                 self.setErrorMsg(lpmError);
@@ -150,13 +149,13 @@ define(
                 return quote.totals()['base_currency_code'];
             },
 
-            getCustomerDetails: function () {
+            getCustomerDetails: function() {
                 var billingAddress = quote.billingAddress();
                 return {
                     firstName: billingAddress.firstname,
                     lastName: billingAddress.lastname,
                     phone: billingAddress.telephone,
-                    email: typeof quote.guestEmail === 'string' ? quote.guestEmail : window.checkoutConfig.customerData.email
+                    email: typeof quote.guestEmail === 'string' ? quote.guestEmail : billingAddress.email
                 }
             },
 
@@ -173,11 +172,11 @@ define(
                 return data;
             },
 
-            getMerchantAccountId: function () {
-                return window.checkoutConfig.payment[this.getCode()].merchantAccountId;
+            getMerchantId: function () {
+                return window.checkoutConfig.payment[this.getCode()].merchantId;
             },
 
-            getPaymentMethod: function (method) {
+            getPaymentMethod: function(method) {
                 var methods = this.getPaymentMethods();
 
                 for (var i = 0; i < methods.length; i++) {
@@ -187,7 +186,7 @@ define(
                 }
             },
 
-            getPaymentMethods: function () {
+            getPaymentMethods: function() {
                 return window.checkoutConfig.payment[this.getCode()].allowedMethods;
             },
 
@@ -195,7 +194,7 @@ define(
                 return window.checkoutConfig.payment[this.getCode()].paymentIcons;
             },
 
-            getTitle: function () {
+            getTitle: function() {
                 return window.checkoutConfig.payment[this.getCode()].title;
             },
 
@@ -204,7 +203,7 @@ define(
                 return this;
             },
 
-            isActive: function () {
+            isActive: function() {
                 var address = quote.billingAddress() || quote.shippingAddress();
                 var methods = this.getPaymentMethods();
 
@@ -229,7 +228,7 @@ define(
                 var quoteCurrency = quote.totals()['base_currency_code'];
                 var paymentMethodDetails = this.getPaymentMethod(method);
 
-                if ((countryId !== 'GB' && paymentMethodDetails.countries.includes(countryId) && (quoteCurrency === 'EUR' || quoteCurrency === 'PLN')) || (countryId === 'GB' && paymentMethodDetails.countries.includes(countryId) && quoteCurrency === 'GBP')) {
+                if (paymentMethodDetails.countries.includes(countryId) && quoteCurrency === 'EUR') {
                     this.paymentMethodsAvailable(true);
                     return true;
                 }

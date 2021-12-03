@@ -3,18 +3,14 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Config\PayPal;
+namespace PayPal\Braintree\Gateway\Config\PayPal;
 
-use Magento\Store\Model\ScopeInterface;
-use Magento\Braintree\Model\Config\Source\Color;
-use Magento\Braintree\Model\Config\Source\Shape;
-use Magento\Braintree\Model\Config\Source\Size;
+use PayPal\Braintree\Model\Config\Source\Color;
+use PayPal\Braintree\Model\Config\Source\Shape;
+use PayPal\Braintree\Model\Config\Source\Size;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Payment\Model\CcConfig;
 
-/**
- * Class Config
- */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
     const KEY_ACTIVE = 'active';
@@ -59,11 +55,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     private $shapeConfigSource;
 
     /**
-     * @var \PayPal\Braintree\Model\Config\Source\Shape
-     */
-    private $scopeConfigResolver;
-
-    /**
      * Config constructor.
      * @param ScopeConfigInterface $scopeConfig
      * @param CcConfig $ccConfig
@@ -83,7 +74,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         $pathPattern = self::DEFAULT_PATH_PATTERN
     ) {
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
-        $this->scopeConfigResolver = $scopeConfig;
         $this->ccConfig = $ccConfig;
         $this->sizeConfigSource = $sizeConfigSource;
         $this->colorConfigSource = $colorConfigSource;
@@ -136,20 +126,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isRequiredBillingAddress(): string
     {
         return $this->getValue(self::KEY_REQUIRE_BILLING_ADDRESS);
-    }
-
-    /**
-     * Get Merchant country
-     *
-     * @param int $storeId
-     * @return mixed|null
-     */
-    public function getMerchantCountry()
-    {
-        return $this->scopeConfigResolver->getValue(
-            'paypal/general/merchant_country',
-            ScopeInterface::SCOPE_STORE
-        );
     }
 
     /**
@@ -239,7 +215,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getPayPalIcon(): array
     {
         if (empty($this->icon)) {
-            $asset = $this->ccConfig->createAsset('Magento_Braintree::images/paypal.png');
+            $asset = $this->ccConfig->createAsset('PayPal_Braintree::images/paypal.png');
             list($width, $height) = getimagesize($asset->getSourceFile());
             $this->icon = [
                 'url' => $asset->getUrl(),

@@ -4,10 +4,10 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\Braintree\Block\Paypal;
+namespace PayPal\Braintree\Block\Paypal;
 
-use Magento\Braintree\Gateway\Config\PayPal\Config;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Gateway\Config\PayPal\Config;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Catalog\Block\ShortcutInterface;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\InputException;
@@ -16,17 +16,14 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
-use Magento\Braintree\Gateway\Config\Config as BraintreeConfig;
-use Magento\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
-use Magento\Braintree\Gateway\Config\PayPalPayLater\Config as PayPalPayLaterConfig;
+use PayPal\Braintree\Gateway\Config\Config as BraintreeConfig;
+use PayPal\Braintree\Gateway\Config\PayPalCredit\Config as PayPalCreditConfig;
+use PayPal\Braintree\Gateway\Config\PayPalPayLater\Config as PayPalPayLaterConfig;
 
-/**
- * Class Button
- * @package Magento\Braintree\Block\Paypal
- */
 class Button extends Template implements ShortcutInterface
 {
     const ALIAS_ELEMENT_INDEX = 'alias';
+
     const BUTTON_ELEMENT_INDEX = 'button_id';
 
     /**
@@ -63,6 +60,11 @@ class Button extends Template implements ShortcutInterface
      * @var PayPalCreditConfig $payPalCreditConfig
      */
     private $payPalCreditConfig;
+
+    /**
+     * @var PayPalPayLaterConfig $payPalPayLaterConfig
+     */
+    private $payPalPayLaterConfig;
 
     /**
      * Button constructor
@@ -205,6 +207,7 @@ class Button extends Template implements ShortcutInterface
         return $this->payPalPayLaterConfig->IsPayPalVaultActive();
     }
 
+
     /**
      * @return string|null
      */
@@ -282,21 +285,5 @@ class Button extends Template implements ShortcutInterface
     public function getExtraClassname(): string
     {
         return $this->getIsCart() ? 'cart' : 'minicart';
-    }
-
-    /**
-     * @return bool
-     */
-    public function isRequiredBillingAddress(): bool
-    {
-        return (bool) $this->config->isRequiredBillingAddress();
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getMerchantCountry()
-    {
-        return $this->payPalPayLaterConfig->getMerchantCountry();
     }
 }

@@ -3,18 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Ui\Adminhtml;
+namespace PayPal\Braintree\Model\Ui\Adminhtml;
 
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterfaceFactory;
 use Magento\Vault\Model\Ui\TokenUiComponentProviderInterface;
 
-/**
- * Class TokenProvider
- */
 class TokenUiComponentProvider implements TokenUiComponentProviderInterface
 {
 
@@ -53,7 +50,7 @@ class TokenUiComponentProvider implements TokenUiComponentProviderInterface
                     'nonceUrl' => $this->getNonceRetrieveUrl(),
                     TokenUiComponentProviderInterface::COMPONENT_DETAILS => $data,
                     TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH => $paymentToken->getPublicHash(),
-                    'template' => 'Magento_Braintree::form/vault.phtml'
+                    'template' => 'PayPal_Braintree::form/vault.phtml'
                 ],
                 'name' => Template::class
             ]

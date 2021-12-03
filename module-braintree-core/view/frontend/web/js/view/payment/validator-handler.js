@@ -8,7 +8,7 @@
 define([
     'jquery',
     'Magento_Ui/js/model/messageList',
-    'Magento_Braintree/js/view/payment/3d-secure',
+    'PayPal_Braintree/js/view/payment/3d-secure',
     'Magento_Checkout/js/model/full-screen-loader'
 ], function ($, globalMessageList, verify3DSecure, fullScreenLoader) {
     'use strict';

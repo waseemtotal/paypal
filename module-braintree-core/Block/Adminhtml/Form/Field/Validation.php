@@ -1,17 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Block\Adminhtml\Form\Field;
+namespace PayPal\Braintree\Block\Adminhtml\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Model\Store;
 
-/**
- * Class Validation
- * @package Magento\Braintree\Block\Adminhtml\Form\Field
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Validation extends Field
 {
     /**

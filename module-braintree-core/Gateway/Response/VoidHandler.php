@@ -3,15 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Response;
+namespace PayPal\Braintree\Gateway\Response;
 
 use Braintree\Transaction;
 use Magento\Sales\Model\Order\Payment;
 
-/**
- * Class VoidHandler
- * @package Magento\Braintree\Gateway\Response
- */
 class VoidHandler extends TransactionIdHandler
 {
     /**

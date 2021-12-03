@@ -1,13 +1,8 @@
 <?php
 
-namespace Magento\Braintree\Model\ApplePay;
+namespace PayPal\Braintree\Model\ApplePay;
 
-/**
- * Class PaymentDetailsHandler
- * @package Magento\Braintree\Model\ApplePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
-class PaymentDetailsHandler extends \Magento\Braintree\Gateway\Response\PaymentDetailsHandler
+class PaymentDetailsHandler extends \PayPal\Braintree\Gateway\Response\PaymentDetailsHandler
 {
     /**
      * List of additional details

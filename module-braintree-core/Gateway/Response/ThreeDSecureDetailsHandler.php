@@ -3,18 +3,18 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Response;
+namespace PayPal\Braintree\Gateway\Response;
 
 use Braintree\ThreeDSecureInfo;
 use Braintree\Transaction;
 use Magento\Payment\Gateway\Helper\ContextHelper;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 
 /**
  * Class ThreeDSecureDetailsHandler
- * @package Magento\Braintree\Gateway\Response
+ * @package PayPal\Braintree\Gateway\Response
  */
 class ThreeDSecureDetailsHandler implements HandlerInterface
 {

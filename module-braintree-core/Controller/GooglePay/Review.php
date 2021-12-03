@@ -3,21 +3,18 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Controller\GooglePay;
+namespace PayPal\Braintree\Controller\GooglePay;
 
 use Exception;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Braintree\Model\GooglePay\Config;
-use Magento\Braintree\Model\GooglePay\Helper\QuoteUpdater;
+use PayPal\Braintree\Model\GooglePay\Config;
+use PayPal\Braintree\Model\GooglePay\Helper\QuoteUpdater;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\Page;
 
-/**
- * Class Review
- */
 class Review extends AbstractAction
 {
     /**
@@ -76,7 +73,7 @@ class Review extends AbstractAction
             /** @var Page $resultPage */
             $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
-            /** @var \Magento\Braintree\Block\GooglePay\Checkout\Review $reviewBlock */
+            /** @var \PayPal\Braintree\Block\GooglePay\Checkout\Review $reviewBlock */
             $reviewBlock = $resultPage->getLayout()->getBlock('braintree.googlepay.review');
 
             $reviewBlock->setQuote($quote);

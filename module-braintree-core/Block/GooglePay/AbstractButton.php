@@ -1,8 +1,8 @@
 <?php
 
-namespace Magento\Braintree\Block\GooglePay;
+namespace PayPal\Braintree\Block\GooglePay;
 
-use Magento\Braintree\Model\GooglePay\Auth;
+use PayPal\Braintree\Model\GooglePay\Auth;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -10,11 +10,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 
-/**
- * Class AbstractButton
- * @package Magento\Braintree\Model\GooglePay
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+/***/
 abstract class AbstractButton extends Template
 {
     /**

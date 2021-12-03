@@ -3,18 +3,15 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Model\Ui\Adminhtml;
+namespace PayPal\Braintree\Test\Unit\Model\Ui\Adminhtml;
 
-use Magento\Braintree\Model\Ui\Adminhtml\TokenUiComponentProvider;
+use PayPal\Braintree\Model\Ui\Adminhtml\TokenUiComponentProvider;
 use Magento\Framework\UrlInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterfaceFactory;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject as MockObject;
 
-/**
- * Class TokenUiComponentProviderTest
- */
 class TokenUiComponentProviderTest extends \PHPUnit\Framework\TestCase
 {
 
@@ -33,7 +30,7 @@ class TokenUiComponentProviderTest extends \PHPUnit\Framework\TestCase
      */
     private $tokenUiComponentProvider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->componentFactory = $this->getMockBuilder(TokenUiComponentInterfaceFactory::class)
             ->disableOriginalConstructor()
@@ -49,7 +46,7 @@ class TokenUiComponentProviderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Model\Ui\Adminhtml\TokenUiComponentProvider::getComponentForToken
+     * @covers \PayPal\Braintree\Model\Ui\Adminhtml\TokenUiComponentProvider::getComponentForToken
      */
     public function testGetComponentForToken()
     {

@@ -12,18 +12,13 @@
  * Time: 13:05
  */
 
-namespace Magento\Braintree\Plugin;
+namespace PayPal\Braintree\Plugin;
 
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class DeleteStoredPaymentPlugin
- * @package Magento\Braintree\Plugin
- * @author Paul Canning <paul.canning@gene.co.uk>
- */
 class DeleteStoredPaymentPlugin
 {
     /**

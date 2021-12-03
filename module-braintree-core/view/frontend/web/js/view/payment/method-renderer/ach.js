@@ -6,7 +6,7 @@ define(
         'braintree',
         'braintreeDataCollector',
         'braintreeAch',
-        'Magento_Braintree/js/form-builder',
+        'PayPal_Braintree/js/form-builder',
         'Magento_Ui/js/model/messageList',
         'Magento_Checkout/js/action/select-billing-address',
         'Magento_Checkout/js/model/full-screen-loader',
@@ -33,7 +33,7 @@ define(
             defaults: {
                 deviceData: null,
                 paymentMethodNonce: null,
-                template: 'Magento_Braintree/payment/ach',
+                template: 'PayPal_Braintree/payment/ach',
                 achInstance: null,
                 routingNumber: ko.observable(""),
                 accountNumber: ko.observable(""),

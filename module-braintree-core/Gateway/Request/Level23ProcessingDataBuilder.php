@@ -1,21 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Braintree\TransactionLineItem;
 use League\ISO3166\ISO3166;
-use Magento\Braintree\Gateway\Data\Order\OrderAdapter;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Data\Order\OrderAdapter;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class Level23ProcessingDataBuilder
- * @package Magento\Braintree\Gateway\Request
+ * @package PayPal\Braintree\Gateway\Request
  */
 class Level23ProcessingDataBuilder implements BuilderInterface
 {
@@ -97,16 +96,16 @@ class Level23ProcessingDataBuilder implements BuilderInterface
         foreach ($order->getItems() as $item) {
 
             // Skip configurable parent items and items with a base price of 0.
-            if ($item->getParentItem() || 0.0 === (float) $item->getPrice()) {
+            if ($item->getParentItem() || 0.0 === $item->getPrice()) {
                 continue;
             }
 
             // Regex to replace all unsupported characters.
             $filteredFields = preg_replace(
-                '/[^\p{M}\w\s\-.\']/u',
+                '/[^a-zA-Z0-9\s\-.\']/',
                 '',
                 [
-                    'name' => mb_substr($item->getName(), 0, 35),
+                    'name' => substr($item->getName(), 0, 35),
                     'unit_of_measure' => substr($item->getProductType(), 0, 12),
                     'sku' => substr($item->getSku(), 0, 12)
                 ]
@@ -131,7 +130,7 @@ class Level23ProcessingDataBuilder implements BuilderInterface
         }
 
         $processingData = [
-            self::KEY_PURCHASE_ORDER_NUMBER => $order->getOrderIncrementId(), // Level 2.
+            self::KEY_PURCHASE_ORDER_NUMBER => substr($order->getOrderIncrementId(), -12, 12), // Level 2.
             self::KEY_TAX_AMT => $this->numberToString($order->getBaseTaxAmount(), 2), // Level 2.
             self::KEY_DISCOUNT_AMT => $this->numberToString(abs($order->getBaseDiscountAmount()), 2), // Level 3.
             self::KEY_LINE_ITEMS => $lineItems, // Level 3.
@@ -148,9 +147,10 @@ class Level23ProcessingDataBuilder implements BuilderInterface
             // use Magento's Alpha2 code to get the Alpha3 code.
             $addressData = $this->iso3166->alpha2($address->getCountryId());
 
-            $processingData[self::KEY_SHIPPING_AMT] = $this->numberToString($payment->getShippingAmount(), 2); // Level 3.
-            $processingData[self::KEY_SHIPS_FROM_POSTAL_CODE] = $storePostalCode; // Level 3.
-            $processingData[self::KEY_SHIPPING] = [ // Level 3.
+            // Level 3.
+            $processingData[self::KEY_SHIPPING_AMT] = $this->numberToString($payment->getShippingAmount(), 2);
+            $processingData[self::KEY_SHIPS_FROM_POSTAL_CODE] = $storePostalCode;
+            $processingData[self::KEY_SHIPPING] = [
                 self::KEY_COUNTRY_CODE_ALPHA_3 => $addressData['alpha3']
             ];
         }
@@ -159,13 +159,13 @@ class Level23ProcessingDataBuilder implements BuilderInterface
     }
 
     /**
-     * @param $num
+     * @param float $num
      * @param int $precision
      * @return string
      */
     private function numberToString($num, int $precision): string
     {
-        // To counter the fact that Magento often wrongly returns a string for price values, we can cast it to a float.
+        // To counter the fact that Magento often wrongly returns a sting for price values, we can cast it to a float.
         if (is_string($num)) {
             $num = (float) $num;
         }

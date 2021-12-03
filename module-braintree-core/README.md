@@ -1,6 +1,6 @@
 # Braintree Payments
 
-Module Magento\Braintree implements integration with the Braintree payment system.
+Module PayPal\Braintree implements integration with the Braintree payment system.
 
 ## Overview
 

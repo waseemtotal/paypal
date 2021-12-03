@@ -6,7 +6,7 @@ define(
         rendererList.push(
             {
                 type: 'braintree_googlepay',
-                component: 'Magento_Braintree/js/googlepay/implementations/core-checkout/method-renderer/googlepay'
+                component: 'PayPal_Braintree/js/googlepay/implementations/core-checkout/method-renderer/googlepay'
             }
         );
 

@@ -4,21 +4,19 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\Braintree\Gateway\Http\Client;
+namespace PayPal\Braintree\Gateway\Http\Client;
 
 use Braintree\Result\Error;
 use Braintree\Result\Successful;
 use Exception;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Payment\Gateway\Http\ClientException;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class AbstractTransaction
- */
+/**/
 abstract class AbstractTransaction implements ClientInterface
 {
     /**

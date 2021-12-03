@@ -1,12 +1,10 @@
 <?php
 
-namespace Magento\Braintree\Api\Data;
+namespace PayPal\Braintree\Api\Data;
 
 /**
  * Interface TransactionDetail
- * @package Magento\Braintree\Api\Data
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
+ **/
 interface TransactionDetailDataInterface
 {
     const ENTITY_ID = 'entity_id';

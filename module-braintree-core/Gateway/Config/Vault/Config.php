@@ -1,16 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Gateway\Config\Vault;
+namespace PayPal\Braintree\Gateway\Config\Vault;
 
-use Magento\Braintree\Model\StoreConfigResolver;
+use PayPal\Braintree\Model\StoreConfigResolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-/**
- * Class Config
- */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
     const KEY_CVV = 'cvv';

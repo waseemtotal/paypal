@@ -1,17 +1,13 @@
 <?php
 
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
 use Exception;
 use Magento\Framework\App\RequestInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use Magento\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Config\Config;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class CvvDataBuilder
- * @package Magento\Braintree\Gateway\Request
- */
 class CvvDataBuilder implements BuilderInterface
 {
     /**

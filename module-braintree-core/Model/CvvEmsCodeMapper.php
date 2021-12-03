@@ -3,11 +3,11 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model;
+namespace PayPal\Braintree\Model;
 
 use InvalidArgumentException;
-use Magento\Braintree\Gateway\Response\PaymentDetailsHandler;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Gateway\Response\PaymentDetailsHandler;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Payment\Api\PaymentVerificationInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 

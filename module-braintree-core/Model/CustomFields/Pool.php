@@ -1,14 +1,9 @@
 <?php
 
-namespace Magento\Braintree\Model\CustomFields;
+namespace PayPal\Braintree\Model\CustomFields;
 
 use InvalidArgumentException;
 
-/**
- * Class Pool
- * @package Magento\Braintree\Model\CustomFields
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Pool
 {
     /**

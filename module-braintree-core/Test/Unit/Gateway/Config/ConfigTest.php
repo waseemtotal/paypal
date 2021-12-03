@@ -4,17 +4,14 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\Braintree\Test\Unit\Gateway\Config;
+namespace PayPal\Braintree\Test\Unit\Gateway\Config;
 
-use Magento\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Config\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
 
-/**
- * Class ConfigTest
- */
 class ConfigTest extends \PHPUnit\Framework\TestCase
 {
     const METHOD_CODE = 'braintree';
@@ -25,16 +22,16 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     private $model;
 
     /**
-     * @var ScopeConfigInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ScopeConfigInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     private $scopeConfigMock;
 
     /**
-     * @var Json|\PHPUnit_Framework_MockObject_MockObject
+     * @var Json|\PHPUnit\Framework\MockObject\MockObject
      */
     private $serializerMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
         $this->serializerMock = $this->createMock(Json::class);
@@ -168,7 +165,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers       \Magento\Braintree\Gateway\Config\Config::getCountryAvailableCardTypes
+     * @covers       \PayPal\Braintree\Gateway\Config\Config::getCountryAvailableCardTypes
      * @dataProvider getCountrySpecificCardTypeConfigDataProvider
      * @param string $encodedData
      * @param string|array $data
@@ -197,7 +194,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Gateway\Config\Config::isCvvEnabled
+     * @covers \PayPal\Braintree\Gateway\Config\Config::isCvvEnabled
      */
     public function testUseCvv()
     {
@@ -206,14 +203,14 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             ->with($this->getPath(Config::KEY_USE_CVV), ScopeInterface::SCOPE_STORE, null)
             ->willReturn(1);
 
-        static::assertEquals(true, $this->model->isCvvEnabled());
+        static::assertTrue($this->model->isCvvEnabled());
     }
 
     /**
      * @param mixed $data
      * @param boolean $expected
      * @dataProvider verify3DSecureDataProvider
-     * @covers \Magento\Braintree\Gateway\Config\Config::isVerify3DSecure
+     * @covers \PayPal\Braintree\Gateway\Config\Config::isVerify3DSecure
      */
     public function testIsVerify3DSecure($data, $expected)
     {
@@ -243,7 +240,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     /**
      * @param mixed $data
      * @param double $expected
-     * @covers \Magento\Braintree\Gateway\Config\Config::getThresholdAmount
+     * @covers \PayPal\Braintree\Gateway\Config\Config::getThresholdAmount
      * @dataProvider thresholdAmountDataProvider
      */
     public function testGetThresholdAmount($data, $expected)
@@ -276,7 +273,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     /**
      * @param int $value
      * @param array $expected
-     * @covers \Magento\Braintree\Gateway\Config\Config::get3DSecureSpecificCountries
+     * @covers \PayPal\Braintree\Gateway\Config\Config::get3DSecureSpecificCountries
      * @dataProvider threeDSecureSpecificCountriesDataProvider
      */
     public function testGet3DSecureSpecificCountries($value, array $expected)
@@ -308,7 +305,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Gateway\Config\Config::getDynamicDescriptors
+     * @covers \PayPal\Braintree\Gateway\Config\Config::getDynamicDescriptors
      * @param $name
      * @param $phone
      * @param $url

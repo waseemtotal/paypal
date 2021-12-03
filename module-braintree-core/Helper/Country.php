@@ -3,14 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Helper;
+namespace PayPal\Braintree\Helper;
 
 use Magento\Directory\Model\ResourceModel\Country\CollectionFactory;
-use Magento\Braintree\Model\Adminhtml\System\Config\Country as CountryConfig;
+use PayPal\Braintree\Model\Adminhtml\System\Config\Country as CountryConfig;
 
-/**
- * Class Country
- */
 class Country
 {
     /**

@@ -3,16 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Http\Client;
+namespace PayPal\Braintree\Gateway\Http\Client;
 
 use Braintree\Result\Error;
 use Braintree\Result\Successful;
-use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
+use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
 
-/**
- * Class TransactionRefund
- * @package Magento\Braintree\Gateway\Http\Client
- */
 class TransactionRefund extends AbstractTransaction
 {
     /**

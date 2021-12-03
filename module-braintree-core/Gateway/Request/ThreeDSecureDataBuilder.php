@@ -3,21 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Request;
+namespace PayPal\Braintree\Gateway\Request;
 
-use Magento\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Config\Config;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Data\OrderAdapterInterface;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Payment\Helper\Formatter;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 
-/**
- * Class ThreeDSecureDataBuilder
- * @package Magento\Braintree\Gateway\Request
- */
 class ThreeDSecureDataBuilder implements BuilderInterface
 {
     use Formatter;
@@ -55,10 +51,9 @@ class ThreeDSecureDataBuilder implements BuilderInterface
         $amount = $this->formatPrice($this->subjectReader->readAmount($buildSubject));
 
         // disable 3d secure for vault CC payment method
-        if ($paymentDO->getPayment()->getMethod() == ConfigProvider::CC_VAULT_CODE && $paymentDO->getOrder()->isMultiShipping()) {
+        if ($paymentDO->getPayment()->getMethod() == ConfigProvider::CC_VAULT_CODE && $paymentDO->getOrder()->isMultishipping()) {
             return $result;
         }
-
         if ($this->is3DSecureEnabled($paymentDO->getOrder(), $amount)) {
             $result['options']['threeDSecure'] = ['required' => true]; // 'three_d_secure' was removed in version 4.x.x
         }
@@ -66,10 +61,9 @@ class ThreeDSecureDataBuilder implements BuilderInterface
     }
 
     /**
-     * Check if 3D secure is enabled
-     *
+     * Check if 3d secure is enabled
      * @param OrderAdapterInterface $order
-     * @param $amount
+     * @param float $amount
      * @return bool
      * @throws InputException
      * @throws NoSuchEntityException

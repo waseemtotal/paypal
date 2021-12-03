@@ -3,15 +3,12 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Helper;
+namespace PayPal\Braintree\Test\Unit\Helper;
 
-use Magento\Braintree\Helper\CcType;
-use Magento\Braintree\Model\Adminhtml\Source\CcType as CcTypeSource;
+use PayPal\Braintree\Helper\CcType;
+use PayPal\Braintree\Model\Adminhtml\Source\CcType as CcTypeSource;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
-/**
- * Class CcTypeTest
- */
 class CcTypeTest extends \PHPUnit\Framework\TestCase
 {
 
@@ -21,14 +18,14 @@ class CcTypeTest extends \PHPUnit\Framework\TestCase
     private $objectManager;
 
     /**
-     * @var \Magento\Braintree\Helper\CcType
+     * @var \PayPal\Braintree\Helper\CcType
      */
     private $helper;
 
-    /** @var \Magento\Braintree\Model\Adminhtml\Source\CcType|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var \PayPal\Braintree\Model\Adminhtml\Source\CcType|\PHPUnit\Framework\MockObject\MockObject */
     private $ccTypeSource;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
 
@@ -43,7 +40,7 @@ class CcTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Helper\CcType::getCcTypes
+     * @covers \PayPal\Braintree\Helper\CcType::getCcTypes
      */
     public function testGetCcTypes()
     {

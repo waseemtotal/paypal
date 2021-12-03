@@ -1,15 +1,20 @@
 /**
  * Braintree Google Pay mini cart payment method integration.
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
-/*global define*/
-define([
-    'uiComponent',
-    'Magento_Braintree/js/googlepay/button',
-    'Magento_Braintree/js/googlepay/api',
-    'mage/translate',
-    'domReady!'
-], function (Component, button, buttonApi, $t) {
+ **/
+define(
+    [
+        'uiComponent',
+        'PayPal_Braintree/js/googlepay/button',
+        'PayPal_Braintree/js/googlepay/api',
+        'mage/translate',
+        'domReady!'
+    ],
+    function (
+        Component,
+        button,
+        buttonApi,
+        $t
+    ) {
         'use strict';
 
         return Component.extend({
@@ -39,7 +44,7 @@ define([
                 api.setMerchantId(this.merchantId);
                 api.setActionSuccess(this.actionSuccess);
                 api.setAmount(this.amount);
-                api.setCardTypes(this.cardTypes);
+                api.setCardTypes(this.cardTypes)
                 api.setBtnColor(this.btnColor);
 
                 // Attach the button

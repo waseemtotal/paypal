@@ -1,17 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Controller\Adminhtml\Virtual;
+namespace PayPal\Braintree\Controller\Adminhtml\Virtual;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-/**
- * Class Index
- * @package Magento\Braintree\Controller\Adminhtml\Virtual
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Index extends Action
 {
     const ADMIN_RESOURCE = 'Magento_Sales::create';
@@ -42,7 +37,7 @@ class Index extends Action
     {
         /** @var Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Magento_Braintree::virtual_terminal');
+        $resultPage->setActiveMenu('PayPal_Braintree::virtual_terminal');
         $resultPage->getConfig()->getTitle()->prepend(__('Braintree Virtual Terminal'));
 
         return $resultPage;

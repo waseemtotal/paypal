@@ -3,14 +3,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Adminhtml\System\Config;
+namespace PayPal\Braintree\Model\Adminhtml\System\Config;
 
 use Magento\Directory\Model\ResourceModel\Country\Collection;
 use Magento\Framework\Option\ArrayInterface;
 
-/**
- * Class Country
- */
 class Country implements ArrayInterface
 {
     /**

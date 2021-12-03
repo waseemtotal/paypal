@@ -3,17 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Block\Customer;
+namespace PayPal\Braintree\Block\Customer;
 
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Block\AbstractCardRenderer;
 
-/**
- * Class CardRenderer
- *
- * @package Magento\Braintree\Block\Customer
- */
 class CardRenderer extends AbstractCardRenderer
 {
     /**

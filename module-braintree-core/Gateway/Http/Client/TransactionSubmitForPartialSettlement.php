@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Http\Client;
+namespace PayPal\Braintree\Gateway\Http\Client;
 
-use Magento\Braintree\Gateway\Request\CaptureDataBuilder;
-use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
+use PayPal\Braintree\Gateway\Request\CaptureDataBuilder;
+use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
 
 class TransactionSubmitForPartialSettlement extends AbstractTransaction
 {

@@ -3,10 +3,10 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Gateway\Response;
+namespace PayPal\Braintree\Test\Unit\Gateway\Response;
 
-use Magento\Braintree\Gateway\Helper\SubjectReader;
-use Magento\Braintree\Gateway\Response\VoidHandler;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Response\VoidHandler;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Sales\Model\Order\Payment;
 

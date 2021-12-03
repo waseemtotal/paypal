@@ -3,20 +3,16 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Gateway\Config;
+namespace PayPal\Braintree\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Braintree\Model\Adminhtml\Source\Environment;
-use Magento\Braintree\Model\StoreConfigResolver;
+use PayPal\Braintree\Model\Adminhtml\Source\Environment;
+use PayPal\Braintree\Model\StoreConfigResolver;
 
-/**
- * Class Config
- * @package Magento\Braintree\Gateway\Config
- */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
     const KEY_ENVIRONMENT = 'environment';
@@ -43,7 +39,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_KOUNT_SKIP_ADMIN = 'kount_skip_admin';
     const FRAUD_PROTECTION = 'fraudprotection';
     const FRAUD_PROTECTION_THRESHOLD = 'fraudprotection_threshold';
-    const ENABLE_RECAPTCHA = 'enable_recaptcha';
 
     /**
      * Get list of available dynamic descriptors keys
@@ -328,32 +323,18 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * Check is reCaptchs is enabled
-     *
-     * @return bool
-     * @throws InputException
-     * @throws NoSuchEntityException
-     */
-    public function getCaptchaSettings(): bool
-    {
-        return (bool) $this->getValue(
-            self::ENABLE_RECAPTCHA,
-            $this->storeConfigResolver->getStoreId()
-        );
-    }
-
-    /**
      * Get Payment configuration status
      *
+     * @param int|null $storeId
      * @return bool
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    public function isActive(): bool
+    public function isActive(int $storeId = null): bool
     {
         return (bool) $this->getValue(
             self::KEY_ACTIVE,
-            $this->storeConfigResolver->getStoreId()
+            $storeId ?? $this->storeConfigResolver->getStoreId()
         );
     }
 
@@ -366,10 +347,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         $values = [];
         foreach (self::$dynamicDescriptorKeys as $key) {
-            $value = $this->getValue(
-                'descriptor_' . $key,
-                $this->storeConfigResolver->getStoreId()
-            );
+            $value = $this->getValue('descriptor_' . $key);
             if (!empty($value)) {
                 $values[$key] = $value;
             }
@@ -380,15 +358,16 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * Get Merchant account ID
      *
-     * @return string|null
+     * @param int $storeId
+     * @return mixed|null
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    public function getMerchantAccountId()
+    public function getMerchantAccountId(int $storeId = null)
     {
         return $this->getValue(
             self::KEY_MERCHANT_ACCOUNT_ID,
-            $this->storeConfigResolver->getStoreId()
+            $storeId ?? $this->storeConfigResolver->getStoreId()
         );
     }
 }

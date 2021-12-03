@@ -3,24 +3,21 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Test\Unit\Block;
+namespace PayPal\Braintree\Test\Unit\Block;
 
 use Magento\Backend\Model\Session\Quote;
-use Magento\Braintree\Block\Form;
-use Magento\Braintree\Gateway\Config\Config as GatewayConfig;
-use Magento\Braintree\Model\Adminhtml\Source\CcType;
-use Magento\Braintree\Model\Ui\ConfigProvider;
+use PayPal\Braintree\Block\Form;
+use PayPal\Braintree\Gateway\Config\Config as GatewayConfig;
+use PayPal\Braintree\Model\Adminhtml\Source\CcType;
+use PayPal\Braintree\Model\Ui\ConfigProvider;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Config;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Vault\Model\VaultPaymentInterface;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject as MockObject;
 
-/**
- * Class FormTest
- */
 class FormTest extends \PHPUnit\Framework\TestCase
 {
     public static $baseCardTypes = [
@@ -66,7 +63,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
      */
     private $paymentDataHelper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->initCcTypeMock();
         $this->initSessionQuoteMock();
@@ -91,7 +88,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Block\Form::getCcAvailableTypes
+     * @covers \PayPal\Braintree\Block\Form::getCcAvailableTypes
      * @param string $countryId
      * @param array $availableTypes
      * @param array $expected
@@ -131,7 +128,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers \Magento\Braintree\Block\Form::isVaultEnabled
+     * @covers \PayPal\Braintree\Block\Form::isVaultEnabled
      */
     public function testIsVaultEnabled()
     {

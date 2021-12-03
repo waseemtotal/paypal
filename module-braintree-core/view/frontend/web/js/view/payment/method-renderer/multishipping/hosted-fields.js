@@ -7,14 +7,14 @@
 
 define([
     'jquery',
-    'Magento_Braintree/js/view/payment/method-renderer/hosted-fields',
-    'Magento_Braintree/js/validator',
+    'PayPal_Braintree/js/view/payment/method-renderer/hosted-fields',
+    'PayPal_Braintree/js/validator',
     'Magento_Ui/js/model/messageList',
     'mage/translate',
     'Magento_Checkout/js/model/full-screen-loader',
-    'Magento_Checkout/js/action/set-payment-information-extended',
+    'Magento_Checkout/js/action/set-payment-information',
     'Magento_Checkout/js/model/payment/additional-validators',
-    'Magento_Braintree/js/view/payment/adapter'
+    'PayPal_Braintree/js/view/payment/adapter'
 ], function (
     $,
     Component,
@@ -22,7 +22,7 @@ define([
     messageList,
     $t,
     fullScreenLoader,
-    setPaymentInformationExtended,
+    setPaymentInformationAction,
     additionalValidators,
     braintree
 ) {
@@ -30,7 +30,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Magento_Braintree/payment/multishipping/form'
+            template: 'PayPal_Braintree/payment/multishipping/form'
         },
 
         /**
@@ -73,6 +73,8 @@ define([
          * @override
          */
         placeOrder: function () {
+            var self = this;
+
             if (this.isProcessing) {
                 return false;
             } else {
@@ -90,10 +92,9 @@ define([
             if (additionalValidators.validate()) {
                 fullScreenLoader.startLoader();
                 $.when(
-                    setPaymentInformationExtended(
+                    setPaymentInformationAction(
                         this.messageContainer,
-                        this.getData(),
-                        true
+                        this.getData()
                     )
                 ).done(this.done.bind(this))
                     .fail(this.fail.bind(this));

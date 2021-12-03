@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-/** @var Magento\Braintree\Block\Form $block */
+/** @var PayPal\Braintree\Block\Form $block */
 $code = $block->getMethodCode();
 $ccType = $block->getInfoData('cc_type');
 ?>
@@ -41,7 +41,7 @@ $ccType = $block->getInfoData('cc_type');
             </div>
         </div>
     </div>
-    <?php if ($block->hasVerification()) : ?>
+    <?php if ($block->hasVerification()): ?>
         <div class="admin__field _required">
             <label class="label admin__field-label">
                 <span><?= $block->escapeHtml(__('Card Verification Number')) ?></span>
@@ -57,7 +57,7 @@ $ccType = $block->getInfoData('cc_type');
         </div>
     <?php endif; ?>
 
-    <?php if ($block->isVaultEnabled()) : ?>
+    <?php if ($block->isVaultEnabled()): ?>
         <div class="field-tooltip-content">
             <input type="checkbox"
                    id="<?= $block->escapeHtmlAttr($code) ?>_vault"

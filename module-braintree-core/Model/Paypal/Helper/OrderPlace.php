@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Paypal\Helper;
+namespace PayPal\Braintree\Model\Paypal\Helper;
 
 use Magento\Quote\Model\Quote;
 use Magento\Checkout\Helper\Data;
@@ -14,9 +14,7 @@ use Magento\Quote\Api\CartManagementInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Checkout\Api\AgreementsValidatorInterface;
 
-/**
- * Class OrderPlace
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+/** @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class OrderPlace extends AbstractHelper
 {

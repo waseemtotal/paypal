@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Model\Venmo\Ui;
+namespace PayPal\Braintree\Model\Venmo\Ui;
 
-use Magento\Braintree\Gateway\Config\Config as BraintreeConfig;
-use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
+use PayPal\Braintree\Gateway\Config\Config as BraintreeConfig;
+use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\InputException;
@@ -13,9 +13,6 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Store\Model\ScopeInterface;
 
-/**
- * Class ConfigProvider
- */
 class ConfigProvider implements ConfigProviderInterface
 {
     const METHOD_CODE = 'braintree_venmo';
@@ -23,8 +20,6 @@ class ConfigProvider implements ConfigProviderInterface
     const MERCHANT_COUNTRY_CONFIG_VALUE = 'paypal/general/merchant_country';
 
     const ALLOWED_MERCHANT_COUNTRIES = ['US'];
-
-    const METHOD_KEY_ACTIVE = 'payment/braintree_venmo/active';
 
     /**
      * @var BraintreeAdapter $adapter
@@ -76,10 +71,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig(): array
     {
-        if (!$this->isActive()) {
-            return [];
-        }
-
         return [
             'payment' => [
                 self::METHOD_CODE => [
@@ -89,19 +80,6 @@ class ConfigProvider implements ConfigProviderInterface
                 ]
             ]
         ];
-    }
-
-    /**
-     * Get Payment configuration status
-     *
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return (bool) $this->scopeConfig->getValue(
-            self::METHOD_KEY_ACTIVE,
-            ScopeInterface::SCOPE_STORE
-        );
     }
 
     /**
@@ -146,6 +124,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getPaymentMarkSrc(): string
     {
-        return $this->assetRepo->getUrl('Magento_Braintree::images/venmo_logo_blue.png');
+        return $this->assetRepo->getUrl('PayPal_Braintree::images/venmo_logo_blue.png');
     }
 }

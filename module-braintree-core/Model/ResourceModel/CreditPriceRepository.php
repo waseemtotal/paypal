@@ -1,17 +1,12 @@
 <?php
 
-namespace Magento\Braintree\Model\ResourceModel;
+namespace PayPal\Braintree\Model\ResourceModel;
 
-use Magento\Braintree\Api\CreditPriceRepositoryInterface;
-use Magento\Braintree\Api\Data\CreditPriceDataInterface;
-use Magento\Braintree\Model\ResourceModel\CreditPrice\CollectionFactory;
+use PayPal\Braintree\Api\CreditPriceRepositoryInterface;
+use PayPal\Braintree\Api\Data\CreditPriceDataInterface;
+use PayPal\Braintree\Model\ResourceModel\CreditPrice\CollectionFactory;
 use Magento\Framework\Data\Collection\AbstractDb;
 
-/**
- * Class CreditPriceRepository
- * @package Magento\Braintree\Model\ResourceModel
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class CreditPriceRepository implements CreditPriceRepositoryInterface
 {
     /**

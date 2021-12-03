@@ -3,20 +3,14 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Block\Customer\PayPal;
+namespace PayPal\Braintree\Block\Customer\PayPal;
 
-use Magento\Braintree\Gateway\Config\PayPal\Config;
-use Magento\Braintree\Model\Ui\PayPal\ConfigProvider;
+use PayPal\Braintree\Gateway\Config\PayPal\Config;
+use PayPal\Braintree\Model\Ui\PayPal\ConfigProvider;
 use Magento\Framework\View\Element\Template;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Block\AbstractTokenRenderer;
 
-/**
- * Class VaultTokenRenderer
- *
- * @api
- * @since 100.1.3
- */
 class VaultTokenRenderer extends AbstractTokenRenderer
 {
     /**

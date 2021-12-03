@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model;
+namespace PayPal\Braintree\Model;
 
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -13,9 +13,7 @@ use Magento\Sales\Model\OrderRepository;
 use Magento\Backend\Model\Session\Quote as SessionQuote;
 use Magento\Setup\Exception;
 
-/**
- * Class StoreConfigResolver
- * @codeCoverageIgnore
+/** @codeCoverageIgnore
  */
 class StoreConfigResolver
 {

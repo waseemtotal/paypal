@@ -1,20 +1,15 @@
 <?php
 
-namespace Magento\Braintree\Block\GooglePay\Shortcut;
+namespace PayPal\Braintree\Block\GooglePay\Shortcut;
 
-use Magento\Braintree\Block\GooglePay\AbstractButton;
-use Magento\Braintree\Model\GooglePay\Auth;
+use PayPal\Braintree\Block\GooglePay\AbstractButton;
+use PayPal\Braintree\Model\GooglePay\Auth;
 use Magento\Checkout\Model\Session;
 use Magento\Catalog\Block\ShortcutInterface;
 use Magento\Checkout\Model\DefaultConfigProvider;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 
-/**
- * Class Button
- * @package Magento\Braintree\Model\GooglePay\Shortcut
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class Button extends AbstractButton implements ShortcutInterface
 {
     const ALIAS_ELEMENT_INDEX = 'alias';

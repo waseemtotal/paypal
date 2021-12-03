@@ -3,13 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Model\Adminhtml\Source;
+namespace PayPal\Braintree\Model\Adminhtml\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
-/**
- * Class Environment
- */
 class Environment implements ArrayInterface
 {
     const ENVIRONMENT_PRODUCTION = 'production';

@@ -1,13 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Magento\Braintree\Plugin;
+namespace PayPal\Braintree\Plugin;
 
 use \Magento\Framework\View\Asset\Minification;
 
-/**
- * Class ExcludeFromMinification
- */
 class ExcludeFromMinification
 {
     /**

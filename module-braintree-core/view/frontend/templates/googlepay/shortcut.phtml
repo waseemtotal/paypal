@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-/** @var \Magento\Braintree\Block\GooglePay\Shortcut\Button $block */
+/** @var \PayPal\Braintree\Block\GooglePay\Shortcut\Button $block */
 try {
     $id = sprintf('%s%s', $block->getContainerId(), random_int(PHP_INT_MIN, PHP_INT_MAX));
 } catch (Exception $e) {
@@ -16,7 +16,7 @@ try {
 }
 
 $config = [
-    'Magento_Braintree/js/googlepay/implementations/shortcut' => [
+    'PayPal_Braintree/js/googlepay/implementations/shortcut' => [
         'id' => $id,
         'environment' => $block->getEnvironment(),
         'clientToken' => $block->getClientToken(),

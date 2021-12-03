@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Braintree\Controller\Paypal;
+namespace PayPal\Braintree\Controller\Paypal;
 
 use InvalidArgumentException;
 use Magento\Checkout\Model\Session;
@@ -12,7 +12,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Redirect;
-use Magento\Braintree\Gateway\Config\PayPal\Config;
+use PayPal\Braintree\Gateway\Config\PayPal\Config;
 
 /**
  * Abstract class AbstractAction

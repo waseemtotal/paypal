@@ -1,13 +1,13 @@
 <?php
-namespace Magento\Braintree\Gateway\Response\Venmo;
+namespace PayPal\Braintree\Gateway\Response\Venmo;
 
 use Braintree\Transaction;
 use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Exception;
-use Magento\Braintree\Gateway\Config\Config;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use PayPal\Braintree\Gateway\Config\Config;
+use PayPal\Braintree\Gateway\Helper\SubjectReader;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -103,13 +103,14 @@ class VaultDetailsHandler implements HandlerInterface
     protected function getVaultPaymentToken(Transaction $transaction)
     {
         // Check token existing in gateway response
-        if (!isset($transaction->venmoAccount->token) || empty($token)) {
+        $token = $transaction->venmoAccount->token;
+        if (empty($token)) {
             return null;
         }
 
         /** @var PaymentTokenInterface $paymentToken */
         $paymentToken = $this->paymentTokenFactory->create();
-        $paymentToken->setGatewayToken($transaction->venmoAccount->token);
+        $paymentToken->setGatewayToken($token);
         $paymentToken->setExpiresAt($this->getExpirationDate($transaction));
 
         $paymentToken->setTokenDetails($this->convertDetailsToJSON([

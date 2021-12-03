@@ -1,26 +1,17 @@
 <?php
-namespace Magento\Braintree\Model\ApplePay\Ui;
+namespace PayPal\Braintree\Model\ApplePay\Ui;
 
-use Magento\Braintree\Gateway\Request\PaymentDataBuilder;
-use Magento\Braintree\Model\ApplePay\Config;
+use PayPal\Braintree\Gateway\Request\PaymentDataBuilder;
+use PayPal\Braintree\Model\ApplePay\Config;
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\Braintree\Model\Adapter\BraintreeAdapter;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use PayPal\Braintree\Model\Adapter\BraintreeAdapter;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Asset\Repository;
-use Magento\Store\Model\ScopeInterface;
 
-/**
- * Class ConfigProvider
- * @package Magento\Braintree\Model\ApplePay\Ui
- * @author Aidan Threadgold <aidan@gene.co.uk>
- */
 class ConfigProvider implements ConfigProviderInterface
 {
     const METHOD_CODE = 'braintree_applepay';
-
-    const METHOD_KEY_ACTIVE = 'payment/braintree_applepay/active';
 
     /**
      * @var Config
@@ -38,7 +29,7 @@ class ConfigProvider implements ConfigProviderInterface
     private $assetRepo;
 
     /**
-     * @var \Magento\Braintree\Gateway\Config\Config
+     * @var \PayPal\Braintree\Gateway\Config\Config
      */
     private $braintreeConfig;
 
@@ -48,30 +39,22 @@ class ConfigProvider implements ConfigProviderInterface
     private $clientToken = '';
 
     /**
-     * @var ScopeConfigInterface $scopeConfig
-     */
-    private $scopeConfig;
-
-    /**
      * ConfigProvider constructor.
      * @param Config $config
      * @param BraintreeAdapter $adapter
      * @param Repository $assetRepo
-     * @param \Magento\Braintree\Gateway\Config\Config $braintreeConfig
-     * @param ScopeConfigInterface $scopeConfig
+     * @param \PayPal\Braintree\Gateway\Config\Config $braintreeConfig
      */
     public function __construct(
         Config $config,
         BraintreeAdapter $adapter,
         Repository $assetRepo,
-        \Magento\Braintree\Gateway\Config\Config $braintreeConfig,
-        ScopeConfigInterface $scopeConfig
+        \PayPal\Braintree\Gateway\Config\Config $braintreeConfig
     ) {
         $this->config = $config;
         $this->adapter = $adapter;
         $this->assetRepo = $assetRepo;
         $this->braintreeConfig = $braintreeConfig;
-        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -79,10 +62,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getConfig(): array
     {
-        if (!$this->isActive()) {
-            return [];
-        }
-
         return [
             'payment' => [
                 'braintree_applepay' => [
@@ -92,19 +71,6 @@ class ConfigProvider implements ConfigProviderInterface
                 ]
             ]
         ];
-    }
-
-    /**
-     * Get Payment configuration status
-     *
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return (bool) $this->scopeConfig->getValue(
-            self::METHOD_KEY_ACTIVE,
-            ScopeInterface::SCOPE_STORE
-        );
     }
 
     /**
@@ -146,6 +112,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public function getPaymentMarkSrc()
     {
-        return $this->assetRepo->getUrl('Magento_Braintree::images/applepaymark.png');
+        return $this->assetRepo->getUrl('PayPal_Braintree::images/applepaymark.png');
     }
 }

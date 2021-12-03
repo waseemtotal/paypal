@@ -12,7 +12,7 @@ define(
         rendererList.push(
             {
                 type: 'braintree_local_payment',
-                component: 'Magento_Braintree/js/view/payment/method-renderer/lpm'
+                component: 'PayPal_Braintree/js/view/payment/method-renderer/lpm'
             }
         );
 
